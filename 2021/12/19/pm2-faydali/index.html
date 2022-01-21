@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  
+  <title>pm2 Faydalı Bilgileri | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="pm2 Faydalı Bilgileri"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-pm2-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2021-12-19T14:51:21.000Z"><a href="/2021/12/19/pm2-faydali/">19.12.2021</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">pm2 Faydalı Bilgileri</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>Proses listesi.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 ls &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p>Proses başlatma.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p>Proses durdurma.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 stop &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p>Proses yeniden başlatma.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 restart &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="save"><a href="#save" class="headerlink" title="save"></a>save</h3><p>Proses listesini kaydetme.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 save</span><br></pre></td></tr></table></figure>
+
+<h2 id="pm2-Enable-Startup-Yapma"><a href="#pm2-Enable-Startup-Yapma" class="headerlink" title="pm2 Enable/Startup Yapma"></a>pm2 Enable/Startup Yapma</h2><p>Enable/Startup olarak ayarla. Bu komut çalıştırıldıktan sonra root ile yapılacak işlem için çıktıda oluşan komutu sudo ile çalıştırın.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 startup</span><br></pre></td></tr></table></figure>
+
+<h2 id="pm2-Log-Yonetim-Modulu"><a href="#pm2-Log-Yonetim-Modulu" class="headerlink" title="pm2 Log Yönetim Modülü"></a>pm2 Log Yönetim Modülü</h2><p>Proseslerin log yönetimi için kullanılabilecek bir modüldür.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 install log-rotate</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/pm2/">pm2</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result" class="widget"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  
+<div class="widget tag">
+  <h3 class="title">Kategoriler</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+  
+    <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
+  
+    <li><a href="/categories/Wiki/">Wiki</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Etiketler</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/apache/">apache</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>2</small></li>
+  
+    <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
+  
+    <li><a href="/tags/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/tags/oAuth/">oAuth</a><small>1</small></li>
+  
+    <li><a href="/tags/oyun/">oyun</a><small>1</small></li>
+  
+    <li><a href="/tags/php/">php</a><small>1</small></li>
+  
+    <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+  
+    <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

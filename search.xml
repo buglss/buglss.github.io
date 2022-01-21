@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>tmp Konfigürasyon Yenile</title>
+      <link href="/2022/01/21/tmp-konfigurasyon-yenile/"/>
+      <url>/2022/01/21/tmp-konfigurasyon-yenile/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Komut"><a href="#Komut" class="headerlink" title="Komut"></a>Komut</h1><p>Bu yöntem her zaman doğru sonuç vermeyebilir. Boot sırasında çalışan diğer servisler ile bağlantılı noktalar beklendiği gibi çalışmayabilir. O yüzden bu yöntemden ziyade tmp konfigürasyon dosyasında yapılan değişiklikten sonra en sağlıklısı restart atmaktır.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /bin/systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev</span><br></pre></td></tr></table></figure><h1 id="tmp-Dosya-Yollari"><a href="#tmp-Dosya-Yollari" class="headerlink" title="tmp Dosya Yolları"></a>tmp Dosya Yolları</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/tmpfiles.d/*.conf</span><br><span class="line">/run/tmpfiles.d/*.conf</span><br><span class="line">/usr/lib/tmpfiles.d/*.conf</span><br><span class="line"></span><br><span class="line">~/.config/user-tmpfiles.d/*.conf</span><br><span class="line"><span class="variable">$XDG_RUNTIME_DIR</span>/user-tmpfiles.d/*.conf</span><br><span class="line">~/.<span class="built_in">local</span>/share/user-tmpfiles.d/*.conf</span><br><span class="line">...</span><br><span class="line">/usr/share/user-tmpfiles.d/*.conf</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Faydalı Bilgiler </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>oAuth Temel Çalışma Mantığı</title>
+      <link href="/2022/01/21/oAuth-temel-calisma-mantigi/"/>
+      <url>/2022/01/21/oAuth-temel-calisma-mantigi/</url>
+      
+        <content type="html"><![CDATA[<h4 id="C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici"><a href="#C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici" class="headerlink" title="{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı"></a>{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı</h4><p>Sırasıyla aşağıdaki gibidir.</p><ol><li><code>Client</code>: Webview içinde <strong>{FQDN}</strong>/oauth/authorize?response_type=code&amp;client_id=<strong>&lt;CLIENT_ID&gt;</strong>&amp;redirect_uri=<strong>&lt;SİZİN_URL&gt;</strong> adresine <code>GET</code> et.</li><li><code>Client</code>: <strong>{FQDN}</strong> login sayfası açıldı. <strong>{FQDN}</strong> sistemindeki kullanıcı bilgilerini girdi.</li><li><code>Client</code>: <strong>&lt;SİZİN_URL&gt;</strong> adresinde <code>GET</code> metodunu dinleyen endpoint’inize <strong>{“code”:&lt;CODE&gt;}</strong> payload’una sahip bir request gelir.</li><li><code>Server</code>: <strong>&lt;SİZİN_URL&gt;</strong> entpoint’inde gelen <code>code</code> bilgisini kullanarak {client_id:”<strong>&lt;CLIENT_ID&gt;</strong>“,client_secret:”<strong>&lt;CLIENT_SECRET&gt;</strong>“,grant_type:”authorization_code”,code:<strong>&lt;PAYLOAD.CODE&gt;</strong>,redirect_uri:<strong>&lt;SİZİN_URL&gt;</strong>} payload’u ile <strong>{FQDN}</strong>/oauth/token adresine <code>POST</code> yap.</li><li><code>Server</code>: {“access_token”:<strong>&lt;ACCESS_TOKEN&gt;</strong>,”expires_in”:3600,”token_type”:”Bearer”,”scope”:”basic”,”refresh_token”:<strong>&lt;REFRESH_TOKEN&gt;</strong>} response objesindeki “access_token” ve “token_type” bilgilerini kullanarak authorization header oluştur. Bu header ile payload’ın boş obje olacak şekilde <strong>{FQDN}</strong>/oauth/me/ adresine <code>POST</code> yap.</li><li><code>Server</code>: {“ID”:<strong>&lt;USER_ID&gt;</strong>,”user_login”:<strong>&lt;USERNAME&gt;</strong>,”user_nicename”:<strong>&lt;USER_NICENAME&gt;</strong>,”user_email”:<strong>&lt;USER_EMAIL&gt;</strong>,”user_registered”:<strong>&lt;USER_REGISTERED&gt;</strong>,”user_status”:<strong>&lt;USER_STATUS&gt;</strong>,”display_name”:<strong>&lt;USER_DISPLAY_NAME&gt;</strong>} response objesi ile kullanıcı bilgilerine ulaştın.</li><li><code>Server</code>: Kullanıcı login başarılı. Webview olduğu için response olarak html dön. Başarılı olduğuna dair bir yazı olabilir. Tablette gitmesi gereken sayfaya doğrudan yönlendirme olabilir. Gibi gibi…</li><li><code>Client</code>: 7’nci adımdaki response’ta yaptığın işlem gerçekleşir.</li></ol><span id="more"></span><p><img src="/img/oauth.gif" alt="oAuth Flow Gif"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Wiki </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> oAuth </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu için Ngixn Kurulumu</title>
+      <link href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/"/>
+      <url>/2022/01/21/ubuntu-icin-ngixn-kurulumu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure><h2 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h2><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p><figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">upstream</span> prod &#123;</span><br><span class="line">least_conn;</span><br><span class="line"><span class="attribute">server</span> <span class="number">127.0.0.1:3001</span>;</span><br><span class="line"><span class="attribute">server</span> <span class="number">127.0.0.1:3002</span>;</span><br><span class="line"><span class="attribute">server</span> <span class="number">127.0.0.1:3003</span>;</span><br><span class="line"><span class="attribute">server</span> <span class="number">127.0.0.1:3004</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line"><span class="attribute">listen</span> <span class="number">3000</span> default_server;</span><br><span class="line"><span class="attribute">listen</span> [::]:<span class="number">3000</span> default_server;</span><br><span class="line"></span><br><span class="line"><span class="attribute">server_name</span> &lt;fqdn&gt;;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line"><span class="attribute">proxy_pass</span> http://prod;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker ile Gitlab Kurulumu</title>
+      <link href="/2022/01/21/docker-ile-gitlab-kurulumu/"/>
+      <url>/2022/01/21/docker-ile-gitlab-kurulumu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="SSH-Port-Ayari"><a href="#SSH-Port-Ayari" class="headerlink" title="SSH Port Ayarı"></a>SSH Port Ayarı</h2><p>Gitlab 22 portunu kullandığı için işletim sisteminin ssh portunu 2222 olarak değiştir. <code>/etc/ssh/sshd_config</code> git.</p><figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># What ports, IPs and protocols we listen for</span></span><br><span class="line"><span class="attribute">Port</span> <span class="number">2222</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure><h2 id="Docker-ile-Calistir"><a href="#Docker-ile-Calistir" class="headerlink" title="Docker ile Çalıştır"></a>Docker ile Çalıştır</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run --detach --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume &lt;path&gt;/gitlab/config:/etc/gitlab --volume &lt;path&gt;/gitlab/logs:/var/<span class="built_in">log</span>/gitlab --volume &lt;path&gt;/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure><span id="more"></span><h2 id="Gitlab-root-Kullanici"><a href="#Gitlab-root-Kullanici" class="headerlink" title="Gitlab root Kullanıcı"></a>Gitlab root Kullanıcı</h2><p>Gitlab konteynırına bağlan ve root parolasını resetle.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it gitlab bash</span><br><span class="line">$ gitlab-rake <span class="string">&quot;gitlab:password:reset[root]&quot;</span></span><br></pre></td></tr></table></figure><h2 id="Konfigurasyon"><a href="#Konfigurasyon" class="headerlink" title="Konfigürasyon"></a>Konfigürasyon</h2><p>Temel konfigürasyon ayarlarını yap. <code>&lt;path&gt;/gitlab/config/gitlab.rb</code> dosyasını aç. Aşağıdakiler uygula.</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">## GitLab URL</span></span><br><span class="line"><span class="comment">##! URL on which GitLab will be reachable.</span></span><br><span class="line"><span class="comment">##! For more details on configuring external_url see:</span></span><br><span class="line"><span class="comment">##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab</span></span><br><span class="line">external_url <span class="string">&#x27;https://git.&lt;domain&gt;.com&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">### GitLab email server settings</span></span><br><span class="line"><span class="comment">###! Docs: https://docs.gitlab.com/omnibus/settings/smtp.html</span></span><br><span class="line"><span class="comment">###! **Use smtp instead of sendmail/postfix.**</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_enable&#x27;</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_address&#x27;</span>] = <span class="string">&quot;&lt;ip&gt;&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_port&#x27;</span>] = &lt;port&gt;</span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_user_name&#x27;</span>] = <span class="string">&quot;&lt;kullanici_adi&gt;&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_password&#x27;</span>] = <span class="string">&quot;&lt;parola&gt;&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_domain&#x27;</span>] = <span class="string">&quot;&lt;domain&gt;.com&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_authentication&#x27;</span>] = <span class="string">&quot;login&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_enable_starttls_auto&#x27;</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_tls&#x27;</span>] = <span class="literal">false</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">## Container Registry settings</span></span><br><span class="line"><span class="comment">##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line">registry_external_url <span class="string">&#x27;https://registry.&lt;domain&gt;.com&#x27;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure><h2 id="SSL-Sertifika"><a href="#SSL-Sertifika" class="headerlink" title="SSL Sertifika"></a>SSL Sertifika</h2><p>SSL sertifikalarını aktar. <code>&lt;path&gt;/gitlab/config/ssl</code> klasörünün içine git. <code>&lt;domain&gt;.com.crt</code>, <code>git.&lt;domain&gt;.com.key</code>, <code>registry.&lt;domain&gt;.com.crt</code> ve <code>registry.&lt;domain&gt;.com.key</code> isminde crt ve key dosyalarını at. Sonra gitlab konteynırına restart at.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker restart gitlab</span><br></pre></td></tr></table></figure><h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><p>Gitlab dosya ve dizinlerin sahipliklerinin olması gerektiği ayarlarda olması için aşağıdaki komutu çalıştırabilirsiniz. Olası bir sahiplik bozulmasında kullanılabilir.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it gitlab update-permissions</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> gitlab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu için Docker Kurulumu</title>
+      <link href="/2022/01/21/ubuntu-icin-docker-kurulumu/"/>
+      <url>/2022/01/21/ubuntu-icin-docker-kurulumu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h2><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure><h2 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h2><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure><h2 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h2><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure><span id="more"></span><h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p>Docker kurulumu peşine oldukça kullanışlı bulduğum Docker Compose aracını kur. Github reposundaki son versiyonunu işletim sistemine uygun şekilde ilgili dizin altına indir. docker-compose için çalıştırılabilme yetkisi ver. Kullanıcını docker grubuna ekle. </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/latest/download/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">$ sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">$ sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Oyun Geliştirme El Kitabı</title>
+      <link href="/2021/12/26/oyun-gelistirme-el-kitabi/"/>
+      <url>/2021/12/26/oyun-gelistirme-el-kitabi/</url>
+      
+        <content type="html"><![CDATA[<p>Oyun geliştirme sürecinde rol alan kişileri anlatmaya çalıştım.</p><h3 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h3><ol><li><a href="#1-Yapimci">Yapımcı</a></li><li><a href="#2-Senarist">Senarist</a></li><li><a href="#3-Konsept-Sanatcisi">Konsept Sanatçısı</a></li><li><a href="#4-Oyun-Tasarimcisi">Oyun Tasarımcısı</a></li><li><a href="#5-3D-Model-Sanatcisi">3D Model Sanatçısı</a></li><li><a href="#6-Doku-Sanatcisi">Doku Sanatçısı</a></li><li><a href="#7-Art-Direktor-Goruntu-Yonetmeni">Art Direktör / Görüntü Yönetmeni</a></li><li><a href="#8-Seviye-Sanatcisi-Level-Designer">Seviye Sanatçısı / Level Designer</a></li><li><a href="#9-GUI-Sanatcisi">GUI Sanatçısı</a></li><li><a href="#10-Animator">Animatör</a></li><li><a href="#11-Programci">Programcı</a></li><li><a href="#12-Backend-Developer">Backend Developer</a></li><li><a href="#13-Ses-ve-Muzik-Ekibi">Ses ve Müzik Ekibi</a></li><li><a href="#14-QA-Tester">QA / Tester</a></li><li><a href="#15-Cevirmen">Çevirmen</a></li></ol><span id="more"></span><h1 id="1-Yapimci"><a href="#1-Yapimci" class="headerlink" title="1. Yapımcı"></a>1. Yapımcı</h1><p>Yapım ekibini belirler ve idare eder. Yapımın bütçesini belirler. Bütçe dâhilinde, oyun geliştirebilecek bir ekip ile farklı kaynaklardan yararlanarak, kaliteli bir oyunu zamanında tamamlar. Bir çalışma programı oluşturur ve yönetir. Yapımın oluşturulmasında tüm çalışmaları idare eden, gerekli planlamaları yapan kişidir. İşe yarar kaynaklar bulur ve takımı başarıya götürür.</p><h3 id="Gorevleri"><a href="#Gorevleri" class="headerlink" title="Görevleri"></a>Görevleri</h3><ul><li><strong>Proje Planlama</strong>: Oyun kapsamında alınacak kararlar ve adım adım izlenecek yol belirlenir. Bütçe, zaman ve pazarlama alanında planlama yapılır.</li><li><strong>Koordinasyon</strong>: Verimli çalışan bir ekip ve ekip elemanları arasındaki düzen sağlanır. Ekipteki çalışma grupları (programcı, 3D model sanatçısı, ses ekibi, … ) denetlenir.</li><li><strong>Haberleşme</strong>: Dış kaynaklarla bağlantı kurulur.</li></ul><h1 id="2-Senarist"><a href="#2-Senarist" class="headerlink" title="2. Senarist"></a>2. Senarist</h1><p>Her uzunlukta, kendi oluşturduğu ya da var olan kaynakları görsel dile çevirerek, belli bir sistem içinde görsel anlatım oluşturarak, metinler (senaryo) ve diyaloglar yazan kişidir. Senarist oyun içeriğinin kurgusal veya eğitici olacağına karar verir. Senaristlerin amacı, oyuncunun oyunu oynarken heyecan duymasını, eğlenmesini, oyundan zevk almasını, bazen zorlanmasını ve bu zorluklarla baş etmek için hırs yapmasını sağlayacak veya küçük çocuklar için eğitici olabilecek, sürükleyici bir metin (senaryo) yazmaktır. Senarist metni (senaryo) yazmadan önce oyunun hangi yaş grubuna hitap edeceğine karar vermesi gerekmektedir, hedef kitleyi belirlemelidir.</p><h1 id="3-Konsept-Sanatcisi"><a href="#3-Konsept-Sanatcisi" class="headerlink" title="3. Konsept Sanatçısı"></a>3. Konsept Sanatçısı</h1><p>Bu sanatçı; karakterlerin görünüşlerinin; oyundaki seviyelerin, araçların (taşıt) ve diğer öğelerin nasıl olacağını ayrıntılı bir şekilde anlatır ve ardından oyun için gerekli olan ve tasarımı yapılacak, çevre ve karakterlerin çizimini yapar. Oyunun taslağını oluşturur. Bunun için konsept sanatçısının çizime yeteneği olmalı ve sürekli çizim yapıp, çizimini geliştirmesi gerekir. Ekipteki diğer elemanlara, oyunun nasıl olacağı hakkında önceden fikir verir. Seviye sanatçısı da ortaya çıkan konsept ışığında oyunun içini doldurur. Konsept sanatçısı; oyunun içeriğini, oyunun türünü, oyundaki açıklamaları, oyunun özelliklerini, oyunun ayarlarını, oyunun hikâyesini, hedef kitleyi, hangi platformlar için geliştirileceğini, oyunun tahmini tamamlanma süresini, pazar analizini, ekibin ihtiyaçlarını ve risk analizini bulunduran bir belge oluşturur (konsept dokümanı).</p><h1 id="4-Oyun-Tasarimcisi"><a href="#4-Oyun-Tasarimcisi" class="headerlink" title="4. Oyun Tasarımcısı"></a>4. Oyun Tasarımcısı</h1><p>Oyunu yaratan, gelişim sürecinde geliştirici ekibi denetleyen kişidir. Oyun tasarımcısı; 3D model sanatçıları, programcılar ve ses ekibi de dâhil olmak üzere geliştirme ekibinin diğer üyeleri ile birlikte çalışmaktadır. Oyunun aslında nasıl çalıştığını (oyunun mekaniği) ve stilini tanımlar. Ekran görüntüleri, arayüz diyagramları, akış şemaları, kod şablonları, durum tabloları gibi araçları kullanarak oyunu tasarım aşamasında belgeler (oyun tasarım dokümanı). Oyun tasarım dokümanı; konsept dokümanının içeriğinden yararlanılarak oluşturulur. Oyun tasarım dokümanında, konsept dokümanında bahsedilenler ayrıntılı bir şekilde açıklanır. Ekip arkadaşları sürekli çalışmalarını güncelleyeceği için oyun tasarımcısı da bu belgeyi güncel tutar. Oyun teoriden gerçekliğe doğru ilerledikçe, oyundaki zorluk ve eğlence arasındaki dengeyi tüm oyuncular için sağlamak adına oyun sık sık test edilir. Oyun tasarımcısı, oyunun oynanabilirliği ve eğlence düzeyinden sorumlu kişidir. Oyun tasarımcısı ayrıca arka planda araştırmalar yapar ve oyun için gerekli verileri toplar.</p><h1 id="5-3D-Model-Sanatcisi"><a href="#5-3D-Model-Sanatcisi" class="headerlink" title="5. 3D Model Sanatçısı"></a>5. 3D Model Sanatçısı</h1><p>Adından da anlaşıldığı gibi 3D model sanatçısının işi; 3 boyutlu nesneler, karakterler ve sahne tasarlamaktır. Bu çalışmalar genellikle Maya, 3D Studio Max, Softimage XSI veya Lightwave gibi programlarla yapılır. Biz şuan için 3D Studio Max programını kullanıyoruz. Oluşturulan modele; doku haritaları eklenir, projenin arka planında çalışacak veriler (animasyon) eklenir, bazı durumlarda görsel efektler eklenir. Bir model bu ve bunun gibi yapıları içerir. Modele detay verirken genellikle Zbrush, Sculptris, Autodesk Modbox, Blender ve 3D-Coat gibi programlar kullanılır. Biz şuan için Zbrush programını kullanıyoruz. Sanatçı, oyunun oynanacağı cihazın sistemine göre modellerin boyutlarını ayarlar. Doku sanatçısı ile birlikte çalışır.</p><p>Unutmamak gerekir ki çoğu zaman oyuncu için görsellik ön plandadır ve oyuncu oynadığı oyunda gerçeklik arar, bunu sağlayan etkenlerden biri de 3 boyutlu model tasarımıdır, onun için bir model tasarlanırken oyuncu için inandırıcılığına çok dikkat edilmelidir, olabildiğince gerçekçi yapılmalıdır.</p><p>Sanatçı modeli tasarlamaya başlamadan önce şu adımları gerçekleştirmelidir:</p><ol><li>Yapacağı model ile ilgili referans toplar (imajlar)</li><li>Yapacağı model için en uygun olan imaja karar verir</li><li>Blueprint hazırlar</li><li>High model hazırlar</li><li>Low model hazırlar</li><li>Bake yapar (baking). Normal map bake, ambient occlusion (AO) bake, high model low modele bake edilir.</li><li>Modele doku (texture) oluşturur, doku (texture) kalıbına alır (texturing). Bu kısmı doku sanatçısı da yapabilir.</li><li>Detay oranını ayarlar (LOD)</li></ol><p>Bu iş oldukça zor gibi görünse de sanatçı, yapacağı işi biliyorsa ve modellemeye yeteneği varsa onun için zor diye bir şey yoktur. Tabi bu iş için sadece yetenek yeterli değildir, sürekli pratik yapılmalıdır. Sanatçılar becerilerine göre kıdemli (senior) ve tecrübesiz (junior) olarak gruplandırılabilir.</p><h1 id="6-Doku-Sanatcisi"><a href="#6-Doku-Sanatcisi" class="headerlink" title="6. Doku Sanatçısı"></a>6. Doku Sanatçısı</h1><p>Adından da anlaşıldığı gibi doku sanatçısının işi; nesnelere ve karakterlere doku oluşturmaktır. Bu çalışmalar genellikle Adobe Photoshop ve Gimp gibi programlar ile yapılır. Biz şuan için Adobe Photoshop programını kullanıyoruz. Doku sanatçıları; planlanmış olan 3 boyutlu nesnelerin ve karakterlerin, dış görünüşlerinin gerçekçi ve hatasız bir şekilde tasarlanmasına özen gösterir, tasarlanan dokunun modele tam olarak uyum göstermesini sağlar. Doku sanatçısı, gerçek hayattaki nesnelerin, canlıların dokularını incelemeli ve onların dokuları hakkında geniş bir bilgiye sahip olmalıdır. Doku sanatçısının yaptığı dokular, gerçek hayattakine yakın olmalıdır, çünkü tasarlanan modeller ne kadar gerçekçi olursa olsun o modelin tam anlamıyla gerçekçi, normal hayattaki gibi görünebilmesi için, tasarlanan modelin dokusunun, gerçek hayattaki dokusuna sahip olması gerekir. Sahne 3 boyutlu olabilir, ama dokular (2 boyutlu) onları desteklemek zorundadır. Oyunun oynanacağı cihazın sistemine göre dokuların boyutlarını ayarlar. 3D model sanatçısı ile birlikte çalışır.</p><p>Unutmamak gerekir ki çoğu zaman oyuncu için görsellik ön plandadır ve oyuncu oynadığı oyunda gerçeklik arar, bunu sağlayan etkenlerden biri de doku tasarımıdır, bu nedenden ötürü bir model için doku tasarlanırken oyuncu için inandırıcılığına çok dikkat edilmelidir, olabildiğince gerçekçi yapılmalıdır.</p><h1 id="7-Art-Direktor-Goruntu-Yonetmeni"><a href="#7-Art-Direktor-Goruntu-Yonetmeni" class="headerlink" title="7. Art Direktör / Görüntü Yönetmeni"></a>7. Art Direktör / Görüntü Yönetmeni</h1><p>Art direktör oyundaki görsel unsurlardan sorumludur. Ama tek işi bu değildir, pazarlama materyallerinden ve web tasarımından da sorumludur. Programcılarla yakından çalışmaları gerekir, programcıların görsel materyallerden kaynaklı teknik sorunlarına çözüm bulur ve onlara sorunsuz çalışma ortamı sağlar. Aynı zamanda oyunun görselliğinin ve oyundaki gerçekliğin sağlanması için oyun tasarımcısıyla birlikte çalışır, tasarımda oluşabilecek sorunlara çözüm bulur.</p><h1 id="8-Seviye-Sanatcisi-Level-Designer"><a href="#8-Seviye-Sanatcisi-Level-Designer" class="headerlink" title="8. Seviye Sanatçısı / Level Designer"></a>8. Seviye Sanatçısı / Level Designer</h1><p>Yeni bir oyun yapmak karmaşık ve uzun soluklu bir iştir ve önemli aşamalardan biri seviye tasarımıdır. Seviye sanatçısı; diğer sanatçılar ile birlikte çalışır. (3D model sanatçısı, konsept sanatçısı, GUI sanatçısı, …) Seviye sanatçısı, 3 boyutlu çalışmalar için; Maya, 3D Studio Max veya Softimage XSI programlarını (hangisi kullanılıyorsa), doku çalışması için ise Adobe Photoshop veya Gimp programlarını (hangisi kullanılıyorsa) bilmesi gerekir. Seviye sanatçısı, oyunun konsepti altında oyundaki öğeleri, düşmanları, interaktif mekaniği mekâna yerleştirir, oyuncunun oynayacağı ortamları, oyundaki seviyeleri, zorlukları ve görevleri oluşturur. Bu tipik bir oyunda canavarları, can paketlerini, silahları ve/veya özel öğeleri içerebilir. Seviye tasarımcısı, haritayı tasarlamak ve oluşturmak için diğer sanatçılar tarafından sağlanan bileşenleri kullanır. Seviye sanatçısı, oluşturduğu seviyede; çalışan kodlardan, tetikleyicilerden ve oyuncunun üstesinden geleceği sorunlardan, çevresindeki varlıklarla etkileşiminden kesin olarak sorumludur. Seviye sanatçısı, oyunun seviyesini oluşturmak için sık sık 3 boyutlu modellere ve oyun için yazılmış kodlara ihtiyaç duyar. Bu yüzden seviye tasarımı özel beceri ve beceriler gerektirir, oyun tasarımı kadar öneme sahiptir. Seviye sanatçısı, oyunun konseptini ve mekaniğini çok iyi anlamalıdır. Seviye sanatçısı, oyun ortamında dekorun ne olduğunu, oyundaki öğelerin neler olduğunu, kendi özel tasarımının oyun planına nasıl sığacağını bilmek zorundadır. Net hedefler ve anlaşılır bir mekân seviye tasarımının önemli bir parçasıdır. Oyun eğlenceli ve sürükleyici olmuşsa, seviye sanatçısı işini doğru yapmış demektir. Seviye sanatçısı oyun yapım aşamasındayken çalışır ve oyun tamamlandıktan sonra da çalışmaya devam eder.</p><p>Seviye sanatçısı genellikle haritanın kabataslak bir çizimini yapmakla başlar ve sonra da kabaca oynanabilir 3 boyutlu bir halini tasarlar ve burada haritanın kabaca düzenini sağlar. Oyun bitiminde seviye sanatçısı artık haritadaki düzeni sağlamış olur. Haritanın içeriğinden sorumludur. Bir seviye tasarlanırken alınması gereken birçok karar vardır: örneğin oyuncunun savaşacağı kaç düşman olacak, mekânda buna bağlı olarak kaç tane sağlık paketi veya özel güç paketi olacak? Veya belki beklenmedik bir şekilde saldıran düşman yaparak gerginlik yaratmak isteniyor. Burada büyük savaşlar veya çözülmesi gereken bulmacalar olabilir.</p><h1 id="9-GUI-Sanatcisi"><a href="#9-GUI-Sanatcisi" class="headerlink" title="9. GUI Sanatçısı"></a>9. GUI Sanatçısı</h1><p>GUI sanatçısı, oyunun çeşitli ekran boyutları için, ekran düzenini ve giriş aygıtlarının işlevlerini oluşturur. Öncelikli görevi menü sistemleri ve oyundaki skor elemanlarını oluşturmaktır. Sanatçı, GUI tasarımını yapmadan önce Mock-Up’ını oluşturur. Bu çalışmalarda genellikle Balsamiq Mockups, Mockingbird, Mockup Builder, MockFlow, HotGloo gibi programlar kullanılır. Biz şuan için Balsamiq Mockups programını kullanıyoruz. Burada iyi bir düzen olmalı, GUI sanatçısının grafik tasarımı ve yazım becerisi iyi olmalıdır. Bir oyunda GUI, her zaman ilk görülen interaktif öğe olduğundan ilgi çekici, net ve tasarım olarak mükemmel olmalıdır. GUI sanatçısının, bu açıdan büyük bir sorumluluğu vardır. Bir oyun etkileyici modellere ve programlamaya sahip olsa bile eğer GUI tasarımı basit, özensiz ise bu, oyunun etkileyiciliğini bozar, oyunu basit bir hale getirir.</p><h1 id="10-Animator"><a href="#10-Animator" class="headerlink" title="10. Animatör"></a>10. Animatör</h1><p>Animatör, oyundaki görsel unsurlara can verir, onlara hareket kabiliyeti sağlar ve oyun ekibinin vazgeçilmez bir parçasıdır. 3D model sanatçısıyla birlikte çalışır. Animatör, oyundaki görüntüleri, bir dizi resmi bir araya getirerek oluşturur. Bu çalışmalarda genellikle Maya, 3D Studio Max, Cinema 4D, Houdini, Zbrush ve Blender gibi programlar kullanılır. Biz şuan için 3D Studio Max programını kullanıyoruz. Animatör, çalışmalarında gerçekçi ve yaratıcı olmalıdır, hayal gücünü çok iyi kullanmalıdır. Animasyon oyunun hayati parçasıdır, oyunun yapım aşamasındaki tüm tasarımlarda olduğu gibi, oyunun değerini yükseltme veya düşürme gücüne sahiptir. Bu nedenden ötürü animatörün önemli sorumlulukları vardır. Animatörler becerilerine göre kıdemli (senior) ve tecrübesiz (junior) olarak gruplandırılabilir.</p><h3 id="Gorevleri-1"><a href="#Gorevleri-1" class="headerlink" title="Görevleri"></a>Görevleri</h3><ol><li>Karakter Animasyonu</li><li>Doğa Animasyonu</li><li>Cut-Scene Animasyonu</li><li>Teçhizat/Donanım Animasyonu</li><li>Hareket Yakalama</li></ol><h2 id="10-1-Karakter-Animasyonu"><a href="#10-1-Karakter-Animasyonu" class="headerlink" title="10.1 Karakter Animasyonu"></a>10.1 Karakter Animasyonu</h2><p>Animatörün ana görevi oyundaki karakterler için gerekli animasyon zincirini oluşturmaktır. Animasyonlar genellikle parçalı/ayrı animasyon klipleri şeklinde oluşturulur, daha sonra oyun motorunda bir araya getirilip hareket tamamlanır. 1 saniyeden daha az süren bir sahne çalışması olsun veya dakikalarca süren bir diyalog sahnesi olsun, animatör; inandırıcı, gerçekçi animasyonlar tasarlamaktan sorumludur ve oyundaki hareketleri/animasyonları kusursuz bir şekilde tasarlamak zorundadır. Animatörün hedefi, oyuncunun, oyunu oynarken gerçekten o anı yaşıyormuş gibi hissetmesini ve oyundaki inandırıcılığı sağlamaktır.</p><h2 id="10-2-Doga-Animasyonu"><a href="#10-2-Doga-Animasyonu" class="headerlink" title="10.2 Doğa Animasyonu"></a>10.2 Doğa Animasyonu</h2><p>Oyunun karakterleri dışındaki elemanların hareketini/animasyonunu oluşturur. Bunlar haritada; dinamik simülasyonlar oluşturma, flora ve fauna üzerindeki inandırıcı doğal hareketlerin animasyonlarını oluşturma olabilir. Genellikle doğa animasyonlarında animatör mümkün olduğu kadar az eklem yeri kullanarak, akıllı/verimli oyun objeleri oluşturur.</p><h2 id="10-3-Cut-Scene-Animasyonu"><a href="#10-3-Cut-Scene-Animasyonu" class="headerlink" title="10.3 Cut-Scene Animasyonu"></a>10.3 Cut-Scene Animasyonu</h2><p>Özel kamera açılarında hangi animasyonun çalışacağını belirtir. (oyun içi videolar) Animatör, oyuncunun, oyunun içeriğini ve karakterlerin rollerini anlatarak doğru yere odaklanmasını sağlar. Oyunun bazı yerlerine sinematik gösterimler yerleştirilerek oyuncunun oyundan daha fazla zevk alması sağlanır.</p><h2 id="10-4-Techizat-Donanim-Animasyonu"><a href="#10-4-Techizat-Donanim-Animasyonu" class="headerlink" title="10.4 Teçhizat/Donanım Animasyonu"></a>10.4 Teçhizat/Donanım Animasyonu</h2><p>Sürecin ilk aşamalarında karakterin çalışacağı animasyon oluşturulur. Önce iskeletin ne olacağına ve nasıl hareket etmesi gerektiğine karar verilir. Mümkün olduğunca doğru bir şekilde, iskelet için kontrol sistemi oluşturulur ve hızlı bir şekilde bu kontrol sistemi iskelete işlenir. Örneğin, bir tabancanın şarjörünün değiştirilme animasyonu.</p><h2 id="10-5-Hareket-Yakalama"><a href="#10-5-Hareket-Yakalama" class="headerlink" title="10.5 Hareket Yakalama"></a>10.5 Hareket Yakalama</h2><p>Hareket yakalama, daha gerçekçi bir 3 boyutlu modelleme için insan, hayvan veya bitkilerin üzerine hareketi sırasında kayıt yapabilme özelliğine sahip cihazların, yaptıkları kaydı dijital ortama aktarması işi olarak tanımlanmaktadır.</p><h1 id="11-Programci"><a href="#11-Programci" class="headerlink" title="11 Programcı"></a>11 Programcı</h1><p>Programcı, oyunda çalışacak kodları tasarlar ve geliştirir, oyunun yapay zekâsını (AI) oluşturur. Programcı, görsel ve ses elemanlarını oyuna entegre eder, oyunu oynanabilir hale getirir. Bu çalışmalarda genellikle Unreal Engine, Unity, Cry Engine, Game Maker, Havok Vision Engine, ShiVa gibi oyun motorları kullanılır. Biz şuan için Unity 3D oyun motorunu kullanıyoruz. Bu oyun motoru Javascript(JS), C Sharp(C#) ve Boo programlama dillerini destekliyor. Programcı, oyunun son halini alabilmesi için tasarım ekibiyle birlikte çalışır. Programcının yazdığı kodlar diğer/başka programcılar tarafında anlaşılmalıdır, karmaşık ve anlaşılmaz kodlar yazmamalıdır. Mümkün olduğunca yazdığı kodlara açıklamalar eklemelidir. Aynı zamanda web sitesi yapımında da görevlidir. Programcılar becerilerine göre kıdemli (senior) ve tecrübesiz (junior) olarak gruplandırılabilir.</p><h3 id="Gorevleri-2"><a href="#Gorevleri-2" class="headerlink" title="Görevleri"></a>Görevleri</h3><ol><li>Oyun Programlama</li><li>Ses Programlama</li><li>Yapay Zeka (AI) Programlama</li></ol><h2 id="11-1-Oyun-Programlama"><a href="#11-1-Oyun-Programlama" class="headerlink" title="11.1 Oyun Programlama"></a>11.1 Oyun Programlama</h2><p>Programcının en temel görevidir. Bu görevde programcının sahip olması gereken özellikler:</p><ol><li>Önündeki kodu hızlı bir şekilde anlamak.</li><li>Üstün programlama kabiliyeti ve bilgisi.</li><li>Takım içindeki iyi iletişim kurmak. İstenileni doğru anlamak ve derdini doğru anlatmak.</li><li>Programlamada proaktif bir tutum sergilemek.</li><li>Üstün problem çözme kabiliyeti.</li><li>Optimizasyon stratejileri.</li></ol><h2 id="11-2-Ses-Programlama"><a href="#11-2-Ses-Programlama" class="headerlink" title="11.2 Ses Programlama"></a>11.2 Ses Programlama</h2><p>Oyundaki sesleri işler, depolar; ses efektlerini ve müzikleri gerekli yerlerde oynatır. Ses ve müzik ekibiyle yakından çalışılır.</p><h2 id="11-3-Yapay-Zeka-AI-Programlama"><a href="#11-3-Yapay-Zeka-AI-Programlama" class="headerlink" title="11.3 Yapay Zeka (AI) Programlama"></a>11.3 Yapay Zeka (AI) Programlama</h2><p>Yapay zekânın çok farklı tanımları vardır. Bunlardan biri: insanın düşünme yöntemlerini analiz ederek bunların benzeri yapay yönergeleri geliştirmeye çalışmaktır.</p><p>Burada gerekli şeylerin bir listesi bulunmaktadır. En azından bunların bilinmesi yararlı olacaktır:</p><ol><li>Yönlendirme ve navigasyon algoritmaları (önemli)</li><li>Psikoloji</li><li>Sonlu durum makineleri ve ileti gönderme</li><li>Fizik, fiziksel olaylar. (AI oyuncularının çevre ile etkileşimlerinin nasıl olduğunu anlamak)</li><li>Optimizasyon stratejileri</li><li>Grafik ve ağ(network) teorisi</li><li>Yapay sinir ağları ve genetik algoritmalar</li></ol><h1 id="12-Backend-Developer"><a href="#12-Backend-Developer" class="headerlink" title="12. Backend Developer"></a>12. Backend Developer</h1><p>Oyunun veri tabanı mimarisini inşa eden kişidir. Oyunun sunucu (server) tarafını oluşturur. Sunucu (server) tarafında oluşabilecek hatalardan ve oluşan hataları düzeltmekten sorumludur. Üstün programlama kabiliyetine ve bilgisine sahip olmalıdır.</p><p>Bunların bilinmesi yararlı olacaktır:</p><ol><li>İnternet erişim protokolleri</li><li>Web API</li><li>LAG</li><li>Prediction Sistemi</li><li>Etkin veri yapıları</li></ol><h1 id="13-Ses-ve-Muzik-Ekibi"><a href="#13-Ses-ve-Muzik-Ekibi" class="headerlink" title="13. Ses ve Müzik Ekibi"></a>13. Ses ve Müzik Ekibi</h1><p>Ses/müzik ekibi, oyunda duyulan her şeyden sorumludur. Onlar karakterlere ses verir, oyundaki müziği ve ses efektlerini oluşturur. Bu çalışmalarda genellikle Sound Forge, Wavelab, Vegas ve Acid gibi programlar kullanılır. Biz şuan için Wavelab programını kullanıyoruz. Çoğu zaman göz ardı edilen bu ekip hayati öneme sahiptir, oyundaki atmosferi oluşturur. Bu ekip seviye sanatçısı, animatör ve programcıyla birlikte çalışmalıdır. Ses/müzik sanki oyunun bir parçası değilmiş gibi son dakikaya bırakılmamalı, oyundan kopmamalı. Programcıların oyunun ses alt yapısını oluşturması için bu ekibin önceden sesleri ayarlaması gerekir, programcılar da ona göre oyunun ses düzenini en doğru şekilde yapabilsin. (hangi ses/müzik oyunun neresinde ve ne zaman çalacak)</p><h1 id="14-QA-Tester"><a href="#14-QA-Tester" class="headerlink" title="14. QA / Tester"></a>14. QA / Tester</h1><p>QA/tester oyunun en önemli parçaları arasındadır. Çünkü yapılan bir oyunda veya herhangi bir yazılımda illaki hata çıkacaktır. Bu hataların tespitini ve raporlamayı bu bölüm üstlenmektedir. Genellikle bu görev bütün ekip elemanlarına verilir, ama her hâlükârda programcının ve backend developerın oyunu QA/test aşamasından geçirmeleri zorunludur. Çünkü oyunlarda en çok hata yapılan kısım kodlama kısmıdır, illaki bir şeyler gözden kaçar. Ama bu demek değildir ki oyunu sadece programcı ve backend developer test edecek. Ekibin diğer elemanları da QA/test aşamasına önem vermelidirler! Yapılan oyun ne kadar güzel, etkileyici, büyüleyici olursa olsun oyuncunun, oyunda bulduğu/fark ettiği bir hata oyunun değerini, oyuncunun gözünde bir anda düşürüverir ve bu sadece o oyunu değil, ekibin yaptığı tüm oyunları etkiler. Oyuncunun kafasında artık “bu firmanın yaptığı oyunlar kaliteli değil” fikri oluşur.</p><h3 id="Gorevleri-3"><a href="#Gorevleri-3" class="headerlink" title="Görevleri"></a>Görevleri</h3><ol><li>Hata/Bug Ayıklama</li><li>Kalite Kontrol</li></ol><h3 id="Oyunun-Yayinlanana-Kadar-Gectigi-Asamalar"><a href="#Oyunun-Yayinlanana-Kadar-Gectigi-Asamalar" class="headerlink" title="Oyunun Yayınlanana Kadar Geçtiği Aşamalar"></a>Oyunun Yayınlanana Kadar Geçtiği Aşamalar</h3><ol><li>Alpha</li><li>Code Freeze</li><li>Beta</li><li>Code Release</li><li>Gold Master + Bakım</li></ol><h2 id="14-1-Alpha"><a href="#14-1-Alpha" class="headerlink" title="14.1 Alpha"></a>14.1 Alpha</h2><p>Bu aşamada, oyun kısmen tamamlanmıştır. Oyun, oynanabilir ve oyunun bütün özellikleri çalışır durumdadır. Bu özellikler henüz test aşamasında olup, alpha sürümünün sonuçlarına bağlı olarak oyun tekrar gözden geçirilir ve düzenlenir. Bu aşamada test, sadece ekip içerisinde yapılır.</p><h2 id="14-2-Code-Freeze"><a href="#14-2-Code-Freeze" class="headerlink" title="14.2 Code Freeze"></a>14.2 Code Freeze</h2><p>Bu aşama, oyuna yeni kodların eklendikten ve gerekli değişiklikleri/ düzenlemeleri yapıldıktan sonra, oyuna artık yeni bir kod, özellik eklenmeyeceği aşamadır, kodlar dondurulur.</p><h2 id="14-3-Beta"><a href="#14-3-Beta" class="headerlink" title="14.3 Beta"></a>14.3 Beta</h2><p>Bu aşamada, oyun artık tam olarak tamamlanmıştır. Oyun, tam olarak oynanabilir durumdadır ve oyunun bütün özellikleri tamamlanmıştır. Bu aşamada sadece oyundaki hatalar (bug) düzeltilir ve oyunun yayın aşamasına (gold master) kadar, oyunu engelleyecek hiçbir hata bırakılmaz. Oyunun özelliklerinde, oynayışında ve kodlarında değişiklik yapılmaz (yeniden bir şey eklenmez, kod yazılmaz). Bu aşamada test, oyunun beta sürümü belirli bir topluluk ile paylaşılır, bu topluluk oyunu test eder.</p><h2 id="14-4-Code-Release"><a href="#14-4-Code-Release" class="headerlink" title="14.4 Code Release"></a>14.4 Code Release</h2><p>Bu aşamada artık oyundaki bütün hatalar (bug) düzeltilmiştir ve oyun yayınlanmaya, oyuncuyla buluşmaya hazırdır. Son olarak ekip içinde QA/test aşamasından geçer.</p><h2 id="14-5-Gold-Master"><a href="#14-5-Gold-Master" class="headerlink" title="14.5 Gold Master"></a>14.5 Gold Master</h2><p>Bu aşama artık her şeyin bittiği aşamadır. Oyun artık hatasız bir şekilde oynanmaya hazırdır ve oyuncuyla buluşturulur. Bundan sonraki aşamalarda gerekli bakım çalışmaları yapılır.</p><h1 id="15-Cevirmen"><a href="#15-Cevirmen" class="headerlink" title="15. Çevirmen"></a>15. Çevirmen</h1><p>Çevirmen; oyundaki sesleri, açıklamaları, karakterlerin diyaloglarını, kısaca oyuncuyu ilgilendiren her şeyi başka dillere çevirir. Çevirmen ayrıca oyunun yazılı talimatlarının ve dokümanlarının çevirisini yapar.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Wiki </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> oyun </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kurulum Ön Hazırlık</title>
+      <link href="/2021/12/26/kurulum-on-hazirlik/"/>
+      <url>/2021/12/26/kurulum-on-hazirlik/</url>
+      
+        <content type="html"><![CDATA[<h2 id="On-Hazirlik"><a href="#On-Hazirlik" class="headerlink" title="Ön Hazırlık"></a>Ön Hazırlık</h2><p>Ubuntu işletim sistemine kurulum yapmadan önce isteğe bağlı genel bir hazırlık da yapabilirsiniz. Ben kurulumlardan önce bu hazırlık adımını yapmayı tercih ediyorum.</p><p>İşletim sistemindeki paketler güncellenir ve gereksiz paketler otomatik temizlenir. İhtiyaç duyulan geliştirici paketleri kurulur.</p><h3 id="Paketleri-Guncelle-ve-Gereksizleri-Temizle"><a href="#Paketleri-Guncelle-ve-Gereksizleri-Temizle" class="headerlink" title="Paketleri Güncelle ve Gereksizleri Temizle"></a>Paketleri Güncelle ve Gereksizleri Temizle</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br><span class="line">$ sudo apt autoremove</span><br></pre></td></tr></table></figure><h3 id="Gelistirici-developer-Paketlerini-Kur"><a href="#Gelistirici-developer-Paketlerini-Kur" class="headerlink" title="Geliştirici(developer) Paketlerini Kur"></a>Geliştirici(developer) Paketlerini Kur</h3><p>Geliştirici paketlerini daha önce kurduysanız aşağıdaki komutu çalıştırmanıza gerek yoktur.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install build-essential</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>pm2 Faydalı Bilgileri</title>
+      <link href="/2021/12/19/pm2-faydali/"/>
+      <url>/2021/12/19/pm2-faydali/</url>
+      
+        <content type="html"><![CDATA[<h2 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure><h2 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>Proses listesi.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 ls &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure><span id="more"></span><h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p>Proses başlatma.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure><h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p>Proses durdurma.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 stop &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure><h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p>Proses yeniden başlatma.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 restart &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure><h3 id="save"><a href="#save" class="headerlink" title="save"></a>save</h3><p>Proses listesini kaydetme.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 save</span><br></pre></td></tr></table></figure><h2 id="pm2-Enable-Startup-Yapma"><a href="#pm2-Enable-Startup-Yapma" class="headerlink" title="pm2 Enable/Startup Yapma"></a>pm2 Enable/Startup Yapma</h2><p>Enable/Startup olarak ayarla. Bu komut çalıştırıldıktan sonra root ile yapılacak işlem için çıktıda oluşan komutu sudo ile çalıştırın.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 startup</span><br></pre></td></tr></table></figure><h2 id="pm2-Log-Yonetim-Modulu"><a href="#pm2-Log-Yonetim-Modulu" class="headerlink" title="pm2 Log Yönetim Modülü"></a>pm2 Log Yönetim Modülü</h2><p>Proseslerin log yönetimi için kullanılabilecek bir modüldür.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 install log-rotate</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Faydalı Bilgiler </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pm2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mongodb Faydalı Bilgileri</title>
+      <link href="/2021/12/19/mongodb-faydali/"/>
+      <url>/2021/12/19/mongodb-faydali/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable/Startup Yapma"></a>Mongodb Servisini Enable/Startup Yapma</h2><p>Enable/Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p><h3 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure><p>Enable/Startup olarak ayarla.</p><h3 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure><span id="more"></span><h2 id="Temel-Mongodb-Servis-Komutlari"><a href="#Temel-Mongodb-Servis-Komutlari" class="headerlink" title="Temel Mongodb Servis Komutları"></a>Temel Mongodb Servis Komutları</h2><h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>Servisin çalışma durumunu öğren.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod status</span><br></pre></td></tr></table></figure><h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p>Servisi çalıştır.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod start</span><br></pre></td></tr></table></figure><h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p>Servisi durdur.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod stop</span><br></pre></td></tr></table></figure><h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p>Servisi yeniden başlat.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod restart</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Faydalı Bilgiler </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mongodb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu için Mongodb Kurulumu</title>
+      <link href="/2021/12/19/ubuntu-icin-mongodb-kurulum/"/>
+      <url>/2021/12/19/ubuntu-icin-mongodb-kurulum/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h2><h3 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h3><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure><span id="more"></span><h3 id="Kullanici-Yapilandirmasi-Istege-Bagli"><a href="#Kullanici-Yapilandirmasi-Istege-Bagli" class="headerlink" title="Kullanıcı Yapılandırması (İsteğe Bağlı)"></a>Kullanıcı Yapılandırması (İsteğe Bağlı)</h3><p>Mongodb kullanmak için kullanıcı yapılandırması şart <strong>değildir</strong>. Güvenliği arttırmak adına kullanıcı yapılandırması yapılmalıdır. İsterseniz bu kısmı yapmadan da kullanmaya başlayabilirsiniz.</p><p>Kullanıcı yapılandırması yapıldıktan sonra sadece kullanıcı ile veritabanına bağlanılabilir. Esnek çalışabilmek için öncelikle kapsamlı yetkiye sahip bir admin kullanıcısı oluşturulmalıdır.</p><p>Veritabanına bağlan.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br></pre></td></tr></table></figure><p><code>admin</code> veritabanını seç ve kullanıcı oluştur.</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&quot;&lt;kullanici_adi&gt;&quot;</span>,</span><br><span class="line">    <span class="attr">pwd</span>: passwordPrompt(),</span><br><span class="line">    <span class="attr">roles</span>: [</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;userAdminAnyDatabase&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;readWriteAnyDatabase&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;clusterAdmin&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>Admin kullanıcı oluşturulduktan sonra <code>/etc/mongod.conf</code> dosyasında aşağıdaki düzenlemeleri yap.</p><figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># network interfaces</span></span><br><span class="line"><span class="attribute">net</span>:</span><br><span class="line">  <span class="attribute">port</span>: <span class="number">27017</span></span><br><span class="line">  <span class="attribute">bindIp</span>: <span class="number">0.0.0.0</span></span><br><span class="line">...</span><br><span class="line"><span class="attribute">security</span>:</span><br><span class="line">    <span class="attribute">authorization</span>: <span class="string">&quot;enabled&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> mongodb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Nodejs ile pm2 Kurulumu</title>
+      <link href="/2021/12/19/pm2-kurulum/"/>
+      <url>/2021/12/19/pm2-kurulum/</url>
+      
+        <content type="html"><![CDATA[<h2 id="pm2-Kurulumu"><a href="#pm2-Kurulumu" class="headerlink" title="pm2 Kurulumu"></a>pm2 Kurulumu</h2><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p><p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g pm2</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nodejs </tag>
+            
+            <tag> pm2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Nodejs ile node-red Kurulumu</title>
+      <link href="/2021/12/19/node-red-kurulum/"/>
+      <url>/2021/12/19/node-red-kurulum/</url>
+      
+        <content type="html"><![CDATA[<h2 id="node-red-Kurulumu"><a href="#node-red-Kurulumu" class="headerlink" title="node-red Kurulumu"></a>node-red Kurulumu</h2><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p><p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g node-red</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nodejs </tag>
+            
+            <tag> node-red </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu için Nodejs Kurulumu</title>
+      <link href="/2021/12/19/ubuntu-icin-nodejs-kurulum/"/>
+      <url>/2021/12/19/ubuntu-icin-nodejs-kurulum/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Nodejs-Kurulumu"><a href="#Nodejs-Kurulumu" class="headerlink" title="Nodejs Kurulumu"></a>Nodejs Kurulumu</h2><p>Nodejs’i <code>nvm</code> kütüphanesini kullanarak kurucaz.</p><h3 id="nvm-Kurulumu"><a href="#nvm-Kurulumu" class="headerlink" title="nvm Kurulumu"></a>nvm Kurulumu</h3><p>Aşağıdaki komut nvm reposundaki master projeyi indirir. Ardından install.sh dosyasını çalıştırır.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash</span><br></pre></td></tr></table></figure><p>nvm kütüphanesi ile ilgili daha fazla bilgi için: <a href="https://github.com/nvm-sh/nvm">Detay</a></p><h3 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h3><p>Nodejs ve beraberinde npm kurulumu yapılır. Aşağıdaki komut lts versiyonunu kurar.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install --lts</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> nodejs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Wordpress Faydalı Bilgileri</title>
+      <link href="/2021/12/19/wordpress-faydali/"/>
+      <url>/2021/12/19/wordpress-faydali/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Wordpress-Veritabani-Yedek-Alma"><a href="#Wordpress-Veritabani-Yedek-Alma" class="headerlink" title="Wordpress Veritabanı Yedek Alma"></a>Wordpress Veritabanı Yedek Alma</h2><p>Aşağıdaki komutu yedeğini almak istediğiniz veritabanı bilgilerine göre doldurarak çalıştırın.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump --add-drop-table -u &lt;veritabani_kullanici_adi&gt; -p &lt;veritabani_adi&gt; &gt; &lt;dosya_adi&gt;.sql</span><br></pre></td></tr></table></figure><h2 id="Wordpress-Veritabani-Yedekten-Yukleme"><a href="#Wordpress-Veritabani-Yedekten-Yukleme" class="headerlink" title="Wordpress Veritabanı Yedekten Yükleme"></a>Wordpress Veritabanı Yedekten Yükleme</h2><p>Aşağıdaki komutu yedekten yüklemek istediğiniz veritabanı bilgilerine göre doldurarak çalıştırın.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u &lt;veritabani_kullanici_adi&gt; -p &lt;veritabani_adi&gt; &lt; &lt;dosya_adi&gt;.sql</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Faydalı Bilgiler </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> wordpress </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu için Wordpress Kurulumu</title>
+      <link href="/2021/12/19/ubuntu-icin-wordpress-kurulum/"/>
+      <url>/2021/12/19/ubuntu-icin-wordpress-kurulum/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Wordpress-Kurulumu"><a href="#Wordpress-Kurulumu" class="headerlink" title="Wordpress Kurulumu"></a>Wordpress Kurulumu</h2><h3 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h3><p>HTTP sunucusu olarak apache kullanılmıştır. Apache, PHP, MySQL, Wordpress ve kullanışlı bazı paketlerin kurulumu yapılmaktadır.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install apache2 wordpress ghostscript libapache2-mod-php mysql-server php php-mysql php-ldap php-curl php-xml php-mbstring php-imagick php-zip php-bcmath php-intl php-json</span><br></pre></td></tr></table></figure><span id="more"></span><h3 id="Apache-Yapilandirmasi"><a href="#Apache-Yapilandirmasi" class="headerlink" title="Apache Yapılandırması"></a>Apache Yapılandırması</h3><p>Apache mod_rewrite modülünü aktif hale getir. Ardından apache servisini yeniden başlat.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo a2enmod rewrite</span><br><span class="line">$ sudo service apache2 reload</span><br></pre></td></tr></table></figure><p><code>/etc/apache2/conf-available/security.conf</code> dosyasına git. <code>ServerTokens</code> ve <code>ServerSignature</code> bölümlerini aşağıdaki gibi düzenle.</p><figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ServerTokens</span> Prod</span><br><span class="line"><span class="attribute">ServerSignature</span> <span class="literal">Off</span></span><br></pre></td></tr></table></figure><p><code>/etc/apache2/sites-available/000-default.conf</code> dosyasına git. Aşağıdaki gibi düzenle.</p><figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;VirtualHost *<span class="number">:80</span>&gt;</span></span><br><span class="line"><span class="attribute">ServerAdmin</span> webmaster@localhost</span><br><span class="line"><span class="attribute"><span class="nomarkup">DocumentRoot</span></span> /var/www/html</span><br><span class="line">    <span class="section">&lt;Directory <span class="string">&quot;/var/www/html&quot;</span>&gt;</span></span><br><span class="line">        <span class="attribute"><span class="nomarkup">Options</span></span> FollowSymLinks MultiViews</span><br><span class="line">        <span class="attribute">AllowOverride</span> <span class="literal">All</span></span><br><span class="line">        <span class="attribute"><span class="nomarkup">Order</span></span> <span class="literal">Allow</span>, <span class="literal">Deny</span></span><br><span class="line">        <span class="attribute"><span class="nomarkup">Allow</span></span> from <span class="literal">All</span></span><br><span class="line">    <span class="section">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">ErrorLog</span> <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/error.log</span><br><span class="line"><span class="attribute">CustomLog</span> <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/access.log combined</span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">&lt;VirtualHost *<span class="number">:80</span>&gt;</span></span><br><span class="line">    <span class="attribute"><span class="nomarkup">ServerName</span></span> &lt;SERVER_NAME&gt;</span><br><span class="line">    <span class="attribute">ServerAlias</span> &lt;SERVER_ALIAS&gt;</span><br><span class="line">    <span class="attribute"><span class="nomarkup">DocumentRoot</span></span> <span class="string">&quot;/var/www/html/&lt;FOLDER_NAME&gt;&quot;</span></span><br><span class="line">    <span class="section">&lt;Directory <span class="string">&quot;/var/www/html/&lt;FOLDER_NAME&gt;&quot;</span>&gt;</span></span><br><span class="line">        <span class="attribute"><span class="nomarkup">Options</span></span> FollowSymLinks MultiViews</span><br><span class="line">        <span class="attribute">AllowOverride</span> <span class="literal">All</span></span><br><span class="line">        <span class="attribute"><span class="nomarkup">Order</span></span> <span class="literal">Allow</span>, <span class="literal">Deny</span></span><br><span class="line">        <span class="attribute"><span class="nomarkup">Allow</span></span> from <span class="literal">All</span></span><br><span class="line">    <span class="section">&lt;/Directory&gt;</span></span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure><p>Apache’nin wordpress dosyalarını kullanabilmesi için <code>www-data</code> kullanıcısına ve grubuna sahiplik ver.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R www-data:www-data /var/www/html/&lt;FOLDER_NAME&gt;</span><br></pre></td></tr></table></figure><h3 id="MySQL-Yapilandirmasi"><a href="#MySQL-Yapilandirmasi" class="headerlink" title="MySQL Yapılandırması"></a>MySQL Yapılandırması</h3><p>root kullanıcısı ile veritabanına bağlan.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -u root</span><br></pre></td></tr></table></figure><p>Web sitesinin bağlanacağı veritabanının oluştur.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> DATABASE <span class="operator">&lt;</span>veritabani_ismi<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure><p>Oluşturulan veritabanı için kullanıcı oluştur.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;&lt;kullanici_adi&gt;&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;&lt;parola&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure><p>Oluşturulan kullanıcıya oluşturulan veritabanı için yetkilendirme yap.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> <span class="operator">&lt;</span>veritabani_ismi<span class="operator">&gt;</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;&lt;kullanici_adi&gt;&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br></pre></td></tr></table></figure><p>Yapılan değişikliklerin uygulanması için aşağıdaki komutu çalıştır.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure><p>Veritabanında root ile yapılacak işlemler bu kadardı. Çıkış yapabilirsin.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> quit;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kurulum </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> wordpress </tag>
+            
+            <tag> php </tag>
+            
+            <tag> apache </tag>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
