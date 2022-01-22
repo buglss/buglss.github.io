@@ -62,23 +62,23 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h2 id="SSH-Port-Ayari"><a href="#SSH-Port-Ayari" class="headerlink" title="SSH Port Ayarı"></a>SSH Port Ayarı</h2><p>Gitlab 22 portunu kullandığı için işletim sisteminin ssh portunu 2222 olarak değiştir. <code>/etc/ssh/sshd_config</code> git.</p>
+        <h1 id="SSH-Port-Ayari"><a href="#SSH-Port-Ayari" class="headerlink" title="SSH Port Ayarı"></a>SSH Port Ayarı</h1><p>Gitlab 22 portunu kullandığı için işletim sisteminin ssh portunu 2222 olarak değiştir. <code>/etc/ssh/sshd_config</code> git.</p>
 <figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># What ports, IPs and protocols we listen for</span></span><br><span class="line"><span class="attribute">Port</span> <span class="number">2222</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<h2 id="Docker-ile-Calistir"><a href="#Docker-ile-Calistir" class="headerlink" title="Docker ile Çalıştır"></a>Docker ile Çalıştır</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run --detach --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume &lt;path&gt;/gitlab/config:/etc/gitlab --volume &lt;path&gt;/gitlab/logs:/var/<span class="built_in">log</span>/gitlab --volume &lt;path&gt;/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+<h1 id="Docker-ile-Calistir"><a href="#Docker-ile-Calistir" class="headerlink" title="Docker ile Çalıştır"></a>Docker ile Çalıştır</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run --detach --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume &lt;path&gt;/gitlab/config:/etc/gitlab --volume &lt;path&gt;/gitlab/logs:/var/<span class="built_in">log</span>/gitlab --volume &lt;path&gt;/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h2 id="Gitlab-root-Kullanici"><a href="#Gitlab-root-Kullanici" class="headerlink" title="Gitlab root Kullanıcı"></a>Gitlab root Kullanıcı</h2><p>Gitlab konteynırına bağlan ve root parolasını resetle.</p>
+<h1 id="Gitlab-root-Kullanici"><a href="#Gitlab-root-Kullanici" class="headerlink" title="Gitlab root Kullanıcı"></a>Gitlab root Kullanıcı</h1><p>Gitlab konteynırına bağlan ve root parolasını resetle.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it gitlab bash</span><br><span class="line">$ gitlab-rake <span class="string">&quot;gitlab:password:reset[root]&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Konfigurasyon"><a href="#Konfigurasyon" class="headerlink" title="Konfigürasyon"></a>Konfigürasyon</h2><p>Temel konfigürasyon ayarlarını yap. <code>&lt;path&gt;/gitlab/config/gitlab.rb</code> dosyasını aç. Aşağıdakiler uygula.</p>
+<h1 id="Konfigurasyon"><a href="#Konfigurasyon" class="headerlink" title="Konfigürasyon"></a>Konfigürasyon</h1><p>Temel konfigürasyon ayarlarını yap. <code>&lt;path&gt;/gitlab/config/gitlab.rb</code> dosyasını aç. Aşağıdakiler uygula.</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">## GitLab URL</span></span><br><span class="line"><span class="comment">##! URL on which GitLab will be reachable.</span></span><br><span class="line"><span class="comment">##! For more details on configuring external_url see:</span></span><br><span class="line"><span class="comment">##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab</span></span><br><span class="line">external_url <span class="string">&#x27;https://git.&lt;domain&gt;.com&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">### GitLab email server settings</span></span><br><span class="line"><span class="comment">###! Docs: https://docs.gitlab.com/omnibus/settings/smtp.html</span></span><br><span class="line"><span class="comment">###! **Use smtp instead of sendmail/postfix.**</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_enable&#x27;</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_address&#x27;</span>] = <span class="string">&quot;&lt;ip&gt;&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_port&#x27;</span>] = &lt;port&gt;</span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_user_name&#x27;</span>] = <span class="string">&quot;&lt;kullanici_adi&gt;&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_password&#x27;</span>] = <span class="string">&quot;&lt;parola&gt;&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_domain&#x27;</span>] = <span class="string">&quot;&lt;domain&gt;.com&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_authentication&#x27;</span>] = <span class="string">&quot;login&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_enable_starttls_auto&#x27;</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_tls&#x27;</span>] = <span class="literal">false</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">## Container Registry settings</span></span><br><span class="line"><span class="comment">##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line">registry_external_url <span class="string">&#x27;https://registry.&lt;domain&gt;.com&#x27;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<h2 id="SSL-Sertifika"><a href="#SSL-Sertifika" class="headerlink" title="SSL Sertifika"></a>SSL Sertifika</h2><p>SSL sertifikalarını aktar. <code>&lt;path&gt;/gitlab/config/ssl</code> klasörünün içine git. <code>&lt;domain&gt;.com.crt</code>, <code>git.&lt;domain&gt;.com.key</code>, <code>registry.&lt;domain&gt;.com.crt</code> ve <code>registry.&lt;domain&gt;.com.key</code> isminde crt ve key dosyalarını at. Sonra gitlab konteynırına restart at.</p>
+<h1 id="SSL-Sertifika"><a href="#SSL-Sertifika" class="headerlink" title="SSL Sertifika"></a>SSL Sertifika</h1><p>SSL sertifikalarını aktar. <code>&lt;path&gt;/gitlab/config/ssl</code> klasörünün içine git. <code>&lt;domain&gt;.com.crt</code>, <code>git.&lt;domain&gt;.com.key</code>, <code>registry.&lt;domain&gt;.com.crt</code> ve <code>registry.&lt;domain&gt;.com.key</code> isminde crt ve key dosyalarını at. Sonra gitlab konteynırına restart at.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker restart gitlab</span><br></pre></td></tr></table></figure>
 
-<h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><p>Gitlab dosya ve dizinlerin sahipliklerinin olması gerektiği ayarlarda olması için aşağıdaki komutu çalıştırabilirsiniz. Olası bir sahiplik bozulmasında kullanılabilir.</p>
+<h1 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h1><p>Gitlab dosya ve dizinlerin sahipliklerinin olması gerektiği ayarlarda olması için aşağıdaki komutu çalıştırabilirsiniz. Olası bir sahiplik bozulmasında kullanılabilir.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it gitlab update-permissions</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -102,9 +102,9 @@
   </div>
 </article></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -127,7 +127,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -148,7 +148,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -166,7 +168,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  
+  <title>SSL Sertifika İşlemleri | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="SSL Sertifika İşlemleri"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-ssl-sertifika-islemleri" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-22T18:55:29.000Z"><a href="/2022/01/22/ssl-sertifika-islemleri/">22.01.2022</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">SSL Sertifika İşlemleri</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Private-Key-ve-CSR"><a href="#Private-Key-ve-CSR" class="headerlink" title="Private Key ve CSR"></a>Private Key ve CSR</h1><p>Sertifika satın alma işlemi öncesi key ve csr dosyaları üretilir. Üretilen csr kullanılarak satın alma işlemi yapılır. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ openssl genrsa -out /path/to/www_server_com.key 2048</span><br><span class="line">$ openssl req -new -key /path/to/www_server_com.key -out /path/to/www_server_com.csr</span><br></pre></td></tr></table></figure>
+
+<h1 id="Satin-Alma"><a href="#Satin-Alma" class="headerlink" title="Satın Alma"></a>Satın Alma</h1><p>Farklı web/http sunucusularına göre satın alınan sertifika dosyaları kullanılır. Temelde mantık sertifika dosyalarının paketlenmesidir(bundle). Satın alınan türe(DV, OV, EV) göre bundle(paket) dosya oluşturulur. Bu yazıda sık kullanılan crt ve pfx formatına değinilecektir. </p>
+<span id="more"></span>
+
+<h1 id="CRT"><a href="#CRT" class="headerlink" title="CRT"></a>CRT</h1><p>CRT dosyaları genelde Linux tabanlı sistemlerde kullanılır. Paket(bundle) dosyasına ilgili sertifika dosyaları (crt) sertifika sağlayıcı tarafından belirtildiği sırayla eklenir. (sirket.crt &gt; X.crt &gt; Y.crt &gt; Z.crt –&gt; bundle.crt)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat sirket.crt ev.bundle.crt &gt; www_server_com.crt</span><br></pre></td></tr></table></figure>
+
+<h1 id="PFX"><a href="#PFX" class="headerlink" title="PFX"></a>PFX</h1><p>PFX dosyaları genelde Windows tabanlı sistemlerde kullanılır. Bu formatta private key, alt kök sertifika ve SSL sertifikası kombine olarak bulunur. Örneğin crt ile üretilecekse öncelikle yukarıdaki gibi crt dosyası üretilir. Sonrasında private key ile birlikte kullanılarak pfx dosyası üretilir.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl pkcs12 -<span class="built_in">export</span> -out www_server_com.pfx -inkey www_server_com.key -<span class="keyword">in</span> www_server_com.crt</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ubuntu/">ubuntu</a>, <a href="/tags/ssl/">ssl</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  
+<div class="widget tag">
+  <h3 class="title">Kategoriler</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
+  
+    <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
+  
+    <li><a href="/categories/Wiki/">Wiki</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Etiketler</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/apache/">apache</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>2</small></li>
+  
+    <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
+  
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
+  
+    <li><a href="/tags/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/tags/oAuth/">oAuth</a><small>1</small></li>
+  
+    <li><a href="/tags/oyun/">oyun</a><small>1</small></li>
+  
+    <li><a href="/tags/php/">php</a><small>1</small></li>
+  
+    <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
+  
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
+  
+    <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

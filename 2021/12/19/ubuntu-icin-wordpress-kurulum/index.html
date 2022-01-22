@@ -62,12 +62,12 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h2 id="Wordpress-Kurulumu"><a href="#Wordpress-Kurulumu" class="headerlink" title="Wordpress Kurulumu"></a>Wordpress Kurulumu</h2><h3 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h3><p>HTTP sunucusu olarak apache kullanılmıştır. Apache, PHP, MySQL, Wordpress ve kullanışlı bazı paketlerin kurulumu yapılmaktadır.</p>
+        <h1 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h1><p>HTTP sunucusu olarak apache kullanılmıştır. Apache, PHP, MySQL, Wordpress ve kullanışlı bazı paketlerin kurulumu yapılmaktadır.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install apache2 wordpress ghostscript libapache2-mod-php mysql-server php php-mysql php-ldap php-curl php-xml php-mbstring php-imagick php-zip php-bcmath php-intl php-json</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h3 id="Apache-Yapilandirmasi"><a href="#Apache-Yapilandirmasi" class="headerlink" title="Apache Yapılandırması"></a>Apache Yapılandırması</h3><p>Apache mod_rewrite modülünü aktif hale getir. Ardından apache servisini yeniden başlat.</p>
+<h1 id="Apache-Yapilandirmasi"><a href="#Apache-Yapilandirmasi" class="headerlink" title="Apache Yapılandırması"></a>Apache Yapılandırması</h1><p>Apache mod_rewrite modülünü aktif hale getir. Ardından apache servisini yeniden başlat.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo a2enmod rewrite</span><br><span class="line">$ sudo service apache2 reload</span><br></pre></td></tr></table></figure>
 
 <p><code>/etc/apache2/conf-available/security.conf</code> dosyasına git. <code>ServerTokens</code> ve <code>ServerSignature</code> bölümlerini aşağıdaki gibi düzenle.</p>
@@ -79,7 +79,7 @@
 <p>Apache’nin wordpress dosyalarını kullanabilmesi için <code>www-data</code> kullanıcısına ve grubuna sahiplik ver.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R www-data:www-data /var/www/html/&lt;FOLDER_NAME&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="MySQL-Yapilandirmasi"><a href="#MySQL-Yapilandirmasi" class="headerlink" title="MySQL Yapılandırması"></a>MySQL Yapılandırması</h3><p>root kullanıcısı ile veritabanına bağlan.</p>
+<h1 id="MySQL-Yapilandirmasi"><a href="#MySQL-Yapilandirmasi" class="headerlink" title="MySQL Yapılandırması"></a>MySQL Yapılandırması</h1><p>root kullanıcısı ile veritabanına bağlan.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -u root</span><br></pre></td></tr></table></figure>
 
 <p>Web sitesinin bağlanacağı veritabanının oluştur.</p>
@@ -118,9 +118,9 @@
   </div>
 </article></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -143,7 +143,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -164,7 +164,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -182,7 +184,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

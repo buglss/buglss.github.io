@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  
+  <title>LVM Diskler Arası Volume Group Transferi | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="LVM Diskler Arası Volume Group Transferi"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-lvm-diskler-arasi-volume-group-transferi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-22T18:06:05.000Z"><a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/">22.01.2022</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">LVM Diskler Arası Volume Group Transferi</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><code>/data</code> dizinine mount edilmiş logic volume için çalışma yapılıyor. Bu dizinin bağlandığı logic volume’ün volume group’u <code>data_vg</code>. <code>data_vg</code> volume group <code>/dev/sdb</code> partition’a bağlı. Genişletmek istediğin volume group <code>root_vg</code>.</p>
+<h2 id="Disk-Baglantisini-Kes"><a href="#Disk-Baglantisini-Kes" class="headerlink" title="Disk Bağlantısını Kes"></a>Disk Bağlantısını Kes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ umount /data</span><br></pre></td></tr></table></figure>
+
+<h2 id="etc-fstab-Icinden-Ilgili-Mount-Point-Satirini-Sil"><a href="#etc-fstab-Icinden-Ilgili-Mount-Point-Satirini-Sil" class="headerlink" title="/etc/fstab İçinden İlgili Mount Point Satırını Sil"></a><code>/etc/fstab</code> İçinden İlgili Mount Point Satırını Sil</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="dev-sdb-Fiziksel-Diskinin-Volume-Group’nu-Sil"><a href="#dev-sdb-Fiziksel-Diskinin-Volume-Group’nu-Sil" class="headerlink" title="/dev/sdb Fiziksel Diskinin Volume Group’nu Sil"></a><code>/dev/sdb</code> Fiziksel Diskinin Volume Group’nu Sil</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vgremove data_vg</span><br></pre></td></tr></table></figure>
+
+<h2 id="Kontrol-Et"><a href="#Kontrol-Et" class="headerlink" title="Kontrol Et"></a>Kontrol Et</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pvs</span><br></pre></td></tr></table></figure>
+<p>Volume grubu silinen fiziksel disk boşa düştü. Bu diski genişletmek istediğin volume group’a ekle.</p>
+<h2 id="Volume-Group’u-Genislet"><a href="#Volume-Group’u-Genislet" class="headerlink" title="Volume Group’u Genişlet"></a>Volume Group’u Genişlet</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vgextend root_vg /dev/sdb</span><br></pre></td></tr></table></figure>
+
+<h2 id="Logic-Volume-Group’u-Genislet"><a href="#Logic-Volume-Group’u-Genislet" class="headerlink" title="Logic Volume Group’u Genişlet"></a>Logic Volume Group’u Genişlet</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lvextend -L +100G /dev/mapper/root_vg-root_lv</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dosya-Sistemi"><a href="#Dosya-Sistemi" class="headerlink" title="Dosya Sistemi"></a>Dosya Sistemi</h2><p>Genişletme işlemi ardında dosya sistemine yansıt.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ resize2fs /dev/mapper/root_vg-root_lv</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ubuntu/">ubuntu</a>, <a href="/tags/lvm/">lvm</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  
+<div class="widget tag">
+  <h3 class="title">Kategoriler</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
+  
+    <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
+  
+    <li><a href="/categories/Wiki/">Wiki</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Etiketler</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/apache/">apache</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>2</small></li>
+  
+    <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
+  
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
+  
+    <li><a href="/tags/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/tags/oAuth/">oAuth</a><small>1</small></li>
+  
+    <li><a href="/tags/oyun/">oyun</a><small>1</small></li>
+  
+    <li><a href="/tags/php/">php</a><small>1</small></li>
+  
+    <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
+  
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
+  
+    <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

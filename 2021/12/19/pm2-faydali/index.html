@@ -62,26 +62,26 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h2 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure>
+        <h1 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>Proses listesi.</p>
+<h1 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h1><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>Proses listesi.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 ls &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p>Proses başlatma.</p>
+<h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><p>Proses başlatma.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p>Proses durdurma.</p>
+<h2 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h2><p>Proses durdurma.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 stop &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p>Proses yeniden başlatma.</p>
+<h2 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h2><p>Proses yeniden başlatma.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 restart &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="save"><a href="#save" class="headerlink" title="save"></a>save</h3><p>Proses listesini kaydetme.</p>
+<h2 id="save"><a href="#save" class="headerlink" title="save"></a>save</h2><p>Proses listesini kaydetme.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 save</span><br></pre></td></tr></table></figure>
 
-<h2 id="pm2-Enable-Startup-Yapma"><a href="#pm2-Enable-Startup-Yapma" class="headerlink" title="pm2 Enable/Startup Yapma"></a>pm2 Enable/Startup Yapma</h2><p>Enable/Startup olarak ayarla. Bu komut çalıştırıldıktan sonra root ile yapılacak işlem için çıktıda oluşan komutu sudo ile çalıştırın.</p>
+<h1 id="pm2-Enable-Startup-Yapma"><a href="#pm2-Enable-Startup-Yapma" class="headerlink" title="pm2 Enable/Startup Yapma"></a>pm2 Enable/Startup Yapma</h1><p>Enable/Startup olarak ayarla. Bu komut çalıştırıldıktan sonra root ile yapılacak işlem için çıktıda oluşan komutu sudo ile çalıştırın.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 startup</span><br></pre></td></tr></table></figure>
 
-<h2 id="pm2-Log-Yonetim-Modulu"><a href="#pm2-Log-Yonetim-Modulu" class="headerlink" title="pm2 Log Yönetim Modülü"></a>pm2 Log Yönetim Modülü</h2><p>Proseslerin log yönetimi için kullanılabilecek bir modüldür.</p>
+<h1 id="pm2-Log-Yonetim-Modulu"><a href="#pm2-Log-Yonetim-Modulu" class="headerlink" title="pm2 Log Yönetim Modülü"></a>pm2 Log Yönetim Modülü</h1><p>Proseslerin log yönetimi için kullanılabilecek bir modüldür.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 install log-rotate</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -105,9 +105,9 @@
   </div>
 </article></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -130,7 +130,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -151,7 +151,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -169,7 +171,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

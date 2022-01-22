@@ -62,9 +62,9 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h2 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
+        <h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
 
-<h2 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h2><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p>
+<h1 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h1><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p>
 <figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">upstream</span> prod &#123;</span><br><span class="line">	least_conn;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3001</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3002</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3003</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3004</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">3000</span> default_server;</span><br><span class="line">	<span class="attribute">listen</span> [::]:<span class="number">3000</span> default_server;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">server_name</span> &lt;fqdn&gt;;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://prod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -88,9 +88,9 @@
   </div>
 </article></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -113,7 +113,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -134,7 +134,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -152,7 +154,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

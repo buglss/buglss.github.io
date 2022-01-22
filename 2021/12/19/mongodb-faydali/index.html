@@ -62,20 +62,20 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h2 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable/Startup Yapma"></a>Mongodb Servisini Enable/Startup Yapma</h2><p>Enable/Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
-<h3 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
+        <h1 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable/Startup Yapma"></a>Mongodb Servisini Enable/Startup Yapma</h1><p>Enable/Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
+<h2 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
 <p>Enable/Startup olarak ayarla.</p>
-<h3 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
+<h2 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h2 id="Temel-Mongodb-Servis-Komutlari"><a href="#Temel-Mongodb-Servis-Komutlari" class="headerlink" title="Temel Mongodb Servis Komutları"></a>Temel Mongodb Servis Komutları</h2><h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>Servisin çalışma durumunu öğren.</p>
+<h1 id="Temel-Mongodb-Servis-Komutlari"><a href="#Temel-Mongodb-Servis-Komutlari" class="headerlink" title="Temel Mongodb Servis Komutları"></a>Temel Mongodb Servis Komutları</h1><h2 id="status"><a href="#status" class="headerlink" title="status"></a>status</h2><p>Servisin çalışma durumunu öğren.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod status</span><br></pre></td></tr></table></figure>
-<h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p>Servisi çalıştır.</p>
+<h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><p>Servisi çalıştır.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod start</span><br></pre></td></tr></table></figure>
-<h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p>Servisi durdur.</p>
+<h2 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h2><p>Servisi durdur.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod stop</span><br></pre></td></tr></table></figure>
-<h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p>Servisi yeniden başlat.</p>
+<h2 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h2><p>Servisi yeniden başlat.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod restart</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -99,9 +99,9 @@
   </div>
 </article></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -124,7 +124,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -145,7 +145,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -163,7 +165,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

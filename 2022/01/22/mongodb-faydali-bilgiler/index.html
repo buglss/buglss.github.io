@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mongodb Faydalı Bilgiler | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Mongodb Faydalı Bilgiler"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-mongodb-faydali-bilgiler" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-22T18:43:33.000Z"><a href="/2022/01/22/mongodb-faydali-bilgiler/">22.01.2022</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Mongodb Faydalı Bilgiler</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h1><p>Veritabanı yapılandırmasına bağlı olarak 2 farklı yöntem vardır.</p>
+<h2 id="Kimlik-Dogrulamali"><a href="#Kimlik-Dogrulamali" class="headerlink" title="Kimlik Doğrulamalı"></a>Kimlik Doğrulama<u>lı</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --username=\&lt;DB_KULLANICI_ADI\&gt; --authenticationDatabase=<span class="string">&quot;\&lt;DB_ADI_1\&gt;&quot;</span> --db \&lt;DB_ADI\&gt; -c \&lt;KOLESIYON_ADI\&gt; --out \&lt;DOSYA_PATH\&gt;.json</span><br></pre></td></tr></table></figure>
+<h2 id="Kimlik-Dogrulamasiz"><a href="#Kimlik-Dogrulamasiz" class="headerlink" title="Kimlik Doğrulamasız"></a>Kimlik Doğrulama<u>sız</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --db \&lt;DB_ADI\&gt; -c \&lt;KOLESIYON_ADI\&gt; --out \&lt;DOSYA_PATH\&gt;.json</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h1 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h1><p>Veritabanı yapılandırmasına bağlı olarak 2 farklı yöntem vardır.</p>
+<h2 id="Kimlik-Dogrulamali-1"><a href="#Kimlik-Dogrulamali-1" class="headerlink" title="Kimlik Doğrulamalı"></a>Kimlik Doğrulama<u>lı</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport --username=\&lt;DB_KULLANICI_ADI\&gt; --authenticationDatabase=<span class="string">&quot;\&lt;DB_ADI_1\&gt;&quot;</span> --db \&lt;DB_ADI\&gt;--collection \&lt;KOLESIYON_ADI\&gt; --drop --file \&lt;DOSYA_PATH\&gt;.json</span><br></pre></td></tr></table></figure>
+<h2 id="Kimlik-Dogrulamasiz-1"><a href="#Kimlik-Dogrulamasiz-1" class="headerlink" title="Kimlik Doğrulamasız"></a>Kimlik Doğrulama<u>sız</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport --db \&lt;DB_ADI\&gt;--collection \&lt;KOLESIYON_ADI\&gt; --drop --file \&lt;DOSYA_PATH\&gt;.json</span><br></pre></td></tr></table></figure>
+
+<h1 id="Dump"><a href="#Dump" class="headerlink" title="Dump"></a>Dump</h1><p>Veritabanı yapılandırmasına bağlı olarak 2 farklı yöntem vardır.</p>
+<h2 id="Kimlik-Dogrulamali-2"><a href="#Kimlik-Dogrulamali-2" class="headerlink" title="Kimlik Doğrulamalı"></a>Kimlik Doğrulama<u>lı</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump --username=\&lt;DB_KULLANICI_ADI\&gt; --authenticationDatabase=<span class="string">&quot;\&lt;DB_ADI_1\&gt;&quot;</span> --uri=<span class="string">&#x27;mongodb://127.0.0.1:27017/\&lt;DB_ADI\&gt;&#x27;</span> --out \&lt;DIZIN_PATH\&gt; --excludeCollection=<span class="string">&#x27;\&lt;KOLESIYON_ADI\&gt;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Kimlik-Dogrulamasiz-2"><a href="#Kimlik-Dogrulamasiz-2" class="headerlink" title="Kimlik Doğrulamasız"></a>Kimlik Doğrulama<u>sız</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump --uri=<span class="string">&#x27;mongodb://127.0.0.1:27017/\&lt;DB_ADI\&gt;&#x27;</span> --out \&lt;DIZIN_PATH\&gt; --excludeCollection=<span class="string">&#x27;\&lt;KOLESIYON_ADI\&gt;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Restore"><a href="#Restore" class="headerlink" title="Restore"></a>Restore</h1><p>Veritabanı yapılandırmasına bağlı olarak 2 farklı yöntem vardır.</p>
+<h2 id="Kimlik-Dogrulamali-3"><a href="#Kimlik-Dogrulamali-3" class="headerlink" title="Kimlik Doğrulamalı"></a>Kimlik Doğrulama<u>lı</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore --username=\&lt;DB_KULLANICI_ADI\&gt; --authenticationDatabase=<span class="string">&quot;\&lt;DB_ADI_1\&gt;&quot;</span> --drop --host=127.0.0.1 --port=27017 \&lt;DIZIN_PATH\&gt; --nsFrom=<span class="string">&quot;\&lt;DB_ADI_2\&gt;.*&quot;</span> --nsTo=<span class="string">&quot;\&lt;DB_ADI_1\&gt;.*&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Kimlik-Dogrulamasiz-3"><a href="#Kimlik-Dogrulamasiz-3" class="headerlink" title="Kimlik Doğrulamasız"></a>Kimlik Doğrulama<u>sız</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore --drop --host=127.0.0.1 --port=27017 \&lt;DIZIN_PATH\&gt; --nsFrom=<span class="string">&quot;\&lt;DB_ADI_2\&gt;.*&quot;</span> --nsTo=<span class="string">&quot;\&lt;DB_ADI_1\&gt;.*&quot;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/mongodb/">mongodb</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  
+<div class="widget tag">
+  <h3 class="title">Kategoriler</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
+  
+    <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
+  
+    <li><a href="/categories/Wiki/">Wiki</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Etiketler</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/apache/">apache</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>2</small></li>
+  
+    <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
+  
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>1</small></li>
+  
+    <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
+  
+    <li><a href="/tags/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/tags/oAuth/">oAuth</a><small>1</small></li>
+  
+    <li><a href="/tags/oyun/">oyun</a><small>1</small></li>
+  
+    <li><a href="/tags/php/">php</a><small>1</small></li>
+  
+    <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
+  
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
+  
+    <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -13,7 +13,7 @@ body {
   background: #eee;
   color: #444;
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 1rem;
   text-shadow: 0 0 1px transparent;
 }
 @media screen and (max-width: 1260px) {
@@ -135,6 +135,8 @@ a:hover {
   margin-left: 30px;
 }
 article {
+  border-left: 5px solid #6f69ac;
+  border-radius: 0.5rem;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   background: #fff;
@@ -528,6 +530,8 @@ article footer .addthis iframe {
   font-family: "Exo 2", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
 }
 #pagination a:hover {
   background: #258fb8;
@@ -563,14 +567,13 @@ article footer .addthis iframe {
   content: '\f07b';
 }
 .archive {
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
   border-bottom: 1px solid #ddd;
   margin-bottom: 50px;
 }
 .archive article {
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  margin-bottom: 15px;
 }
 .archive article .post-content {
   margin-bottom: 0;
@@ -586,6 +589,8 @@ article footer .addthis iframe {
   }
 }
 #sidebar .widget {
+  border-right: 5px solid #6f69ac;
+  border-radius: 0.5rem;
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
@@ -623,12 +628,13 @@ article footer .addthis iframe {
   margin-bottom: 30px;
 }
 #sidebar .search input {
+  border-radius: 0.5rem;
   background: #fff;
   font-family: "Exo 2", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  border: 0;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -641,13 +647,15 @@ article footer .addthis iframe {
 #sidebar .search #local-search-result {
   overflow: auto;
   max-height: 3in;
-  border: 1px solid #ddd;
 }
 #sidebar .search #local-search-result .search-result-list li {
   padding: 10px 15px;
 }
 #sidebar .search #local-search-result .search-result-list li:not(:last-child) {
   border-bottom: 1px solid #ddd;
+}
+#sidebar .search #local-search-result .search-result-list li:first-child {
+  border-top: 1px solid #ddd;
 }
 #sidebar .search #local-search-result .summary {
   padding: 10px;

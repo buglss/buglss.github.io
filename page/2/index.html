@@ -47,6 +47,157 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-oAuth-temel-calisma-mantigi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-21T19:46:08.000Z"><a href="/2022/01/21/oAuth-temel-calisma-mantigi/">21.01.2022</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/oAuth-temel-calisma-mantigi/">oAuth Temel Çalışma Mantığı</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h4 id="C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici"><a href="#C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici" class="headerlink" title="{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı"></a>{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı</h4><p>Sırasıyla aşağıdaki gibidir.</p>
+<ol>
+<li><code>Client</code>: Webview içinde <strong>{FQDN}</strong>/oauth/authorize?response_type=code&amp;client_id=<strong>&lt;CLIENT_ID&gt;</strong>&amp;redirect_uri=<strong>&lt;SİZİN_URL&gt;</strong> adresine <code>GET</code> et.</li>
+<li><code>Client</code>: <strong>{FQDN}</strong> login sayfası açıldı. <strong>{FQDN}</strong> sistemindeki kullanıcı bilgilerini girdi.</li>
+<li><code>Client</code>: <strong>&lt;SİZİN_URL&gt;</strong> adresinde <code>GET</code> metodunu dinleyen endpoint’inize <strong>{“code”:&lt;CODE&gt;}</strong> payload’una sahip bir request gelir.</li>
+<li><code>Server</code>: <strong>&lt;SİZİN_URL&gt;</strong> entpoint’inde gelen <code>code</code> bilgisini kullanarak {client_id:”<strong>&lt;CLIENT_ID&gt;</strong>“,client_secret:”<strong>&lt;CLIENT_SECRET&gt;</strong>“,grant_type:”authorization_code”,code:<strong>&lt;PAYLOAD.CODE&gt;</strong>,redirect_uri:<strong>&lt;SİZİN_URL&gt;</strong>} payload’u ile <strong>{FQDN}</strong>/oauth/token adresine <code>POST</code> yap.</li>
+<li><code>Server</code>: {“access_token”:<strong>&lt;ACCESS_TOKEN&gt;</strong>,”expires_in”:3600,”token_type”:”Bearer”,”scope”:”basic”,”refresh_token”:<strong>&lt;REFRESH_TOKEN&gt;</strong>} response objesindeki “access_token” ve “token_type” bilgilerini kullanarak authorization header oluştur. Bu header ile payload’ın boş obje olacak şekilde <strong>{FQDN}</strong>/oauth/me/ adresine <code>POST</code> yap.</li>
+<li><code>Server</code>: {“ID”:<strong>&lt;USER_ID&gt;</strong>,”user_login”:<strong>&lt;USERNAME&gt;</strong>,”user_nicename”:<strong>&lt;USER_NICENAME&gt;</strong>,”user_email”:<strong>&lt;USER_EMAIL&gt;</strong>,”user_registered”:<strong>&lt;USER_REGISTERED&gt;</strong>,”user_status”:<strong>&lt;USER_STATUS&gt;</strong>,”display_name”:<strong>&lt;USER_DISPLAY_NAME&gt;</strong>} response objesi ile kullanıcı bilgilerine ulaştın.</li>
+<li><code>Server</code>: Kullanıcı login başarılı. Webview olduğu için response olarak html dön. Başarılı olduğuna dair bir yazı olabilir. Tablette gitmesi gereken sayfaya doğrudan yönlendirme olabilir. Gibi gibi…</li>
+<li><code>Client</code>: 7’nci adımdaki response’ta yaptığın işlem gerçekleşir.</li>
+</ol>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/01/21/oAuth-temel-calisma-mantigi/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-ubuntu-icin-ngixn-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-21T19:36:38.000Z"><a href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/">21.01.2022</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/">Ubuntu için Ngixn Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<h1 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h1><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p>
+<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">upstream</span> prod &#123;</span><br><span class="line">	least_conn;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3001</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3002</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3003</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3004</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">3000</span> default_server;</span><br><span class="line">	<span class="attribute">listen</span> [::]:<span class="number">3000</span> default_server;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">server_name</span> &lt;fqdn&gt;;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://prod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-docker-ile-gitlab-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-21T19:03:52.000Z"><a href="/2022/01/21/docker-ile-gitlab-kurulumu/">21.01.2022</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/docker-ile-gitlab-kurulumu/">Docker ile Gitlab Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="SSH-Port-Ayari"><a href="#SSH-Port-Ayari" class="headerlink" title="SSH Port Ayarı"></a>SSH Port Ayarı</h1><p>Gitlab 22 portunu kullandığı için işletim sisteminin ssh portunu 2222 olarak değiştir. <code>/etc/ssh/sshd_config</code> git.</p>
+<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># What ports, IPs and protocols we listen for</span></span><br><span class="line"><span class="attribute">Port</span> <span class="number">2222</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker-ile-Calistir"><a href="#Docker-ile-Calistir" class="headerlink" title="Docker ile Çalıştır"></a>Docker ile Çalıştır</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run --detach --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume &lt;path&gt;/gitlab/config:/etc/gitlab --volume &lt;path&gt;/gitlab/logs:/var/<span class="built_in">log</span>/gitlab --volume &lt;path&gt;/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/01/21/docker-ile-gitlab-kurulumu/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-ubuntu-icin-docker-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-21T18:40:50.000Z"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">21.01.2022</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">Ubuntu için Docker Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h1><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
+
+<h1 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h1><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h1 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h1><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
   <article id="post-oyun-gelistirme-el-kitabi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -64,7 +215,7 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <p>Oyun geliştirme sürecinde rol alan kişileri anlatmaya çalıştım.</p>
-<h3 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h3><ol>
+<h2 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h2><ol>
 <li><a href="#1-Yapimci">Yapımcı</a></li>
 <li><a href="#2-Senarist">Senarist</a></li>
 <li><a href="#3-Konsept-Sanatcisi">Konsept Sanatçısı</a></li>
@@ -97,146 +248,6 @@
   </div>
 </article>
 
-  <article id="post-kurulum-on-hazirlik" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-26T15:25:10.000Z"><a href="/2021/12/26/kurulum-on-hazirlik/">26.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/26/kurulum-on-hazirlik/">Kurulum Ön Hazırlık</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h2 id="On-Hazirlik"><a href="#On-Hazirlik" class="headerlink" title="Ön Hazırlık"></a>Ön Hazırlık</h2><p>Ubuntu işletim sistemine kurulum yapmadan önce isteğe bağlı genel bir hazırlık da yapabilirsiniz. Ben kurulumlardan önce bu hazırlık adımını yapmayı tercih ediyorum.</p>
-<p>İşletim sistemindeki paketler güncellenir ve gereksiz paketler otomatik temizlenir. İhtiyaç duyulan geliştirici paketleri kurulur.</p>
-<h3 id="Paketleri-Guncelle-ve-Gereksizleri-Temizle"><a href="#Paketleri-Guncelle-ve-Gereksizleri-Temizle" class="headerlink" title="Paketleri Güncelle ve Gereksizleri Temizle"></a>Paketleri Güncelle ve Gereksizleri Temizle</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br><span class="line">$ sudo apt autoremove</span><br></pre></td></tr></table></figure>
-
-<h3 id="Gelistirici-developer-Paketlerini-Kur"><a href="#Gelistirici-developer-Paketlerini-Kur" class="headerlink" title="Geliştirici(developer) Paketlerini Kur"></a>Geliştirici(developer) Paketlerini Kur</h3><p>Geliştirici paketlerini daha önce kurduysanız aşağıdaki komutu çalıştırmanıza gerek yoktur.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install build-essential</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-pm2-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:51:21.000Z"><a href="/2021/12/19/pm2-faydali/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/pm2-faydali/">pm2 Faydalı Bilgileri</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h2 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>Proses listesi.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 ls &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2021/12/19/pm2-faydali/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-mongodb-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:42:19.000Z"><a href="/2021/12/19/mongodb-faydali/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/mongodb-faydali/">Mongodb Faydalı Bilgileri</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h2 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable/Startup Yapma"></a>Mongodb Servisini Enable/Startup Yapma</h2><p>Enable/Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
-<h3 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
-<p>Enable/Startup olarak ayarla.</p>
-<h3 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2021/12/19/mongodb-faydali/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-ubuntu-icin-mongodb-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:19:15.000Z"><a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">Ubuntu için Mongodb Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h2 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h2><h3 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h3><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
 
 <nav id="pagination">
   
@@ -248,9 +259,9 @@
   <div class="clearfix"></div>
 </nav></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -273,7 +284,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -294,7 +305,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -312,7 +325,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

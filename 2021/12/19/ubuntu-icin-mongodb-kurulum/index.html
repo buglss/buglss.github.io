@@ -62,12 +62,12 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h2 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h2><h3 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h3><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
+        <h1 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h1><h2 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h2><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h3 id="Kullanici-Yapilandirmasi-Istege-Bagli"><a href="#Kullanici-Yapilandirmasi-Istege-Bagli" class="headerlink" title="Kullanıcı Yapılandırması (İsteğe Bağlı)"></a>Kullanıcı Yapılandırması (İsteğe Bağlı)</h3><p>Mongodb kullanmak için kullanıcı yapılandırması şart <strong>değildir</strong>. Güvenliği arttırmak adına kullanıcı yapılandırması yapılmalıdır. İsterseniz bu kısmı yapmadan da kullanmaya başlayabilirsiniz.</p>
+<h2 id="Kullanici-Yapilandirmasi-Istege-Bagli"><a href="#Kullanici-Yapilandirmasi-Istege-Bagli" class="headerlink" title="Kullanıcı Yapılandırması (İsteğe Bağlı)"></a>Kullanıcı Yapılandırması (İsteğe Bağlı)</h2><p>Mongodb kullanmak için kullanıcı yapılandırması şart <strong>değildir</strong>. Güvenliği arttırmak adına kullanıcı yapılandırması yapılmalıdır. İsterseniz bu kısmı yapmadan da kullanmaya başlayabilirsiniz.</p>
 <p>Kullanıcı yapılandırması yapıldıktan sonra sadece kullanıcı ile veritabanına bağlanılabilir. Esnek çalışabilmek için öncelikle kapsamlı yetkiye sahip bir admin kullanıcısı oluşturulmalıdır.</p>
 <p>Veritabanına bağlan.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br></pre></td></tr></table></figure>
@@ -98,9 +98,9 @@
   </div>
 </article></div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
+  <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
-  <div id="local-search-result" class="widget"></div>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -123,7 +123,7 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>4</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -144,7 +144,9 @@
   
     <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
   
-    <li><a href="/tags/mongodb/">mongodb</a><small>2</small></li>
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
@@ -162,7 +164,9 @@
   
     <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>7</small></li>
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   
