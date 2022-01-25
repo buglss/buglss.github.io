@@ -47,6 +47,74 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-lvm-diskler-arasi-volume-group-transferi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-22T18:06:05.000Z"><a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/">22.01.2022</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/">LVM Diskler Arası Volume Group Transferi</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><code>/data</code> dizinine mount edilmiş logic volume için çalışma yapılıyor. Bu dizinin bağlandığı logic volume’ün volume group’u <code>data_vg</code>. <code>data_vg</code> volume group <code>/dev/sdb</code> partition’a bağlı. Genişletmek istediğin volume group <code>root_vg</code>.</p>
+<h2 id="Disk-Baglantisini-Kes"><a href="#Disk-Baglantisini-Kes" class="headerlink" title="Disk Bağlantısını Kes"></a>Disk Bağlantısını Kes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ umount /data</span><br></pre></td></tr></table></figure>
+
+<h2 id="etc-fstab-Icinden-Ilgili-Mount-Point-Satirini-Sil"><a href="#etc-fstab-Icinden-Ilgili-Mount-Point-Satirini-Sil" class="headerlink" title="/etc/fstab İçinden İlgili Mount Point Satırını Sil"></a><code>/etc/fstab</code> İçinden İlgili Mount Point Satırını Sil</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/fstab</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-tmp-konfigurasyon-yenile" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-21T20:18:58.000Z"><a href="/2022/01/21/tmp-konfigurasyon-yenile/">21.01.2022</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/tmp-konfigurasyon-yenile/">tmp Konfigürasyon Yenile</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Komut"><a href="#Komut" class="headerlink" title="Komut"></a>Komut</h1><p>Bu yöntem her zaman doğru sonuç vermeyebilir. Boot sırasında çalışan diğer servisler ile bağlantılı noktalar beklendiği gibi çalışmayabilir. O yüzden bu yöntemden ziyade tmp konfigürasyon dosyasında yapılan değişiklikten sonra en sağlıklısı restart atmaktır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /bin/systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev</span><br></pre></td></tr></table></figure>
+
+<h1 id="tmp-Dosya-Yollari"><a href="#tmp-Dosya-Yollari" class="headerlink" title="tmp Dosya Yolları"></a>tmp Dosya Yolları</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/tmpfiles.d/*.conf</span><br><span class="line">/run/tmpfiles.d/*.conf</span><br><span class="line">/usr/lib/tmpfiles.d/*.conf</span><br><span class="line"></span><br><span class="line">~/.config/user-tmpfiles.d/*.conf</span><br><span class="line"><span class="variable">$XDG_RUNTIME_DIR</span>/user-tmpfiles.d/*.conf</span><br><span class="line">~/.<span class="built_in">local</span>/share/user-tmpfiles.d/*.conf</span><br><span class="line">...</span><br><span class="line">/usr/share/user-tmpfiles.d/*.conf</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
   <article id="post-oAuth-temel-calisma-mantigi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -158,96 +226,6 @@
   </div>
 </article>
 
-  <article id="post-ubuntu-icin-docker-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-21T18:40:50.000Z"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">21.01.2022</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">Ubuntu için Docker Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h1><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
-
-<h1 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h1><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
-
-<h1 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h1><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-oyun-gelistirme-el-kitabi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-26T15:41:02.000Z"><a href="/2021/12/26/oyun-gelistirme-el-kitabi/">26.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/26/oyun-gelistirme-el-kitabi/">Oyun Geliştirme El Kitabı</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Oyun geliştirme sürecinde rol alan kişileri anlatmaya çalıştım.</p>
-<h2 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h2><ol>
-<li><a href="#1-Yapimci">Yapımcı</a></li>
-<li><a href="#2-Senarist">Senarist</a></li>
-<li><a href="#3-Konsept-Sanatcisi">Konsept Sanatçısı</a></li>
-<li><a href="#4-Oyun-Tasarimcisi">Oyun Tasarımcısı</a></li>
-<li><a href="#5-3D-Model-Sanatcisi">3D Model Sanatçısı</a></li>
-<li><a href="#6-Doku-Sanatcisi">Doku Sanatçısı</a></li>
-<li><a href="#7-Art-Direktor-Goruntu-Yonetmeni">Art Direktör / Görüntü Yönetmeni</a></li>
-<li><a href="#8-Seviye-Sanatcisi-Level-Designer">Seviye Sanatçısı / Level Designer</a></li>
-<li><a href="#9-GUI-Sanatcisi">GUI Sanatçısı</a></li>
-<li><a href="#10-Animator">Animatör</a></li>
-<li><a href="#11-Programci">Programcı</a></li>
-<li><a href="#12-Backend-Developer">Backend Developer</a></li>
-<li><a href="#13-Ses-ve-Muzik-Ekibi">Ses ve Müzik Ekibi</a></li>
-<li><a href="#14-QA-Tester">QA / Tester</a></li>
-<li><a href="#15-Cevirmen">Çevirmen</a></li>
-</ol>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2021/12/26/oyun-gelistirme-el-kitabi/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
 
 <nav id="pagination">
   
@@ -284,7 +262,9 @@
   <h3 class="title">Kategoriler</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>8</small></li>
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
+  
+    <li><a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small></li>
   
     <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
   
@@ -311,7 +291,7 @@
   
     <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
   
-    <li><a href="/tags/nginx/">nginx</a><small>1</small></li>
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
   
     <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
   
@@ -327,7 +307,11 @@
   
     <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
   
-    <li><a href="/tags/ubuntu/">ubuntu</a><small>10</small></li>
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>11</small></li>
+  
+    <li><a href="/tags/vscode/">vscode</a><small>1</small></li>
+  
+    <li><a href="/tags/windows/">windows</a><small>1</small></li>
   
     <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
   

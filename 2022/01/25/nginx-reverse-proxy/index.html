@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Nginx Reverse Proxy | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Nginx Reverse Proxy"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-nginx-reverse-proxy" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-01-25T18:42:07.000Z"><a href="/2022/01/25/nginx-reverse-proxy/">25.01.2022</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Nginx Reverse Proxy</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Konfigürasyonların farklı dosyalarda tanımlanmasını tavsiye ederim. Bu şekilde daha yönetilebilir olur. Mantık olarak <code>sites-available</code> altında konfigürasyonlar tanımlanır. Uygulanması istenen konfigürasyonlar <code>sites-enabled</code> altında sembolik link ile linklenir.</p>
+<h1 id="etc-nginx-sites-available-default"><a href="#etc-nginx-sites-available-default" class="headerlink" title="/etc/nginx/sites-available/default"></a>/etc/nginx/sites-available/default</h1><p>Varsayılan ayarları <strong>default</strong> dosyasına yaz.</p>
+<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">map</span> $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    <span class="attribute">default</span> upgrade;</span><br><span class="line">    &#x27;&#x27; close;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line"><span class="attribute">geo</span> $whitelist &#123;</span><br><span class="line">	<span class="attribute">default</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># CIDR in the list below are not limited</span></span><br><span class="line">	&lt;ip&gt;/24 1;</span><br><span class="line">	&lt;ip&gt;/32 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">map</span> $whitelist $limit_key &#123;</span><br><span class="line">	0 $binary_remote_addr;</span><br><span class="line">	1 &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">limit_conn_zone</span> $limit_key zone=addr:<span class="number">10m</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl default_server;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/nginx/ssl/xxx.domain.com.crt;</span><br><span class="line">	<span class="attribute">ssl_certificate_key</span> /etc/nginx/ssl/xxx.domain.com.key;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p><code>map</code> değişken yaratmak için kullanılır. <strong>$connection_upgrade</strong> isminde bir değişken tanımlanır. Bu değişken <strong>Connection</strong> http header bilgisini atamak için kullanılır.</p>
+<pre><code>Syntax:    map string $variable &#123; ... &#125;
+Default:    —
+Context:    http
+</code></pre>
+<p><code>limit_conn_zone</code> tanımlanan key alan başına bağlantı limiti tanımlamak için kullanılır. Çoğunlukla tek bir ip adresinden yapılan bağlantı sayısını sınırlandırmak için kullanılır. İstemci/Client ip adresi key olarak kullanılmıştır. Belirli ip adresleri için bu kuralın uygulanması istenmemiştir. Bunu sağlamak için <code>geo</code> ve <code>map</code> kullanılarak dinamik bir yapı kurulmuştur. Key alanı boş değer olarak verirsen kural uygulanmaz, yok sayılır.</p>
+<pre><code>Syntax:    limit_conn_zone key zone=name:size;
+Default:    —
+Context:    http
+</code></pre>
+<p><code>geo</code> istemci/client ip adresi bazlı değişken tanımlamak için kullanılır. <strong>$whitelist</strong> adında bir değişken tanımlanır. Bu değişken <strong>$limit_key</strong> değişkenini tanımlamak için kullanılır.</p>
+<pre><code>Syntax:    geo [$address] $variable &#123; ... &#125;
+Default:    —
+Context:    http
+</code></pre>
+<p>Sunucu ismi olarak <strong>_</strong> verildiğinde hiçbir isme uymayanların tümünü kapsar. Bu noktada tanımlanmış sunucu isimleri arasında yer almayan isme sahip bir request geldiğinde 404 sayfasına yönlendirme işlemi yapılmıştır. 80 ve 443 portu dinlenmektedir.</p>
+<h1 id="etc-nginx-sites-available-XXX-conf"><a href="#etc-nginx-sites-available-XXX-conf" class="headerlink" title="/etc/nginx/sites-available/XXX.conf"></a>/etc/nginx/sites-available/XXX.conf</h1><h2 id="Server-HTTP"><a href="#Server-HTTP" class="headerlink" title="Server HTTP"></a>Server HTTP</h2><figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">	<span class="attribute">server_name</span> xxx.domain.com;</span><br><span class="line">	<span class="attribute">access_log</span> /var/log/nginx/http.xxx.domain.com.access.log;</span><br><span class="line">	<span class="attribute">error_log</span> /var/log/nginx/http.xxx.domain.com.<span class="literal">error</span>.log;</span><br><span class="line">	<span class="attribute">client_body_timeout</span> <span class="number">30s</span>;</span><br><span class="line">	<span class="attribute">client_header_timeout</span> <span class="number">30s</span>;</span><br><span class="line">	<span class="attribute">limit_conn</span> addr <span class="number">100</span>;</span><br><span class="line">	<span class="attribute">location</span> @reverse &#123;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Host $http_host;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-Proto $scheme;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-Port $server_port;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://&lt;ip&gt;:&lt;port&gt;;</span><br><span class="line">		<span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Upgrade $http_upgrade;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Connection $connection_upgrade;</span><br><span class="line">		<span class="attribute">proxy_read_timeout</span> <span class="number">120s</span>;</span><br><span class="line">		<span class="attribute">proxy_request_buffering</span> <span class="literal">on</span>;</span><br><span class="line">		<span class="attribute">proxy_buffering</span> <span class="literal">on</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ ^/nonsecure/.*</span> &#123;</span><br><span class="line">		<span class="attribute">allow</span> &lt;ip&gt;;</span><br><span class="line">		<span class="attribute">allow</span> &lt;ip&gt;;</span><br><span class="line">		<span class="attribute">deny</span> all;</span><br><span class="line">		<span class="attribute">try_files</span> /dev/null @reverse;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">return</span> <span class="number">301</span> https://$host$request_uri;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>location</code> request url bilgisine göre yapılandırma yapmak için kullanılır. <strong>@</strong> ön eki ile yapılan tanımlandırmaya isim verilir. <strong>@reverse</strong> isminde yapılan tanımla kullanılmıştır.</p>
+<pre><code>Syntax: location [ = | ~ | ~* | ^~ ] uri &#123; ... &#125;
+        location @name &#123; ... &#125;
+Default: —
+Context: server, location
+</code></pre>
+<p><code>try_files</code> belirtilen sırada varlık kontrolü yapar ve ilk bulgu sonucu döndürür.</p>
+<pre><code>Syntax: try_files file ... uri;
+        try_files file ... =code;
+Default: —
+Context: server, location
+</code></pre>
+<h2 id="Server-HTTPS"><a href="#Server-HTTPS" class="headerlink" title="Server HTTPS"></a>Server HTTPS</h2><figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">	<span class="attribute">server_name</span> xxx.domain.com;</span><br><span class="line">	<span class="attribute">access_log</span> /var/log/nginx/https.xxx.domain.com.access.log;</span><br><span class="line">	<span class="attribute">error_log</span> /var/log/nginx/https.xxx.domain.com.<span class="literal">error</span>.log;</span><br><span class="line">	<span class="attribute">client_body_timeout</span> <span class="number">30s</span>;</span><br><span class="line">	<span class="attribute">client_header_timeout</span> <span class="number">30s</span>;</span><br><span class="line">	<span class="attribute">limit_conn</span> addr <span class="number">100</span>;</span><br><span class="line">	<span class="attribute">ssl_certificate</span> /etc/nginx/ssl/xxx.domain.com.crt;</span><br><span class="line">	<span class="attribute">ssl_certificate_key</span> /etc/nginx/ssl/xxx.domain.com.key;</span><br><span class="line">	<span class="attribute">location</span> @reverse &#123;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Host $http_host;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-Proto $scheme;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-Port $server_port;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://&lt;ip&gt;:&lt;port&gt;;</span><br><span class="line">		<span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Upgrade $http_upgrade;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Connection $connection_upgrade;</span><br><span class="line">		<span class="attribute">proxy_read_timeout</span> <span class="number">120s</span>;</span><br><span class="line">		<span class="attribute">proxy_request_buffering</span> <span class="literal">on</span>;</span><br><span class="line">		<span class="attribute">proxy_buffering</span> <span class="literal">on</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ ^/(secure|hidden)</span> &#123;</span><br><span class="line">		<span class="attribute">allow</span> &lt;ip&gt;/<span class="number">23</span>;</span><br><span class="line">		<span class="attribute">allow</span> &lt;ip&gt;/<span class="number">24</span>;</span><br><span class="line">		<span class="attribute">deny</span> all;</span><br><span class="line">		<span class="attribute">try_files</span> /dev/null @reverse;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ ^/u/.*</span> &#123;</span><br><span class="line">		<span class="attribute">try_files</span> /dev/null @reverse;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ ^/cdn/.*</span> &#123;</span><br><span class="line">		<span class="attribute">add_header</span> <span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="string">&#x27;*&#x27;</span>;</span><br><span class="line">		<span class="attribute">add_header</span> <span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span> <span class="string">&#x27;GET&#x27;</span>;</span><br><span class="line">		<span class="attribute">expires</span> <span class="number">90d</span>;</span><br><span class="line">		<span class="attribute">root</span> /&lt;root_path&gt;/&lt;sub_path&gt;/&lt;dir&gt;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ ^/upload/</span> &#123;</span><br><span class="line">		<span class="attribute">client_max_body_size</span> <span class="number">2024M</span>;</span><br><span class="line">		<span class="attribute">client_body_timeout</span> <span class="number">360s</span>;</span><br><span class="line">		<span class="attribute">try_files</span> /dev/null @reverse;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ (^\/assets$)|(^\/assets\/$)</span> &#123;</span><br><span class="line">		<span class="attribute">deny</span> all;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">try_files</span> /dev/null @reverse;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><p>Konfigürasyonları test etmek için kullanılır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nginx -T</span><br></pre></td></tr></table></figure>
+
+<h1 id="Restart"><a href="#Restart" class="headerlink" title="Restart"></a>Restart</h1><p>Restart <u>gerektiren</u> konfigürasyonların uygulanması için kullanılır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo services nginx restart</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reload"><a href="#Reload" class="headerlink" title="Reload"></a>Reload</h1><p>Restart <u>gerektirmeyen</u> konfigürasyonların uygulanması için kullanılır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo services nginx reload</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ubuntu/">ubuntu</a>, <a href="/tags/nginx/">nginx</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  
+<div class="widget tag">
+  <h3 class="title">Kategoriler</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
+  
+    <li><a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small></li>
+  
+    <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
+  
+    <li><a href="/categories/Wiki/">Wiki</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Etiketler</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/apache/">apache</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>2</small></li>
+  
+    <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
+  
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+  
+    <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
+  
+    <li><a href="/tags/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/tags/oAuth/">oAuth</a><small>1</small></li>
+  
+    <li><a href="/tags/oyun/">oyun</a><small>1</small></li>
+  
+    <li><a href="/tags/php/">php</a><small>1</small></li>
+  
+    <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
+  
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>11</small></li>
+  
+    <li><a href="/tags/vscode/">vscode</a><small>1</small></li>
+  
+    <li><a href="/tags/windows/">windows</a><small>1</small></li>
+  
+    <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
