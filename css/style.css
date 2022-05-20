@@ -141,15 +141,9 @@ article {
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   background: #fff;
-/*&.post
-    .icon
-      &:before
-        content '\f016'*/
 }
 article.page {
   padding-left: 20px;
-/*.icon
-      display none*/
 }
 article.photo .icon:before {
   content: '\f030';
