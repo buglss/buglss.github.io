@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sayfa 6 | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin | buglss">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-ubuntu-icin-docker-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-21T18:40:50.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">21.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">Ubuntu için Docker Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h1><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
+
+<h1 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h1><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h1 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h1><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-oyun-gelistirme-el-kitabi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-26T15:41:02.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/26/oyun-gelistirme-el-kitabi/">26.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>12 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/26/oyun-gelistirme-el-kitabi/">Oyun Geliştirme El Kitabı</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Oyun geliştirme sürecinde rol alan kişileri anlatmaya çalıştım.</p>
+<h2 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h2><ol>
+<li><a href="#1-Yapimci">Yapımcı</a></li>
+<li><a href="#2-Senarist">Senarist</a></li>
+<li><a href="#3-Konsept-Sanatcisi">Konsept Sanatçısı</a></li>
+<li><a href="#4-Oyun-Tasarimcisi">Oyun Tasarımcısı</a></li>
+<li><a href="#5-3D-Model-Sanatcisi">3D Model Sanatçısı</a></li>
+<li><a href="#6-Doku-Sanatcisi">Doku Sanatçısı</a></li>
+<li><a href="#7-Art-Direktor-Goruntu-Yonetmeni">Art Direktör / Görüntü Yönetmeni</a></li>
+<li><a href="#8-Seviye-Sanatcisi-Level-Designer">Seviye Sanatçısı / Level Designer</a></li>
+<li><a href="#9-GUI-Sanatcisi">GUI Sanatçısı</a></li>
+<li><a href="#10-Animator">Animatör</a></li>
+<li><a href="#11-Programci">Programcı</a></li>
+<li><a href="#12-Backend-Developer">Backend Developer</a></li>
+<li><a href="#13-Ses-ve-Muzik-Ekibi">Ses ve Müzik Ekibi</a></li>
+<li><a href="#14-QA-Tester">QA / Tester</a></li>
+<li><a href="#15-Cevirmen">Çevirmen</a></li>
+</ol>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2021/12/26/oyun-gelistirme-el-kitabi/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+ 
+
+<nav id="paginationWrapper">
+  <ul id="pagination">
+     <li><a href="/page/5/">«</a></li> 
+    
+    
+      
+          
+            <li class="page-number"><a id="num1" href="/">1</a></li>
+            <li>...</li>
+            
+          
+          <li class="page-number"><a id="num4" href="/page/4">4</a></li>
+      
+        
+      
+      
+          
+          <li class="page-number"><a id="num5" href="/page/5">5</a></li>
+      
+        
+      
+      
+          
+          <li class="page-number"><a id="num6" href="/page/6">6</a></li>
+      
+        
+      
+      
+          
+          <li class="page-number"><a id="num7" href="/page/7">7</a></li>
+      
+        
+      
+      
+          
+          <li class="page-number"><a id="num8" href="/page/8">8</a></li>
+      
+        
+           <li>...</li> 
+          <li class="page-number"><a id="num11" href="/page/11">11</a></li>
+        
+      
+
+       <li><a href="/page/7/">»</a></li> 
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+  <script>
+    (function($) {
+      var pageNumber = (window.location.pathname.match(/\d/g) || []).join("")
+      $("#num" + (pageNumber || "1")).addClass("active")
+    })(jQuery)
+  </script></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  
+<div class="widget tag">
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
+  
+    <li><a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small></li>
+  
+    <li><a href="/categories/Kurulum/">Kurulum</a><small>9</small></li>
+  
+    <li><a href="/categories/Wiki/">Wiki</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/apache/">apache</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>2</small></li>
+  
+    <li><a href="/tags/gitlab/">gitlab</a><small>1</small></li>
+  
+    <li><a href="/tags/lvm/">lvm</a><small>2</small></li>
+  
+    <li><a href="/tags/mongodb/">mongodb</a><small>3</small></li>
+  
+    <li><a href="/tags/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/tags/nginx/">nginx</a><small>2</small></li>
+  
+    <li><a href="/tags/node-red/">node-red</a><small>1</small></li>
+  
+    <li><a href="/tags/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/tags/oAuth/">oAuth</a><small>1</small></li>
+  
+    <li><a href="/tags/oyun/">oyun</a><small>1</small></li>
+  
+    <li><a href="/tags/php/">php</a><small>1</small></li>
+  
+    <li><a href="/tags/pm2/">pm2</a><small>2</small></li>
+  
+    <li><a href="/tags/ssl/">ssl</a><small>1</small></li>
+  
+    <li><a href="/tags/ubuntu/">ubuntu</a><small>11</small></li>
+  
+    <li><a href="/tags/vscode/">vscode</a><small>1</small></li>
+  
+    <li><a href="/tags/windows/">windows</a><small>1</small></li>
+  
+    <li><a href="/tags/wordpress/">wordpress</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin | buglss
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

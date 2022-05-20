@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Sayfa 4 | Yazılarım</title>
-  <meta name="author" content="Levent Sencer Şahin">
+  <meta name="author" content="Levent Sencer Şahin | buglss">
   
   <meta name="description" content="Kişisel Blog Sitesi">
   
@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -47,31 +47,80 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article id="post-ubuntu-icin-mongodb-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-tmp-konfigurasyon-yenile" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:19:15.000Z"><a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">19.12.2021</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-21T20:18:58.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/21/tmp-konfigurasyon-yenile/">21.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
       
       
   
-    <h1 class="title"><a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">Ubuntu için Mongodb Kurulumu</a></h1>
+    <h1 class="title"><a href="/2022/01/21/tmp-konfigurasyon-yenile/">tmp Konfigürasyon Yenile</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h1><h2 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h2><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
+        <h1 id="Komut"><a href="#Komut" class="headerlink" title="Komut"></a>Komut</h1><p>Bu yöntem her zaman doğru sonuç vermeyebilir. Boot sırasında çalışan diğer servisler ile bağlantılı noktalar beklendiği gibi çalışmayabilir. O yüzden bu yöntemden ziyade tmp konfigürasyon dosyasında yapılan değişiklikten sonra en sağlıklısı restart atmaktır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /bin/systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev</span><br></pre></td></tr></table></figure>
+
+<h1 id="tmp-Dosya-Yollari"><a href="#tmp-Dosya-Yollari" class="headerlink" title="tmp Dosya Yolları"></a>tmp Dosya Yolları</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/tmpfiles.d/*.conf</span><br><span class="line">/run/tmpfiles.d/*.conf</span><br><span class="line">/usr/lib/tmpfiles.d/*.conf</span><br><span class="line"></span><br><span class="line">~/.config/user-tmpfiles.d/*.conf</span><br><span class="line"><span class="variable">$XDG_RUNTIME_DIR</span>/user-tmpfiles.d/*.conf</span><br><span class="line">~/.local/share/user-tmpfiles.d/*.conf</span><br><span class="line">...</span><br><span class="line">/usr/share/user-tmpfiles.d/*.conf</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-oAuth-temel-calisma-mantigi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-21T19:46:08.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/21/oAuth-temel-calisma-mantigi/">21.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/oAuth-temel-calisma-mantigi/">oAuth Temel Çalışma Mantığı</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h4 id="C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici"><a href="#C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici" class="headerlink" title="{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı"></a>{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı</h4><p>Sırasıyla aşağıdaki gibidir.</p>
+<ol>
+<li><code>Client</code>: Webview içinde <strong>{FQDN}</strong>/oauth/authorize?response_type=code&amp;client_id=<strong>&lt;CLIENT_ID&gt;</strong>&amp;redirect_uri=<strong>&lt;SİZİN_URL&gt;</strong> adresine <code>GET</code> et.</li>
+<li><code>Client</code>: <strong>{FQDN}</strong> login sayfası açıldı. <strong>{FQDN}</strong> sistemindeki kullanıcı bilgilerini girdi.</li>
+<li><code>Client</code>: <strong>&lt;SİZİN_URL&gt;</strong> adresinde <code>GET</code> metodunu dinleyen endpoint’inize <strong>{“code”:&lt;CODE&gt;}</strong> payload’una sahip bir request gelir.</li>
+<li><code>Server</code>: <strong>&lt;SİZİN_URL&gt;</strong> entpoint’inde gelen <code>code</code> bilgisini kullanarak {client_id:”<strong>&lt;CLIENT_ID&gt;</strong>“,client_secret:”<strong>&lt;CLIENT_SECRET&gt;</strong>“,grant_type:”authorization_code”,code:<strong>&lt;PAYLOAD.CODE&gt;</strong>,redirect_uri:<strong>&lt;SİZİN_URL&gt;</strong>} payload’u ile <strong>{FQDN}</strong>/oauth/token adresine <code>POST</code> yap.</li>
+<li><code>Server</code>: {“access_token”:<strong>&lt;ACCESS_TOKEN&gt;</strong>,”expires_in”:3600,”token_type”:”Bearer”,”scope”:”basic”,”refresh_token”:<strong>&lt;REFRESH_TOKEN&gt;</strong>} response objesindeki “access_token” ve “token_type” bilgilerini kullanarak authorization header oluştur. Bu header ile payload’ın boş obje olacak şekilde <strong>{FQDN}</strong>/oauth/me/ adresine <code>POST</code> yap.</li>
+<li><code>Server</code>: {“ID”:<strong>&lt;USER_ID&gt;</strong>,”user_login”:<strong>&lt;USERNAME&gt;</strong>,”user_nicename”:<strong>&lt;USER_NICENAME&gt;</strong>,”user_email”:<strong>&lt;USER_EMAIL&gt;</strong>,”user_registered”:<strong>&lt;USER_REGISTERED&gt;</strong>,”user_status”:<strong>&lt;USER_STATUS&gt;</strong>,”display_name”:<strong>&lt;USER_DISPLAY_NAME&gt;</strong>} response objesi ile kullanıcı bilgilerine ulaştın.</li>
+<li><code>Server</code>: Kullanıcı login başarılı. Webview olduğu için response olarak html dön. Başarılı olduğuna dair bir yazı olabilir. Tablette gitmesi gereken sayfaya doğrudan yönlendirme olabilir. Gibi gibi…</li>
+<li><code>Client</code>: 7’nci adımdaki response’ta yaptığın işlem gerçekleşir.</li>
+</ol>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/#more" class="more-link">Daha fazla oku</a>
+            <a href="/2022/01/21/oAuth-temel-calisma-mantigi/#more" class="more-link">Daha fazla oku</a>
           </div>
         
         
@@ -81,147 +130,57 @@
   </div>
 </article>
 
-  <article id="post-pm2-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:17:10.000Z"><a href="/2021/12/19/pm2-kurulum/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/pm2-kurulum/">Nodejs ile pm2 Kurulumu</a></h1>
-  
 
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
+ 
+
+<nav id="paginationWrapper">
+  <ul id="pagination">
+     <li><a href="/page/3/">«</a></li> 
+    
+    
       
-        <h1 id="pm2-Kurulumu"><a href="#pm2-Kurulumu" class="headerlink" title="pm2 Kurulumu"></a>pm2 Kurulumu</h1><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p>
-<p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g pm2</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
+        <li class="page-number"><a id="num1" href="/">1</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-node-red-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:11:23.000Z"><a href="/2021/12/19/node-red-kurulum/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/node-red-kurulum/">Nodejs ile node-red Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="node-red-Kurulumu"><a href="#node-red-Kurulumu" class="headerlink" title="node-red Kurulumu"></a>node-red Kurulumu</h1><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p>
-<p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g node-red</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
+        <li class="page-number"><a id="num2" href="/page/2">2</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-ubuntu-icin-nodejs-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:02:05.000Z"><a href="/2021/12/19/ubuntu-icin-nodejs-kurulum/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/ubuntu-icin-nodejs-kurulum/">Ubuntu için Nodejs Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Nodejs-Kurulumu"><a href="#Nodejs-Kurulumu" class="headerlink" title="Nodejs Kurulumu"></a>Nodejs Kurulumu</h1><p>Nodejs’i <code>nvm</code> kütüphanesini kullanarak kurucaz.</p>
-<h1 id="nvm-Kurulumu"><a href="#nvm-Kurulumu" class="headerlink" title="nvm Kurulumu"></a>nvm Kurulumu</h1><p>Aşağıdaki komut nvm reposundaki master projeyi indirir. Ardından install.sh dosyasını çalıştırır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash</span><br></pre></td></tr></table></figure>
-
-<p>nvm kütüphanesi ile ilgili daha fazla bilgi için: <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">Detay</a></p>
-<h1 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h1><p>Nodejs ve beraberinde npm kurulumu yapılır. Aşağıdaki komut lts versiyonunu kurar.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install --lts</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
+        <li class="page-number"><a id="num3" href="/page/3">3</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-wordpress-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T13:51:07.000Z"><a href="/2021/12/19/wordpress-faydali/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/wordpress-faydali/">Wordpress Faydalı Bilgileri</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Wordpress-Veritabani-Yedek-Alma"><a href="#Wordpress-Veritabani-Yedek-Alma" class="headerlink" title="Wordpress Veritabanı Yedek Alma"></a>Wordpress Veritabanı Yedek Alma</h1><p>Aşağıdaki komutu yedeğini almak istediğiniz veritabanı bilgilerine göre doldurarak çalıştırın.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump --add-drop-table -u &lt;veritabani_kullanici_adi&gt; -p &lt;veritabani_adi&gt; &gt; &lt;dosya_adi&gt;.sql</span><br></pre></td></tr></table></figure>
-
-<h1 id="Wordpress-Veritabani-Yedekten-Yukleme"><a href="#Wordpress-Veritabani-Yedekten-Yukleme" class="headerlink" title="Wordpress Veritabanı Yedekten Yükleme"></a>Wordpress Veritabanı Yedekten Yükleme</h1><p>Aşağıdaki komutu yedekten yüklemek istediğiniz veritabanı bilgilerine göre doldurarak çalıştırın.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u &lt;veritabani_kullanici_adi&gt; -p &lt;veritabani_adi&gt; &lt; &lt;dosya_adi&gt;.sql</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
+        <li class="page-number"><a id="num4" href="/page/4">4</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+      
+        <li class="page-number"><a id="num5" href="/page/5">5</a></li>
+        
+        
+           <li>...</li> 
+          <li class="page-number"><a id="num11" href="/page/11">11</a></li>
+        
+      
 
-
-<nav id="pagination">
-  
-    <a href="/page/3/" class="alignleft prev">Geri</a>
-  
-  
-    <a href="/page/5/" class="alignright next">İleri</a>
-  
+       <li><a href="/page/5/">»</a></li> 
+  </ul>
   <div class="clearfix"></div>
-</nav></div></div>
+</nav>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+  <script>
+    (function($) {
+      var pageNumber = (window.location.pathname.match(/\d/g) || []).join("")
+      $("#num" + (pageNumber || "1")).addClass("active")
+    })(jQuery)
+  </script></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
@@ -245,7 +204,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Kategoriler</h3>
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
@@ -262,7 +225,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Etiketler</h3>
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/tags/apache/">apache</a><small>1</small></li>
@@ -309,7 +276,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin
+  &copy; 2022 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div></footer>

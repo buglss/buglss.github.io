@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Ubuntu için Mongodb Kurulumu | Yazılarım</title>
-  <meta name="author" content="Levent Sencer Şahin">
+  <meta name="author" content="Levent Sencer Şahin | buglss">
   
   <meta name="description" content="Kişisel Blog Sitesi">
   
@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -51,8 +51,12 @@
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:19:15.000Z"><a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">19.12.2021</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:19:15.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>2 dakika</strong>  </span>
+        </time>
       
       
   
@@ -63,7 +67,7 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <h1 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h1><h2 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h2><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
@@ -72,7 +76,7 @@
 <p>Veritabanına bağlan.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br></pre></td></tr></table></figure>
 <p><code>admin</code> veritabanını seç ve kullanıcı oluştur.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&quot;&lt;kullanici_adi&gt;&quot;</span>,</span><br><span class="line">    <span class="attr">pwd</span>: passwordPrompt(),</span><br><span class="line">    <span class="attr">roles</span>: [</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;userAdminAnyDatabase&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;readWriteAnyDatabase&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;clusterAdmin&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.<span class="title function_">createUser</span>(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&quot;&lt;kullanici_adi&gt;&quot;</span>,</span><br><span class="line">    <span class="attr">pwd</span>: <span class="title function_">passwordPrompt</span>(),</span><br><span class="line">    <span class="attr">roles</span>: [</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;userAdminAnyDatabase&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;readWriteAnyDatabase&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">role</span>: <span class="string">&quot;clusterAdmin&quot;</span>, <span class="attr">db</span>: <span class="string">&quot;admin&quot;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <p>Admin kullanıcı oluşturulduktan sonra <code>/etc/mongod.conf</code> dosyasında aşağıdaki düzenlemeleri yap.</p>
 <figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># network interfaces</span></span><br><span class="line"><span class="attribute">net</span>:</span><br><span class="line">  <span class="attribute">port</span>: <span class="number">27017</span></span><br><span class="line">  <span class="attribute">bindIp</span>: <span class="number">0.0.0.0</span></span><br><span class="line">...</span><br><span class="line"><span class="attribute">security</span>:</span><br><span class="line">    <span class="attribute">authorization</span>: <span class="string">&quot;enabled&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -120,7 +124,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Kategoriler</h3>
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
@@ -137,7 +145,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Etiketler</h3>
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/tags/apache/">apache</a><small>1</small></li>
@@ -184,7 +196,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin
+  &copy; 2022 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div></footer>

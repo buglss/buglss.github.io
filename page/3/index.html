@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Sayfa 3 | Yazılarım</title>
-  <meta name="author" content="Levent Sencer Şahin">
+  <meta name="author" content="Levent Sencer Şahin | buglss">
   
   <meta name="description" content="Kişisel Blog Sitesi">
   
@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -47,37 +47,39 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article id="post-ubuntu-icin-docker-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-lvm-disk-genislet" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-21T18:40:50.000Z"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">21.01.2022</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-22T18:16:29.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/22/lvm-disk-genislet/">22.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>2 dakika</strong>  </span>
+        </time>
       
       
   
-    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">Ubuntu için Docker Kurulumu</a></h1>
+    <h1 class="title"><a href="/2022/01/22/lvm-disk-genislet/">LVM Disk Genişlet</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h1><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
+        <p>LVM disk genişletme (LVM Extend) işleminde 2 farklı yöntemden bahsedicem. Ubuntu işletim sisteminde partition tanımı sınırlıdır. Yöntemlerden birinde yeni partition yaratarak extend işlemi yapılır. Diğer yöntemde ise mevcut partition silinip yeniden oluşturularak extend işlemi yapılır.</p>
+<h4 id="sda4-partition-dev-sda4-volume-ve-dev-root-vg-root-volume-group-icin-islem-yapilmaktadir"><a href="#sda4-partition-dev-sda4-volume-ve-dev-root-vg-root-volume-group-icin-islem-yapilmaktadir" class="headerlink" title="sda4 partition, /dev/sda4 volume ve /dev/root-vg/root volume group için işlem yapılmaktadır."></a><code>sda4</code> partition, <code>/dev/sda4</code> volume ve <code>/dev/root-vg/root</code> volume group için işlem yapılmaktadır.</h4><h1 id="Yontem-1"><a href="#Yontem-1" class="headerlink" title="Yöntem 1"></a>Yöntem 1</h1><p><code>sda4</code> partition’u sil ve free space ile birleştirek yeni bir partition yarat.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cfdisk</span><br></pre></td></tr></table></figure>
 
-<h1 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h1><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
-
-<h1 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h1><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<p>İşletim sisteminin partition tablosunu yeniden okumasını sağla.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ partprobe</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/#more" class="more-link">Daha fazla oku</a>
+            <a href="/2022/01/22/lvm-disk-genislet/#more" class="more-link">Daha fazla oku</a>
           </div>
         
         
@@ -87,153 +89,37 @@
   </div>
 </article>
 
-  <article id="post-oyun-gelistirme-el-kitabi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-lvm-diskler-arasi-volume-group-transferi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-26T15:41:02.000Z"><a href="/2021/12/26/oyun-gelistirme-el-kitabi/">26.12.2021</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-22T18:06:05.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/">22.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
       
       
   
-    <h1 class="title"><a href="/2021/12/26/oyun-gelistirme-el-kitabi/">Oyun Geliştirme El Kitabı</a></h1>
+    <h1 class="title"><a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/">LVM Diskler Arası Volume Group Transferi</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Oyun geliştirme sürecinde rol alan kişileri anlatmaya çalıştım.</p>
-<h2 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h2><ol>
-<li><a href="#1-Yapimci">Yapımcı</a></li>
-<li><a href="#2-Senarist">Senarist</a></li>
-<li><a href="#3-Konsept-Sanatcisi">Konsept Sanatçısı</a></li>
-<li><a href="#4-Oyun-Tasarimcisi">Oyun Tasarımcısı</a></li>
-<li><a href="#5-3D-Model-Sanatcisi">3D Model Sanatçısı</a></li>
-<li><a href="#6-Doku-Sanatcisi">Doku Sanatçısı</a></li>
-<li><a href="#7-Art-Direktor-Goruntu-Yonetmeni">Art Direktör / Görüntü Yönetmeni</a></li>
-<li><a href="#8-Seviye-Sanatcisi-Level-Designer">Seviye Sanatçısı / Level Designer</a></li>
-<li><a href="#9-GUI-Sanatcisi">GUI Sanatçısı</a></li>
-<li><a href="#10-Animator">Animatör</a></li>
-<li><a href="#11-Programci">Programcı</a></li>
-<li><a href="#12-Backend-Developer">Backend Developer</a></li>
-<li><a href="#13-Ses-ve-Muzik-Ekibi">Ses ve Müzik Ekibi</a></li>
-<li><a href="#14-QA-Tester">QA / Tester</a></li>
-<li><a href="#15-Cevirmen">Çevirmen</a></li>
-</ol>
+        <p><code>/data</code> dizinine mount edilmiş logic volume için çalışma yapılıyor. Bu dizinin bağlandığı logic volume’ün volume group’u <code>data_vg</code>. <code>data_vg</code> volume group <code>/dev/sdb</code> partition’a bağlı. Genişletmek istediğin volume group <code>root_vg</code>.</p>
+<h2 id="Disk-Baglantisini-Kes"><a href="#Disk-Baglantisini-Kes" class="headerlink" title="Disk Bağlantısını Kes"></a>Disk Bağlantısını Kes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ umount /data</span><br></pre></td></tr></table></figure>
+
+<h2 id="etc-fstab-Icinden-Ilgili-Mount-Point-Satirini-Sil"><a href="#etc-fstab-Icinden-Ilgili-Mount-Point-Satirini-Sil" class="headerlink" title="/etc/fstab İçinden İlgili Mount Point Satırını Sil"></a><code>/etc/fstab</code> İçinden İlgili Mount Point Satırını Sil</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/fstab</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2021/12/26/oyun-gelistirme-el-kitabi/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-kurulum-on-hazirlik" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-26T15:25:10.000Z"><a href="/2021/12/26/kurulum-on-hazirlik/">26.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/26/kurulum-on-hazirlik/">Kurulum Ön Hazırlık</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="On-Hazirlik"><a href="#On-Hazirlik" class="headerlink" title="Ön Hazırlık"></a>Ön Hazırlık</h1><p>Ubuntu işletim sistemine kurulum yapmadan önce isteğe bağlı genel bir hazırlık da yapabilirsiniz. Ben kurulumlardan önce bu hazırlık adımını yapmayı tercih ediyorum.</p>
-<p>İşletim sistemindeki paketler güncellenir ve gereksiz paketler otomatik temizlenir. İhtiyaç duyulan geliştirici paketleri kurulur.</p>
-<h2 id="Paketleri-Guncelle-ve-Gereksizleri-Temizle"><a href="#Paketleri-Guncelle-ve-Gereksizleri-Temizle" class="headerlink" title="Paketleri Güncelle ve Gereksizleri Temizle"></a>Paketleri Güncelle ve Gereksizleri Temizle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br><span class="line">$ sudo apt autoremove</span><br></pre></td></tr></table></figure>
-
-<h2 id="Gelistirici-developer-Paketlerini-Kur"><a href="#Gelistirici-developer-Paketlerini-Kur" class="headerlink" title="Geliştirici(developer) Paketlerini Kur"></a>Geliştirici(developer) Paketlerini Kur</h2><p>Geliştirici paketlerini daha önce kurduysanız aşağıdaki komutu çalıştırmanıza gerek yoktur.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install build-essential</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-pm2-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:51:21.000Z"><a href="/2021/12/19/pm2-faydali/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/pm2-faydali/">pm2 Faydalı Bilgileri</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h1><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>Proses listesi.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 ls &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2021/12/19/pm2-faydali/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-mongodb-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2021-12-19T14:42:19.000Z"><a href="/2021/12/19/mongodb-faydali/">19.12.2021</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/mongodb-faydali/">Mongodb Faydalı Bilgileri</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable/Startup Yapma"></a>Mongodb Servisini Enable/Startup Yapma</h1><p>Enable/Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
-<h2 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
-<p>Enable/Startup olarak ayarla.</p>
-<h2 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2021/12/19/mongodb-faydali/#more" class="more-link">Daha fazla oku</a>
+            <a href="/2022/01/22/lvm-diskler-arasi-volume-group-transferi/#more" class="more-link">Daha fazla oku</a>
           </div>
         
         
@@ -244,15 +130,56 @@
 </article>
 
 
-<nav id="pagination">
-  
-    <a href="/page/2/" class="alignleft prev">Geri</a>
-  
-  
-    <a href="/page/4/" class="alignright next">İleri</a>
-  
+ 
+
+<nav id="paginationWrapper">
+  <ul id="pagination">
+     <li><a href="/page/2/">«</a></li> 
+    
+    
+      
+        <li class="page-number"><a id="num1" href="/">1</a></li>
+        
+        
+      
+      
+        <li class="page-number"><a id="num2" href="/page/2">2</a></li>
+        
+        
+      
+      
+        <li class="page-number"><a id="num3" href="/page/3">3</a></li>
+        
+        
+      
+      
+        <li class="page-number"><a id="num4" href="/page/4">4</a></li>
+        
+        
+      
+      
+        <li class="page-number"><a id="num5" href="/page/5">5</a></li>
+        
+        
+           <li>...</li> 
+          <li class="page-number"><a id="num11" href="/page/11">11</a></li>
+        
+      
+
+       <li><a href="/page/4/">»</a></li> 
+  </ul>
   <div class="clearfix"></div>
-</nav></div></div>
+</nav>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+  <script>
+    (function($) {
+      var pageNumber = (window.location.pathname.match(/\d/g) || []).join("")
+      $("#num" + (pageNumber || "1")).addClass("active")
+    })(jQuery)
+  </script></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
@@ -276,7 +203,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Kategoriler</h3>
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
@@ -293,7 +224,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Etiketler</h3>
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/tags/apache/">apache</a><small>1</small></li>
@@ -340,7 +275,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin
+  &copy; 2022 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div></footer>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>SSL Sertifika İşlemleri | Yazılarım</title>
-  <meta name="author" content="Levent Sencer Şahin">
+  <meta name="author" content="Levent Sencer Şahin | buglss">
   
   <meta name="description" content="Kişisel Blog Sitesi">
   
@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -51,8 +51,12 @@
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-22T18:55:29.000Z"><a href="/2022/01/22/ssl-sertifika-islemleri/">22.01.2022</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-22T18:55:29.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/22/ssl-sertifika-islemleri/">22.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
       
       
   
@@ -69,7 +73,7 @@
 <span id="more"></span>
 
 <h1 id="CRT"><a href="#CRT" class="headerlink" title="CRT"></a>CRT</h1><p>CRT dosyaları genelde Linux tabanlı sistemlerde kullanılır. Paket(bundle) dosyasına ilgili sertifika dosyaları (crt) sertifika sağlayıcı tarafından belirtildiği sırayla eklenir. (sirket.crt &gt; X.crt &gt; Y.crt &gt; Z.crt –&gt; bundle.crt)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat sirket.crt ev.bundle.crt &gt; www_server_com.crt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> sirket.crt ev.bundle.crt &gt; www_server_com.crt</span><br></pre></td></tr></table></figure>
 
 <h1 id="PFX"><a href="#PFX" class="headerlink" title="PFX"></a>PFX</h1><p>PFX dosyaları genelde Windows tabanlı sistemlerde kullanılır. Bu formatta private key, alt kök sertifika ve SSL sertifikası kombine olarak bulunur. Örneğin crt ile üretilecekse öncelikle yukarıdaki gibi crt dosyası üretilir. Sonrasında private key ile birlikte kullanılarak pfx dosyası üretilir.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl pkcs12 -<span class="built_in">export</span> -out www_server_com.pfx -inkey www_server_com.key -<span class="keyword">in</span> www_server_com.crt</span><br></pre></td></tr></table></figure>
@@ -117,7 +121,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Kategoriler</h3>
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
@@ -134,7 +142,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Etiketler</h3>
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/tags/apache/">apache</a><small>1</small></li>
@@ -181,7 +193,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin
+  &copy; 2022 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div></footer>

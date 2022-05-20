@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Yazılarım</title>
-  <meta name="author" content="Levent Sencer Şahin">
+  <meta name="author" content="Levent Sencer Şahin | buglss">
   
   <meta name="description" content="Kişisel Blog Sitesi">
   
@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -52,8 +52,12 @@
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-25T18:42:07.000Z"><a href="/2022/01/25/nginx-reverse-proxy/">25.01.2022</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-25T18:42:07.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/25/nginx-reverse-proxy/">25.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>5 dakika</strong>  </span>
+        </time>
       
       
   
@@ -65,7 +69,7 @@
       
         <p>Konfigürasyonların farklı dosyalarda tanımlanmasını tavsiye ederim. Bu şekilde daha yönetilebilir olur. Mantık olarak <code>sites-available</code> altında konfigürasyonlar tanımlanır. Uygulanması istenen konfigürasyonlar <code>sites-enabled</code> altında sembolik link ile linklenir.</p>
 <h1 id="etc-nginx-sites-available-default"><a href="#etc-nginx-sites-available-default" class="headerlink" title="/etc/nginx/sites-available/default"></a>/etc/nginx/sites-available/default</h1><p>Varsayılan ayarları <strong>default</strong> dosyasına yaz.</p>
-<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">map</span> $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    <span class="attribute">default</span> upgrade;</span><br><span class="line">    &#x27;&#x27; close;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line"><span class="attribute">geo</span> $whitelist &#123;</span><br><span class="line">    <span class="attribute">default</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># CIDR in the list below are not limited</span></span><br><span class="line">    &lt;ip&gt;/24 1;</span><br><span class="line">    &lt;ip&gt;/32 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">map</span> $whitelist $limit_key &#123;</span><br><span class="line">    0 $binary_remote_addr;</span><br><span class="line">    1 &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">limit_conn_zone</span> $limit_key zone=addr:<span class="number">10m</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl default_server;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/nginx/ssl/xxx.domain.com.crt;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/nginx/ssl/xxx.domain.com.key;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">map</span> <span class="variable">$http_upgrade</span> <span class="variable">$connection_upgrade</span> &#123;</span><br><span class="line">    <span class="attribute">default</span> upgrade;</span><br><span class="line">    &#x27;&#x27; close;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line"><span class="attribute">geo</span> <span class="variable">$whitelist</span> &#123;</span><br><span class="line">    <span class="attribute">default</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># CIDR in the list below are not limited</span></span><br><span class="line">    &lt;ip&gt;/24 1;</span><br><span class="line">    &lt;ip&gt;/32 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">map</span> <span class="variable">$whitelist</span> <span class="variable">$limit_key</span> &#123;</span><br><span class="line">    0 $binary_remote_addr;</span><br><span class="line">    1 &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">limit_conn_zone</span> <span class="variable">$limit_key</span> zone=addr:<span class="number">10m</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl default_server;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/nginx/ssl/xxx.domain.com.crt;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/nginx/ssl/xxx.domain.com.key;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -87,8 +91,12 @@
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-25T18:41:00.000Z"><a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">25.01.2022</a></time>
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-25T18:41:00.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">25.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
       
       
   
@@ -99,7 +107,7 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <h1 id="…Bad-Owner-or-Permissions-on-username-ssh-config…"><a href="#…Bad-Owner-or-Permissions-on-username-ssh-config…" class="headerlink" title="…Bad Owner or Permissions on username.ssh\config…"></a>…Bad Owner or Permissions on username.ssh\config…</h1><p><code>settings.json</code>‘a (sol altta makaraya tıkla oradan <strong>Settings</strong> tıkla. Açıldıktan sonra sağ üst köşede <strong>Open Settings (JSON)</strong> iconuna tıkla) aşağıdaki satırı ekle.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">&quot;remote.SSH.configFile&quot;</span>: <span class="string">&quot;C:\\\\Users\\\\&lt;username&gt;\\\\.ssh\\\\config&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attr">&quot;remote.SSH.configFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\\\Users\\\\&lt;username&gt;\\\\.ssh\\\\config&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -112,123 +120,57 @@
   </div>
 </article>
 
-  <article id="post-ssl-sertifika-islemleri" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-22T18:55:29.000Z"><a href="/2022/01/22/ssl-sertifika-islemleri/">22.01.2022</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a></h1>
-  
 
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Private-Key-ve-CSR"><a href="#Private-Key-ve-CSR" class="headerlink" title="Private Key ve CSR"></a>Private Key ve CSR</h1><p>Sertifika satın alma işlemi öncesi key ve csr dosyaları üretilir. Üretilen csr kullanılarak satın alma işlemi yapılır. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ openssl genrsa -out /path/to/www_server_com.key 2048</span><br><span class="line">$ openssl req -new -key /path/to/www_server_com.key -out /path/to/www_server_com.csr</span><br></pre></td></tr></table></figure>
+ 
 
-<h1 id="Satin-Alma"><a href="#Satin-Alma" class="headerlink" title="Satın Alma"></a>Satın Alma</h1><p>Farklı web/http sunucusularına göre satın alınan sertifika dosyaları kullanılır. Temelde mantık sertifika dosyalarının paketlenmesidir(bundle). Satın alınan türe(DV, OV, EV) göre bundle(paket) dosya oluşturulur. Bu yazıda sık kullanılan crt ve pfx formatına değinilecektir. </p>
+<nav id="paginationWrapper">
+  <ul id="pagination">
+    
+    
+    
       
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2022/01/22/ssl-sertifika-islemleri/#more" class="more-link">Daha fazla oku</a>
-          </div>
+        <li class="page-number"><a id="num1" href="/">1</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-mongodb-faydali-bilgiler" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-22T18:43:33.000Z"><a href="/2022/01/22/mongodb-faydali-bilgiler/">22.01.2022</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h1><p>Veritabanı yapılandırmasına bağlı olarak 2 farklı yöntem vardır.</p>
-<h2 id="Kimlik-Dogrulamali"><a href="#Kimlik-Dogrulamali" class="headerlink" title="Kimlik Doğrulamalı"></a>Kimlik Doğrulama<u>lı</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --username=&lt;DB_KULLANICI_ADI&gt; --authenticationDatabase=<span class="string">&quot;&lt;DB_ADI_1&gt;&quot;</span> --db &lt;DB_ADI&gt; -c &lt;KOLESIYON_ADI&gt; --out &lt;DOSYA_PATH&gt;.json</span><br></pre></td></tr></table></figure>
-<h2 id="Kimlik-Dogrulamasiz"><a href="#Kimlik-Dogrulamasiz" class="headerlink" title="Kimlik Doğrulamasız"></a>Kimlik Doğrulama<u>sız</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --db &lt;DB_ADI&gt; -c &lt;KOLESIYON_ADI&gt; --out &lt;DOSYA_PATH&gt;.json</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2022/01/22/mongodb-faydali-bilgiler/#more" class="more-link">Daha fazla oku</a>
-          </div>
+        <li class="page-number"><a id="num2" href="/page/2">2</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-lvm-disk-genislet" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
       
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2022-01-22T18:16:29.000Z"><a href="/2022/01/22/lvm-disk-genislet/">22.01.2022</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2022/01/22/lvm-disk-genislet/">LVM Disk Genişlet</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>LVM disk genişletme (LVM Extend) işleminde 2 farklı yöntemden bahsedicem. Ubuntu işletim sisteminde partition tanımı sınırlıdır. Yöntemlerden birinde yeni partition yaratarak extend işlemi yapılır. Diğer yöntemde ise mevcut partition silinip yeniden oluşturularak extend işlemi yapılır.</p>
-<h4 id="sda4-partition-dev-sda4-volume-ve-dev-root-vg-root-volume-group-icin-islem-yapilmaktadir"><a href="#sda4-partition-dev-sda4-volume-ve-dev-root-vg-root-volume-group-icin-islem-yapilmaktadir" class="headerlink" title="sda4 partition, /dev/sda4 volume ve /dev/root-vg/root volume group için işlem yapılmaktadır."></a><code>sda4</code> partition, <code>/dev/sda4</code> volume ve <code>/dev/root-vg/root</code> volume group için işlem yapılmaktadır.</h4><h1 id="Yontem-1"><a href="#Yontem-1" class="headerlink" title="Yöntem 1"></a>Yöntem 1</h1><p><code>sda4</code> partition’u sil ve free space ile birleştirek yeni bir partition yarat.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cfdisk</span><br></pre></td></tr></table></figure>
-
-<p>İşletim sisteminin partition tablosunu yeniden okumasını sağla.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ partprobe</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2022/01/22/lvm-disk-genislet/#more" class="more-link">Daha fazla oku</a>
-          </div>
+        <li class="page-number"><a id="num3" href="/page/3">3</a></li>
         
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+      
+        <li class="page-number"><a id="num4" href="/page/4">4</a></li>
+        
+        
+      
+      
+        <li class="page-number"><a id="num5" href="/page/5">5</a></li>
+        
+        
+           <li>...</li> 
+          <li class="page-number"><a id="num11" href="/page/11">11</a></li>
+        
+      
 
-
-<nav id="pagination">
-  
-  
-    <a href="/page/2/" class="alignright next">İleri</a>
-  
+       <li><a href="/page/2/">»</a></li> 
+  </ul>
   <div class="clearfix"></div>
-</nav></div></div>
+</nav>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+  <script>
+    (function($) {
+      var pageNumber = (window.location.pathname.match(/\d/g) || []).join("")
+      $("#num" + (pageNumber || "1")).addClass("active")
+    })(jQuery)
+  </script></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search widget">
   <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
@@ -252,7 +194,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Kategoriler</h3>
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small></li>
@@ -269,7 +215,11 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Etiketler</h3>
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
   <ul class="entry">
   
     <li><a href="/tags/apache/">apache</a><small>1</small></li>
@@ -316,7 +266,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin
+  &copy; 2022 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div></footer>
