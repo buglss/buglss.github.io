@@ -473,7 +473,7 @@ article footer a:hover {
   text-decoration: none;
 }
 article footer a:before {
-  font: 1.1em FontAwesome;
+  font: 0.9em FontAwesome;
   padding-right: 10px;
   vertical-align: middle;
 }
