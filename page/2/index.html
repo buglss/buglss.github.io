@@ -47,37 +47,41 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article id="post-ssl-sertifika-islemleri" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-ubuntu-icin-docker-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2022-01-22T18:55:29.000Z">
+        <time class="dt-published" datetime="2022-01-21T18:40:50.000Z">
           <span class="icon"></span> 
-          <a href="/2022/01/22/ssl-sertifika-islemleri/">22.01.2022</a>
+          <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">21.01.2022</a>
           <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
         </time>
       
       
   
-    <h1 class="title"><a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a></h1>
+    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-docker-kurulumu/">Ubuntu için Docker Kurulumu</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="Private-Key-ve-CSR"><a href="#Private-Key-ve-CSR" class="headerlink" title="Private Key ve CSR"></a>Private Key ve CSR</h1><p>Sertifika satın alma işlemi öncesi key ve csr dosyaları üretilir. Üretilen csr kullanılarak satın alma işlemi yapılır. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ openssl genrsa -out /path/to/www_server_com.key 2048</span><br><span class="line">$ openssl req -new -key /path/to/www_server_com.key -out /path/to/www_server_com.csr</span><br></pre></td></tr></table></figure>
+        <h1 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h1><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
 
-<h1 id="Satin-Alma"><a href="#Satin-Alma" class="headerlink" title="Satın Alma"></a>Satın Alma</h1><p>Farklı web/http sunucusularına göre satın alınan sertifika dosyaları kullanılır. Temelde mantık sertifika dosyalarının paketlenmesidir(bundle). Satın alınan türe(DV, OV, EV) göre bundle(paket) dosya oluşturulur. Bu yazıda sık kullanılan crt ve pfx formatına değinilecektir. </p>
+<h1 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h1><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h1 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h1><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2022/01/22/ssl-sertifika-islemleri/#more" class="more-link">Daha fazla oku</a>
+            <a href="/2022/01/21/ubuntu-icin-docker-kurulumu/#more" class="more-link">Daha fazla oku</a>
           </div>
         
         
@@ -87,37 +91,355 @@
   </div>
 </article>
 
-  <article id="post-mongodb-faydali-bilgiler" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-oyun-gelistirme-el-kitabi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2022-01-22T18:43:33.000Z">
+        <time class="dt-published" datetime="2021-12-26T15:41:02.000Z">
           <span class="icon"></span> 
-          <a href="/2022/01/22/mongodb-faydali-bilgiler/">22.01.2022</a>
-          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+          <a href="/2021/12/26/oyun-gelistirme-el-kitabi/">26.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>12 dakika</strong>  </span>
         </time>
       
       
   
-    <h1 class="title"><a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a></h1>
+    <h1 class="title"><a href="/2021/12/26/oyun-gelistirme-el-kitabi/">Oyun Geliştirme El Kitabı</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h1><p>Veritabanı yapılandırmasına bağlı olarak 2 farklı yöntem vardır.</p>
-<h2 id="Kimlik-Dogrulamali"><a href="#Kimlik-Dogrulamali" class="headerlink" title="Kimlik Doğrulamalı"></a>Kimlik Doğrulama<u>lı</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --username=&lt;DB_KULLANICI_ADI&gt; --authenticationDatabase=<span class="string">&quot;&lt;DB_ADI_1&gt;&quot;</span> --db &lt;DB_ADI&gt; -c &lt;KOLESIYON_ADI&gt; --out &lt;DOSYA_PATH&gt;.json</span><br></pre></td></tr></table></figure>
-<h2 id="Kimlik-Dogrulamasiz"><a href="#Kimlik-Dogrulamasiz" class="headerlink" title="Kimlik Doğrulamasız"></a>Kimlik Doğrulama<u>sız</u></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --db &lt;DB_ADI&gt; -c &lt;KOLESIYON_ADI&gt; --out &lt;DOSYA_PATH&gt;.json</span><br></pre></td></tr></table></figure>
+        <p>Oyun geliştirme sürecinde rol alan kişileri anlatmaya çalıştım.</p>
+<h2 id="Basliklar"><a href="#Basliklar" class="headerlink" title="Başlıklar:"></a>Başlıklar:</h2><ol>
+<li><a href="#1-Yapimci">Yapımcı</a></li>
+<li><a href="#2-Senarist">Senarist</a></li>
+<li><a href="#3-Konsept-Sanatcisi">Konsept Sanatçısı</a></li>
+<li><a href="#4-Oyun-Tasarimcisi">Oyun Tasarımcısı</a></li>
+<li><a href="#5-3D-Model-Sanatcisi">3D Model Sanatçısı</a></li>
+<li><a href="#6-Doku-Sanatcisi">Doku Sanatçısı</a></li>
+<li><a href="#7-Art-Direktor-Goruntu-Yonetmeni">Art Direktör / Görüntü Yönetmeni</a></li>
+<li><a href="#8-Seviye-Sanatcisi-Level-Designer">Seviye Sanatçısı / Level Designer</a></li>
+<li><a href="#9-GUI-Sanatcisi">GUI Sanatçısı</a></li>
+<li><a href="#10-Animator">Animatör</a></li>
+<li><a href="#11-Programci">Programcı</a></li>
+<li><a href="#12-Backend-Developer">Backend Developer</a></li>
+<li><a href="#13-Ses-ve-Muzik-Ekibi">Ses ve Müzik Ekibi</a></li>
+<li><a href="#14-QA-Tester">QA / Tester</a></li>
+<li><a href="#15-Cevirmen">Çevirmen</a></li>
+</ol>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2022/01/22/mongodb-faydali-bilgiler/#more" class="more-link">Daha fazla oku</a>
+            <a href="/2021/12/26/oyun-gelistirme-el-kitabi/#more" class="more-link">Daha fazla oku</a>
           </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-kurulum-on-hazirlik" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-26T15:25:10.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/26/kurulum-on-hazirlik/">26.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/26/kurulum-on-hazirlik/">Kurulum Ön Hazırlık</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="On-Hazirlik"><a href="#On-Hazirlik" class="headerlink" title="Ön Hazırlık"></a>Ön Hazırlık</h1><p>Ubuntu işletim sistemine kurulum yapmadan önce isteğe bağlı genel bir hazırlık da yapabilirsiniz. Ben kurulumlardan önce bu hazırlık adımını yapmayı tercih ediyorum.</p>
+<p>İşletim sistemindeki paketler güncellenir ve gereksiz paketler otomatik temizlenir. İhtiyaç duyulan geliştirici paketleri kurulur.</p>
+<h2 id="Paketleri-Guncelle-ve-Gereksizleri-Temizle"><a href="#Paketleri-Guncelle-ve-Gereksizleri-Temizle" class="headerlink" title="Paketleri Güncelle ve Gereksizleri Temizle"></a>Paketleri Güncelle ve Gereksizleri Temizle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br><span class="line">$ sudo apt autoremove</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gelistirici-developer-Paketlerini-Kur"><a href="#Gelistirici-developer-Paketlerini-Kur" class="headerlink" title="Geliştirici(developer) Paketlerini Kur"></a>Geliştirici(developer) Paketlerini Kur</h2><p>Geliştirici paketlerini daha önce kurduysanız aşağıdaki komutu çalıştırmanıza gerek yoktur.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install build-essential</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-pm2-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:51:21.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/pm2-faydali/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/pm2-faydali/">pm2 Faydalı Bilgileri</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="node-red-ile-Proses-Baslatma"><a href="#node-red-ile-Proses-Baslatma" class="headerlink" title="node-red ile Proses Başlatma"></a>node-red ile Proses Başlatma</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start --name &lt;proses_adi&gt; node-red -- -u &lt;proje_dizini&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Temel-pm2-Komutlari"><a href="#Temel-pm2-Komutlari" class="headerlink" title="Temel pm2 Komutları"></a>Temel pm2 Komutları</h1><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>Proses listesi.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 <span class="built_in">ls</span> &lt;all|pid|pname&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2021/12/19/pm2-faydali/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-mongodb-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:42:19.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/mongodb-faydali/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/mongodb-faydali/">Mongodb Faydalı Bilgileri</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable/Startup Yapma"></a>Mongodb Servisini Enable/Startup Yapma</h1><p>Enable/Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
+<h2 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
+<p>Enable/Startup olarak ayarla.</p>
+<h2 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2021/12/19/mongodb-faydali/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-ubuntu-icin-mongodb-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:19:15.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>2 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/">Ubuntu için Mongodb Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h1><h2 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h2><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-pm2-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:17:10.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/pm2-kurulum/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/pm2-kurulum/">Nodejs ile pm2 Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="pm2-Kurulumu"><a href="#pm2-Kurulumu" class="headerlink" title="pm2 Kurulumu"></a>pm2 Kurulumu</h1><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p>
+<p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g pm2</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-node-red-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:11:23.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/node-red-kurulum/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/node-red-kurulum/">Nodejs ile node-red Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="node-red-Kurulumu"><a href="#node-red-Kurulumu" class="headerlink" title="node-red Kurulumu"></a>node-red Kurulumu</h1><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p>
+<p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g node-red</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-ubuntu-icin-nodejs-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T14:02:05.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/ubuntu-icin-nodejs-kurulum/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/ubuntu-icin-nodejs-kurulum/">Ubuntu için Nodejs Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Nodejs-Kurulumu"><a href="#Nodejs-Kurulumu" class="headerlink" title="Nodejs Kurulumu"></a>Nodejs Kurulumu</h1><p>Nodejs’i <code>nvm</code> kütüphanesini kullanarak kurucaz.</p>
+<h1 id="nvm-Kurulumu"><a href="#nvm-Kurulumu" class="headerlink" title="nvm Kurulumu"></a>nvm Kurulumu</h1><p>Aşağıdaki komut nvm reposundaki master projeyi indirir. Ardından install.sh dosyasını çalıştırır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>nvm kütüphanesi ile ilgili daha fazla bilgi için: <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">Detay</a></p>
+<h1 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h1><p>Nodejs ve beraberinde npm kurulumu yapılır. Aşağıdaki komut lts versiyonunu kurar.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install --lts</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-wordpress-faydali" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2021-12-19T13:51:07.000Z">
+          <span class="icon"></span> 
+          <a href="/2021/12/19/wordpress-faydali/">19.12.2021</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/12/19/wordpress-faydali/">Wordpress Faydalı Bilgileri</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Wordpress-Veritabani-Yedek-Alma"><a href="#Wordpress-Veritabani-Yedek-Alma" class="headerlink" title="Wordpress Veritabanı Yedek Alma"></a>Wordpress Veritabanı Yedek Alma</h1><p>Aşağıdaki komutu yedeğini almak istediğiniz veritabanı bilgilerine göre doldurarak çalıştırın.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump --add-drop-table -u &lt;veritabani_kullanici_adi&gt; -p &lt;veritabani_adi&gt; &gt; &lt;dosya_adi&gt;.sql</span><br></pre></td></tr></table></figure>
+
+<h1 id="Wordpress-Veritabani-Yedekten-Yukleme"><a href="#Wordpress-Veritabani-Yedekten-Yukleme" class="headerlink" title="Wordpress Veritabanı Yedekten Yükleme"></a>Wordpress Veritabanı Yedekten Yükleme</h1><p>Aşağıdaki komutu yedekten yüklemek istediğiniz veritabanı bilgilerine göre doldurarak çalıştırın.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u &lt;veritabani_kullanici_adi&gt; -p &lt;veritabani_adi&gt; &lt; &lt;dosya_adi&gt;.sql</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
         
         
       
@@ -147,19 +469,6 @@
       
         <li class="page-number"><a id="num3" href="/page/3">3</a></li>
         
-        
-      
-      
-        <li class="page-number"><a id="num4" href="/page/4">4</a></li>
-        
-        
-      
-      
-        <li class="page-number"><a id="num5" href="/page/5">5</a></li>
-        
-        
-           <li>...</li> 
-          <li class="page-number"><a id="num11" href="/page/11">11</a></li>
         
       
 
