@@ -199,9 +199,6 @@ article {
 article .icon:before {
   font: 0.9em FontAwesome;
 }
-article.page {
-  padding-left: 20px;
-}
 article.photo .icon:before {
   content: '\f030';
 }
