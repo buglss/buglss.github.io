@@ -1,0 +1,163 @@
+@import url("//fonts.googleapis.com/css?family=Exo 2:400,400italic");
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: normal;
+  src: url("font/fontawesome-webfont.eot?#iefix") format('embedded-opentype'), url("font/fontawesome-webfont.otf") format('opentype'), url("font/fontawesome-webfont.svg#FontAwesomeRegular") format('svg'), url("font/fontawesome-webfont.ttf") format('truetype'), url("font/fontawesome-webfont.woff") format('woff'), url("font/fontawesome-webfont.woff2") format('woff2');
+}
+.icon:before {
+  font: 0.9em FontAwesome;
+}
+.icon.icon-home:before {
+  content: '\f015';
+}
+.icon.icon-back:before {
+  content: '\f177';
+}
+.text-font {
+  color: #444;
+}
+.text-meta {
+  color: #6f69ac;
+}
+.text-link {
+  color: #258fb8;
+}
+.text-title {
+  color: #fd6f96;
+}
+.text-subtitle {
+  color: #39a6a3;
+}
+.text-light {
+  color: #818181;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'roboto';
+}
+body {
+  height: 100%;
+  width: 100%;
+  user-select: none;
+  overflow-y: hidden;
+  touch-action: none;
+  overscroll-behavior-y: contain;
+}
+h1 {
+  font-size: calc(2em + 1vw);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+p {
+  font-weight: 100;
+  font-size: calc(1em + 0.5vw);
+  text-align: center;
+}
+#wholepage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+}
+section,
+.section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100% - 1.5rem);
+  overflow: hidden;
+  transform: translate(0, 0);
+  transition: transform 0.4s ease-out;
+  margin: 0;
+  padding: 1.5rem 0 0 0;
+}
+.page {
+  flex: 1 0 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, 0);
+  transition: transform 0.4s ease-out;
+}
+.sectionButtonContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  right: 3vw;
+  color: #1e1e1e;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+.sectionButtonContainer label,
+.page_selection label {
+  display: inline-flex;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  margin: 12px 12px;
+  padding: 0px;
+  box-shadow: 0px 0px 8px rgba(0,27,160,0.8);
+  cursor: pointer;
+}
+.sectionButtonContainer label::after,
+.page_selection label::after {
+  content: '';
+  display: inline-flex;
+  position: relative;
+  top: -10px;
+  left: -10px;
+  padding: 12px;
+}
+.sectionButtonContainer input[type=radio]:checked + label::after,
+.page_selection input[type=radio]:checked + label::after {
+  display: none;
+}
+.sectionButtonContainer input[type=radio]:checked + label,
+.page_selection input[type=radio]:checked + label {
+  transform: scale(2.2);
+  transition: transform 0.2s;
+}
+.page_selection {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  bottom: 2vh;
+  left: 40%;
+  color: #1e1e1e;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  z-index: 999999;
+}
+nav.slider-menu {
+  position: fixed;
+  height: 1.5rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #eee;
+  z-index: 999999;
+  line-height: 1.5rem;
+}
+nav.slider-menu ul {
+  list-style: none;
+  margin: 0;
+}
+nav.slider-menu ul li {
+  float: right;
+  margin-right: 24px;
+}
+nav.slider-menu ul li a {
+  text-decoration: none;
+}
+nav.slider-menu ul li:hover * {
+  color: #258fb8;
+}

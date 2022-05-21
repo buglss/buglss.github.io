@@ -5,6 +5,33 @@
   font-weight: normal;
   src: url("font/fontawesome-webfont.eot?#iefix") format('embedded-opentype'), url("font/fontawesome-webfont.otf") format('opentype'), url("font/fontawesome-webfont.svg#FontAwesomeRegular") format('svg'), url("font/fontawesome-webfont.ttf") format('truetype'), url("font/fontawesome-webfont.woff") format('woff'), url("font/fontawesome-webfont.woff2") format('woff2');
 }
+.icon:before {
+  font: 0.9em FontAwesome;
+}
+.icon.icon-home:before {
+  content: '\f015';
+}
+.icon.icon-back:before {
+  content: '\f177';
+}
+.text-font {
+  color: #444;
+}
+.text-meta {
+  color: #6f69ac;
+}
+.text-link {
+  color: #258fb8;
+}
+.text-title {
+  color: #fd6f96;
+}
+.text-subtitle {
+  color: #39a6a3;
+}
+.text-light {
+  color: #818181;
+}
 * {
   margin: 0;
   padding: 0;
@@ -141,6 +168,9 @@ article {
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   background: #fff;
+}
+article .icon:before {
+  font: 0.9em FontAwesome;
 }
 article.page {
   padding-left: 20px;
