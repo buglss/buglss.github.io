@@ -83,8 +83,20 @@ a:hover {
 .alignleft {
   float: left;
 }
+@media screen and (max-width: 600px) {
+  .alignleft {
+    width: 100%;
+    text-align: center;
+  }
+}
 .alignright {
   float: right;
+}
+@media screen and (max-width: 600px) {
+  .alignright {
+    width: 100%;
+    text-align: center;
+  }
 }
 .clearfix {
   zoom: 1;
@@ -135,6 +147,11 @@ a:hover {
   text-shadow: 0 0 1px #fff;
   margin: 2.5rem auto;
 }
+@media screen and (max-width: 600px) {
+  #header {
+    margin: 1rem auto;
+  }
+}
 #header a {
   color: #818181;
 }
@@ -156,14 +173,20 @@ a:hover {
 #header #main-nav {
   font-family: "Exo 2", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+}
+@media screen and (max-width: 600px) {
+  #header #main-nav {
+    border-top: 1px solid #ddd;
+  }
 }
 #header #main-nav ul {
   list-style: none;
 }
 #header #main-nav ul li {
-  float: left;
-  margin-left: 30px;
+  display: inline-block;
+  margin: 0 15px;
 }
 article {
   border-left: 2px solid #6f69ac;
@@ -512,7 +535,7 @@ article footer a:before {
   vertical-align: middle;
 }
 article footer a.more-link:before {
-  content: '\f054';
+  content: '\f065';
 }
 article footer a.comment-link:before {
   content: '\f075';
