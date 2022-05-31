@@ -1,0 +1,709 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"> 
+  
+  <title>cronti.v2 | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin | buglss">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="cronti.v2"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+   
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1DJ08V2W41"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-1DJ08V2W41');
+	</script>
+
+
+  
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9137949280383612"
+     crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+   
+    <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+      <li><a href="/folios">Folyolar</a></li>
+    
+      <li><a href="/npm">npm</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper"><article id="page-" class="h-entry page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">cronti.v2</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <nav id="main-nav" class="alignright">
+    <ul>
+        <li><a href="/npm/cronti/" class="tooltip" data-tip="cronti sayfasına dön"><i class="icon icon-back"></i></a></li>
+        <li><a href="/npm/cronti/v2/">İngilizce</a></li>
+        <li><a href="/npm/cronti/v2/tr/" class="active">* Türkçe</a></li>
+    </ul>
+</nav>
+<div class="clearfix"></div>
+
+
+<p><img src="https://img.shields.io/badge/nodejs-43853d?logo=nodedotjs&labelColor=fff" alt="nodejs"> <img src="https://img.shields.io/badge/npm-bc2c32?logo=npm&labelColor=fff" alt="npm"> <img src="https://img.shields.io/badge/javascript-e9d961?logo=javascript&labelColor=000" alt="javascript"> <img src="https://img.shields.io/badge/mocha-8d6849?logo=mocha&labelColor=fff" alt="mocha"> <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-red" alt="License"></a> <a target="_blank" rel="noopener" href="https://snyk.io/test/github/buglss/cronti/"><img src="https://snyk.io/test/github/buglss/cronti/badge.svg" alt="vulnerabilities"></a></p>
+<p><a target="_blank" rel="noopener" href="https://nodei.co/npm/cronti/"><img src="https://nodei.co/npm/cronti.png?downloads=true&downloadRank=true&stars=true" alt="NPM"></a></p>
+<h1 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a>Giriş</h1><p>Zamanlanmış işleri yapmak için crontime ifadelerini bilmeniz gerekir. Ancak bu paket sizi bu zahmetten kurtarıyor. Günlük hayatta kullanılan zamanlama ifadeleri ile crontime ifadeleri oluşturabilirsiniz. Ürettiğiniz bu crontime ifadesini zamanlanmış bir iş oluşturmak için kullanabilirsiniz. Geçerli bir crontime ifadesi döndürülür.</p>
+<p>Herhangi bir cronjob paketi ile veya doğrudan işletim sistemlerinin sunduğu crontab komut setleritle birlikte kullanabilirsiniz. En ilkel komut setleriyle dahi çalışabilir. Çünkü bu paket doğrudan crontime ifadesi döner.</p>
+<p>Projelerinizde çizelgeli, takvimsel işler oluştururken kolaylıkla bir arayüz sunabilirsiniz. İnsanların günlük hayatta kullandıkları dilde plan yapabilecekleri işlevler sunar.</p>
+<p><img src="https://github.com/buglss/cronti/raw/master/assets/crontime_trouble.png" alt="Crontime_Trouble"></p>
+<h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><p>npm ile:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i cronti <span class="comment"># Yerel Kurulum. Özel bir projede kullanmak için.</span></span><br><span class="line">npm i -g cronti <span class="comment"># Global Install. Genel projelerde kullanmak için.</span></span><br></pre></td></tr></table></figure>
+
+<p>Not: Eğer npm versiyonunuz 5.0.0’dan küçükse <code>--save</code> argumanı ekleyin.</p>
+<h1 id="Hizli-Baslangic"><a href="#Hizli-Baslangic" class="headerlink" title="Hızlı Başlangıç"></a>Hızlı Başlangıç</h1><p>Demo’da:</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:4000/npm/cronti/demo/publish/demo.zip?raw=true">Demo projesini indir (zip)</a>. Proje dosyalarını zip’den çıkar. Proje dizinine git. Nodejs ile <code>index.js</code> dosyasını çalıştır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unzip demo.zip</span><br><span class="line"><span class="built_in">cd</span> demo</span><br><span class="line">npm i</span><br><span class="line">npm run demo</span><br></pre></td></tr></table></figure>
+
+<p>NodeJs’de:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Paketi Dahil Et</span></span><br><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* İki tarih arasında düzenli aralıklarla çalışacak bir crontime ifadesi oluşturur. */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onIntervalTime&quot;</span>, <span class="string">&quot;2022-04-25T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-05-15T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onIntervalTime&quot;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-04-25 12:30&quot;</span>), <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-15 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">2</span>, <span class="string">&quot;2022-04-25T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-05-15T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">2</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-04-25 12:30&quot;</span>), <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-15 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 25-15 4-5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Geçerli crontime ifadesi girin crontime ifadesi alın. */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onCrontime&quot;</span>, <span class="string">&quot;0 2 * * *&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">4</span>, <span class="string">&quot;0 2 * * *&quot;</span>)</span><br><span class="line"><span class="comment">/* çıktısı &quot;0 2 * * *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Belirli bir tarihin crontime ifadesini oluşturun. */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDate&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDate&quot;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">5</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">5</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 26 * *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Belirli bir tarihteki güne ait crontime ifadesi oluşturun. */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDay&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDay&quot;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">0</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">0</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 26 5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* month, week, weekDays, time ve tick parametrelerinin çeşitli kombinasyonlarla crontime ifadesi oluşturun. </span></span><br><span class="line"><span class="comment"> * Dikkat! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>)</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 15-21 5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ---------------------------------------------------- */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>, <span class="string">&quot;3WD&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>, <span class="string">&quot;3WD&quot;</span>)</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 18 5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ---------------------------------------------------- */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;3M&quot;</span>, <span class="string">&quot;1WD&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;3M&quot;</span>, <span class="string">&quot;1WD&quot;</span>)</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 * 4 1&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Tarihindeki hafta için crontime ifadesi oluşturur.</span></span><br><span class="line"><span class="comment"> * Dikkat! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onWeek&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onWeek&quot;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">1</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">1</span>, <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* çıktısı &quot;30 12 22-28 5-5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Dokumantasyon"><a href="#Dokumantasyon" class="headerlink" title="Dokümantasyon"></a>Dokümantasyon</h1><ul>
+<li><a href="#Dokumantasyon">Dokümantasyon</a><ul>
+<li><a href="#onIntervalTime">onIntervalTime</a><ul>
+<li><a href="#Girdi">Girdi</a></li>
+<li><a href="#Cikti">Çıktı</a></li>
+<li><a href="#Ornek">Örnek</a></li>
+</ul>
+</li>
+<li><a href="#onCrontime">onCrontime</a><ul>
+<li><a href="#Girdi-1">Girdi</a></li>
+<li><a href="#Cikti-1">Çıktı</a></li>
+<li><a href="#Ornek-1">Örnek</a></li>
+</ul>
+</li>
+<li><a href="#onDate">onDate</a><ul>
+<li><a href="#Girdi-2">Girdi</a></li>
+<li><a href="#Cikti-2">Çıktı</a></li>
+<li><a href="#Ornek-2">Örnek</a></li>
+</ul>
+</li>
+<li><a href="#onDay">onDay</a><ul>
+<li><a href="#Girdi-3">Girdi</a></li>
+<li><a href="#Cikti-3">Çıktı</a></li>
+<li><a href="#Ornek-3">Örnek</a></li>
+</ul>
+</li>
+<li><a href="#onTime">onTime</a><ul>
+<li><a href="#Girdi-4">Girdi</a></li>
+<li><a href="#Cikti-4">Çıktı</a></li>
+<li><a href="#Ornek-4">Örnek</a></li>
+</ul>
+</li>
+<li><a href="#onWeek">onWeek</a><ul>
+<li><a href="#Girdi-5">Girdi</a></li>
+<li><a href="#Cikti-5">Çıktı</a></li>
+<li><a href="#Ornek-5">Örnek</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>cronti</code> fonksiyonu, ilk parametrede metod adını veya dizin değerini alır. Daha sonra sınırsız parametre eklenebilir. Çağrılan metodun fonksiyonuna göre gönderilen parametreler kullanılır.</p>
+<p>cronti(&lt;methodName(string)|methodIndex(number)&gt;, &lt;…args&gt;)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Methods</th>
+<th align="center">Index</th>
+<th align="center">Name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">onDay</td>
+<td align="center">0</td>
+<td align="center">onDay</td>
+<td align="center">Tarihin belirli gününün crontime ifadesini oluşturun</td>
+</tr>
+<tr>
+<td align="center">onWeek</td>
+<td align="center">1</td>
+<td align="center">onWeek</td>
+<td align="center">Tarihin bulunduğu hafta için crontime ifadesi üretir</td>
+</tr>
+<tr>
+<td align="center">onIntervalTime</td>
+<td align="center">2</td>
+<td align="center">onIntervalTime</td>
+<td align="center">İki tarih arasında düzenli aralıklarla çalışacak bir crontime ifadesi oluşturur</td>
+</tr>
+<tr>
+<td align="center">onTime</td>
+<td align="center">3</td>
+<td align="center">onTime</td>
+<td align="center">Ay, hafta, hafta içi, saat, dakika ve tick gibi çeşitli kombinasyonlarla crontime ifadesi oluşturur</td>
+</tr>
+<tr>
+<td align="center">onCrontime</td>
+<td align="center">4</td>
+<td align="center">onCrontime</td>
+<td align="center">Geçerli crontime ifadesi girildiğinde crontime ifadesi döner</td>
+</tr>
+<tr>
+<td align="center">onDate</td>
+<td align="center">5</td>
+<td align="center">onDate</td>
+<td align="center">Belirli bir tarihin crontime ifadesini oluştur</td>
+</tr>
+</tbody></table>
+<h2 id="onIntervalTime"><a href="#onIntervalTime" class="headerlink" title="onIntervalTime"></a>onIntervalTime</h2><p>Başlangıç ve bitiş tarihine göre crontime ifadesi oluşturur. Step parametresine göre iki tarih arasında hangi aralıklarda çalışacağı belirtilir. Step parametresi gün, saat veya dakika olarak kullanılır.</p>
+<p>Parametrelerde 2 tarih değeri olmalıdır. Bu tarihlerin sırası önemli değildir. Daha küçük olan startDate, daha büyük olan endDate olarak kullanılacaktır. Step parametresi için paterne uygun bir string değeri kullanabilirsiniz.</p>
+<h4 id="Girdi"><a href="#Girdi" class="headerlink" title="Girdi"></a>Girdi</h4><table>
+<thead>
+<tr>
+<th align="center">Parametre</th>
+<th align="center">Tip</th>
+<th align="center">Zorunluluk</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">args.&lt;startDate&gt;</td>
+<td align="center">Date</td>
+<td align="center">evet</td>
+<td align="center">Cron başlangıç tarihi</td>
+</tr>
+<tr>
+<td align="center">args.&lt;endDate&gt;</td>
+<td align="center">Date</td>
+<td align="center">evet</td>
+<td align="center">Cron bitiş tarihi</td>
+</tr>
+<tr>
+<td align="center">args.&lt;step&gt;</td>
+<td align="center">String &lt;.d | .h | .m&gt;</td>
+<td align="center">hayır</td>
+<td align="center">Hangi adımlarda çalıştırılacağını belirtir.</td>
+</tr>
+</tbody></table>
+<h4 id="Cikti"><a href="#Cikti" class="headerlink" title="Çıktı"></a>Çıktı</h4><table>
+<thead>
+<tr>
+<th align="center">Tip</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Ornek"><a href="#Ornek" class="headerlink" title="Örnek"></a>Örnek</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onIntervalTime&quot;</span>, <span class="string">&quot;2022-04-25T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-05-15T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">2</span>, <span class="string">&quot;2022-04-25T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-05-15T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 25-15 4-5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onIntervalTime&quot;</span>, <span class="string">&quot;2022-06-10T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-07-20T09:30:00.000Z&quot;</span>, <span class="string">&quot;4d&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">2</span>, <span class="string">&quot;2022-06-10T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-07-20T09:30:00.000Z&quot;</span>, <span class="string">&quot;4d&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 10-20/4 6-7 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onIntervalTime&quot;</span>, <span class="string">&quot;2022-04-01T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-07-05T09:30:00.000Z&quot;</span>, <span class="string">&quot;2h&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">2</span>, <span class="string">&quot;2022-04-01T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-07-05T09:30:00.000Z&quot;</span>, <span class="string">&quot;2h&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 */2 1-5 4-7 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onIntervalTime&quot;</span>, <span class="string">&quot;2022-04-01T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-04-02T09:30:00.000Z&quot;</span>, <span class="string">&quot;30m&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">2</span>, <span class="string">&quot;2022-04-01T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-04-02T09:30:00.000Z&quot;</span>, <span class="string">&quot;30m&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;*/30 12 1-2 4-4 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onCrontime"><a href="#onCrontime" class="headerlink" title="onCrontime"></a>onCrontime</h2><p>Geçerli crontime ifadesi girilirse crontime ifadesi döner. Geçersiz giriş olursa undefined döner.</p>
+<p>Parametrelerde herhangi bir crontime ifadesi kullanılabilir.</p>
+<h4 id="Girdi-1"><a href="#Girdi-1" class="headerlink" title="Girdi"></a>Girdi</h4><table>
+<thead>
+<tr>
+<th align="center">Parametre</th>
+<th align="center">Tip</th>
+<th align="center">Zorunluluk</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">args.&lt;crontime&gt;</td>
+<td align="center">String</td>
+<td align="center">evet</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Cikti-1"><a href="#Cikti-1" class="headerlink" title="Çıktı"></a>Çıktı</h4><table>
+<thead>
+<tr>
+<th align="center">Tip</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Ornek-1"><a href="#Ornek-1" class="headerlink" title="Örnek"></a>Örnek</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onCrontime&quot;</span>, <span class="string">&quot;0 2 * * *&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">4</span>, <span class="string">&quot;0 2 * * *&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;0 2 * * *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onDate"><a href="#onDate" class="headerlink" title="onDate"></a>onDate</h2><p>Girilen tarihin crontime ifadesi oluşturulur. Bu ifadeye göre her ay ve her yıl tekrarlanır.</p>
+<p>Parametre olarak geçerli bir tarih değeri gönderilmelidir.</p>
+<h4 id="Girdi-2"><a href="#Girdi-2" class="headerlink" title="Girdi"></a>Girdi</h4><table>
+<thead>
+<tr>
+<th align="center">Parametre</th>
+<th align="center">Tip</th>
+<th align="center">Zorunluluk</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">args.&lt;date&gt;</td>
+<td align="center">Date</td>
+<td align="center">evet</td>
+<td align="center">Crontime ifadesi için kullanılan tarih</td>
+</tr>
+</tbody></table>
+<h4 id="Cikti-2"><a href="#Cikti-2" class="headerlink" title="Çıktı"></a>Çıktı</h4><table>
+<thead>
+<tr>
+<th align="center">Tip</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Ornek-2"><a href="#Ornek-2" class="headerlink" title="Örnek"></a>Örnek</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDate&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">5</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 26 * *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onDay"><a href="#onDay" class="headerlink" title="onDay"></a>onDay</h2><p>Girilen tarihin crontime ifadesini döndürür. Bu ifadeye göre herr yıl tekrarlanır.<br>Tik değerine göre girilen tarihten önce tetiklenecek olan crontime ifadesi döndürülür.</p>
+<p>Parametre olarak geçerli bir tarih değeri gönderilmelidir. Tick değeri için herhangi bir sayısal değer kullanılabilir.</p>
+<h4 id="Girdi-3"><a href="#Girdi-3" class="headerlink" title="Girdi"></a>Girdi</h4><table>
+<thead>
+<tr>
+<th align="center">Parametre</th>
+<th align="center">Tip</th>
+<th align="center">Zorunluluk</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">args.&lt;date&gt;</td>
+<td align="center">Date</td>
+<td align="center">evet</td>
+<td align="center">Crontime ifadesi için kullanılan tarih</td>
+</tr>
+<tr>
+<td align="center">args.&lt;tick&gt;</td>
+<td align="center">Number</td>
+<td align="center">hayır</td>
+<td align="center">Tarihten çıkarılacak gün sayısı</td>
+</tr>
+</tbody></table>
+<h4 id="Cikti-3"><a href="#Cikti-3" class="headerlink" title="Çıktı"></a>Çıktı</h4><table>
+<thead>
+<tr>
+<th align="center">Tip</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Ornek-3"><a href="#Ornek-3" class="headerlink" title="Örnek"></a>Örnek</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDay&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">0</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 26 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onDay&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">0</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 24 5 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onTime"><a href="#onTime" class="headerlink" title="onTime"></a>onTime</h2><p>month, week, weekDays, time ve tick parametrelerinin çeşitli kombinasyonlarla crontime ifadesi oluşturun. Yalnızca time zorunlu bir değerdir. Tüm crontime ifadeleri bu zaman parametresine göre ayarlanır.<br>tick değerine göre girilen tarihten önce tetiklenecek olan crontime ifadesi döndürülür.</p>
+<ul>
+<li>Sadece month(0..11) ve week(0,1,2,-1) parametresi doldurulursa, haftanın ilk gününden o haftanın son gününe kadar her gün tetiklenecek olan crontime ifadesi oluşturulur.</li>
+<li>Yalnızca month(0..11), week(0,1,2,-1) ve weekDays(0..6) parametreleri doldurulursa, haftanın o günü için crontime ifadesi döndürülür.</li>
+<li>Yalnızca week(0,1,2,-1) parametresi doldurulursa, o hafta boyunca her gün tetiklenecek crontime ifadesi döndürülür. Ayın son haftası için hariç(-1).</li>
+<li>Yalnızca month(0..11) parametresi doldurulursa, o aydaki her gün için crontime ifadesi döndürülür.</li>
+<li>Yalnızca weekDays(0..6) parametresi doldurulursa, her ay bu haftanın günü için (pzt,sl,çrş,prş,cm,cmt,pz) crontime ifadesi döndürülür.</li>
+<li>Yalnızca month(0..11) ve weekDays(0..6) parametreleri doldurulursa, bu ayın bu haftasının günü için crontime ifadesi döndürülür.</li>
+<li>Hiçbir parametre doldurulmazsa, her ayın her günü için crontime ifadesi döndürülür.</li>
+</ul>
+<p>Geçerli bir ay, hafta veya hafta içi parametre değeri gönderilebilir. Paterne göre zaman parametresi gönderilebilir. Tick değeri için herhangi bir sayısal değer kullanılabilir.</p>
+<h4 id="Girdi-4"><a href="#Girdi-4" class="headerlink" title="Girdi"></a>Girdi</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Tip</th>
+<th align="center">Zorunluluk</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">args.&lt;month&gt;</td>
+<td align="center">Number</td>
+<td align="center">hayır</td>
+<td align="center">Crontime ifadesi için ay (0..11)</td>
+</tr>
+<tr>
+<td align="center">args.&lt;week&gt;</td>
+<td align="center">Number</td>
+<td align="center">hayır</td>
+<td align="center">Crontime ifadesi için hafta (0,1,2,-1)</td>
+</tr>
+<tr>
+<td align="center">args.&lt;weekDays&gt;</td>
+<td align="center">Number</td>
+<td align="center">hayır</td>
+<td align="center">Crontime ifadesi için haftanın günleri (0..6)</td>
+</tr>
+<tr>
+<td align="center">args.&lt;time&gt;</td>
+<td align="center">String &lt;dd:mm&gt;</td>
+<td align="center">hayır</td>
+<td align="center">Crontime ifadesi için zaman(gg:dd)</td>
+</tr>
+<tr>
+<td align="center">args.&lt;tick&gt;</td>
+<td align="center">Number</td>
+<td align="center">hayır</td>
+<td align="center">Tarihten çıkarılacak gün sayısı. Ay ve hafta parametreleri olmak zorundadır</td>
+</tr>
+</tbody></table>
+<h4 id="Cikti-4"><a href="#Cikti-4" class="headerlink" title="Çıktı"></a>Çıktı</h4><table>
+<thead>
+<tr>
+<th align="center">Tip</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Ornek-4"><a href="#Ornek-4" class="headerlink" title="Örnek"></a>Örnek</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 15-21 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>, <span class="string">&quot;3WD&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>, <span class="string">&quot;3WD&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 18 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;0W&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;0W&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 1-7 * *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;2M&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;2M&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * 3 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;6WD&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;6WD&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * * 6&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;3M&quot;</span>, <span class="string">&quot;1WD&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;3M&quot;</span>, <span class="string">&quot;1WD&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * 4 1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * * *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>, <span class="number">1</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;4M&quot;</span>, <span class="string">&quot;2W&quot;</span>, <span class="number">1</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 14-21 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! Crontime ifadesi oluşturuldukları zamana göre değişir. Test edilme zamanı 27.05.2022&#x27;dir.</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onTime&quot;</span>, <span class="string">&quot;2M&quot;</span>, <span class="string">&quot;09:45&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">3</span>, <span class="string">&quot;2M&quot;</span>, <span class="string">&quot;09:45&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;45 09 * 3 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onWeek"><a href="#onWeek" class="headerlink" title="onWeek"></a>onWeek</h2><p>Girilen tarihin haftasında, her gün tetiklenecek olan crontime ifadesi oluşturur.<br>tick değerine göre girilen tarihten önce tetiklenecek olan crontime ifadesi döndürülür.</p>
+<p>Parametre olarak geçerli bir tarih değeri gönderilmelidir. Tik değeri için herhangi bir sayısal değer kullanılabilir.</p>
+<h4 id="Girdi-5"><a href="#Girdi-5" class="headerlink" title="Girdi"></a>Girdi</h4><table>
+<thead>
+<tr>
+<th align="center">Parametre</th>
+<th align="center">Tip</th>
+<th align="center">Zorunluluk</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">args.&lt;date&gt;</td>
+<td align="center">Date</td>
+<td align="center">evet</td>
+<td align="center">Crontime ifadesi için haftanın tarihi</td>
+</tr>
+<tr>
+<td align="center">args.&lt;tick&gt;</td>
+<td align="center">Number</td>
+<td align="center">hayır</td>
+<td align="center">Tarihten çıkarılacak gün sayıs</td>
+</tr>
+</tbody></table>
+<h4 id="Cikti-5"><a href="#Cikti-5" class="headerlink" title="Çıktı"></a>Çıktı</h4><table>
+<thead>
+<tr>
+<th align="center">Tip</th>
+<th align="center">Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime ifadesi</td>
+</tr>
+</tbody></table>
+<h4 id="Ornek-5"><a href="#Ornek-5" class="headerlink" title="Örnek"></a>Örnek</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onWeek&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">1</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 22-28 5-5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">cronti</span>(<span class="string">&quot;onWeek&quot;</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">/* - VEYA - */</span></span><br><span class="line"><span class="title function_">cronti</span>(<span class="number">1</span>, <span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 20-28 5-5 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Yazarlar"><a href="#Yazarlar" class="headerlink" title="Yazarlar"></a>Yazarlar</h1><p>Bakımını Yapanlar:</p>
+<ul>
+<li>Levent Sencer Şahin : <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/buglss/">LinkedIn:@buglss</a> | <a href="https://buglss.github.io/">Blog:@buglss</a> | <a target="_blank" rel="noopener" href="https://www.facebook.com/buglss">Facebook:@buglss</a> | <a target="_blank" rel="noopener" href="https://twitter.com/buglss">Twitter:@buglss</a> | <a target="_blank" rel="noopener" href="https://www.instagram.com/buglss">Instagram:@buglss</a></li>
+</ul>
+<h1 id="Telif-Hakki-ve-Lisans"><a href="#Telif-Hakki-ve-Lisans" class="headerlink" title="Telif Hakkı ve Lisans"></a>Telif Hakkı ve Lisans</h1><p>Telif hakkı Levent Sencer Şahin ve diğer katkıda bulunanlar, <a target="_blank" rel="noopener" href="https://github.com/buglss/cronti/blob/master/LICENSE">GPL-3.0</a> kapsamında.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+      <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  <div class="social widget">
+    <h3 class="title">
+        <span class="icon icon-social"></span>
+        Sosyal Medya
+    </h3>
+    <ul class="inline-list">
+        <li><a class="tooltip" data-tip="https://www.linkedin.com/in/buglss" target="_blank" href="https://www.linkedin.com/in/buglss"><i class="icon icon-linkedin"></i></a></li>
+        <li><a class="tooltip" data-tip="https://github.com/buglss" target="_blank" href="https://github.com/buglss"><i class="icon icon-github"></i></a></li>
+        <li><a class="tooltip" data-tip="l.sencer.sahin@gmail.com" target="_blank" href="mailto:l.sencer.sahin@gmail.com"><i class="icon icon-envelope"></i></a></li>
+        <li><a class="tooltip" data-tip="https://www.facebook.com/buglss" target="_blank" href="https://www.facebook.com/buglss"><i class="icon icon-facebook"></i></a></li>
+        <li><a class="tooltip" data-tip="https://twitter.com/buglss" target="_blank" href="https://twitter.com/buglss"><i class="icon icon-twitter"></i></a></li>
+        <li><a class="tooltip" data-tip="https://www.instagram.com/buglss" target="_blank" href="https://www.instagram.com/buglss"><i class="icon icon-instagram"></i></a></li>
+    </ul>
+</div>
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">
+    <span class="icon icon-cloud"></span>
+    Etiket Bulutu</h3>
+  <div class="entry">
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">
+    <i class="icon icon-arrow-up"></i>
+    Son Gönderiler
+  </h3>
+  <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/25/nginx-reverse-proxy/">Nginx Reverse Proxy</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/lvm-disk-genislet/">LVM Disk Genişlet</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Kurulum/">Kurulum</a><small>9</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Wiki/">Wiki</a><small>2</small>
+    </li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/apache/">apache</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/docker/">docker</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/gitlab/">gitlab</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/lvm/">lvm</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mongodb/">mongodb</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mysql/">mysql</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/nginx/">nginx</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/node-red/">node-red</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/nodejs/">nodejs</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/oAuth/">oAuth</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/oyun/">oyun</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/php/">php</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/pm2/">pm2</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ssl/">ssl</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ubuntu/">ubuntu</a><small>11</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/vscode/">vscode</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/windows/">windows</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/wordpress/">wordpress</a><small>2</small>
+    </li>
+  
+  </ul>
+</div>
+
+</aside>
+      <div class="clearfix"></div>
+    </div>
+    <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin | buglss
+  
+</div>
+<div class="clearfix"></div></footer>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+   
+</body>
+</html>

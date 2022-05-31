@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"> 
+  
+  <title>cronti.v1 | Yazılarım</title>
+  <meta name="author" content="Levent Sencer Şahin | buglss">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="cronti.v1"/>
+  <meta property="og:site_name" content="Yazılarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+   
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1DJ08V2W41"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-1DJ08V2W41');
+	</script>
+
+
+  
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9137949280383612"
+     crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+   
+    <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yazılarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+      <li><a href="/folios">Folyolar</a></li>
+    
+      <li><a href="/npm">npm</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper"><article id="page-" class="h-entry page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">cronti.v1</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <nav id="main-nav" class="alignright">
+    <ul>
+        <li><a href="/npm/cronti/" class="tooltip" data-tip="back to cronti page"><i class="icon icon-back"></i></a></li>
+        <li><a href="/npm/cronti/v1/" class="active">* English</a></li>
+        <li><a href="/npm/cronti/v1/tr/">Turkish</a></li>
+    </ul>
+</nav>
+<div class="clearfix"></div>
+
+<p><img src="https://img.shields.io/badge/nodejs-43853d?logo=nodedotjs&labelColor=fff" alt="nodejs"> <img src="https://img.shields.io/badge/npm-bc2c32?logo=npm&labelColor=fff" alt="npm"> <img src="https://img.shields.io/badge/javascript-e9d961?logo=javascript&labelColor=000" alt="javascript"> <img src="https://img.shields.io/badge/mocha-8d6849?logo=mocha&labelColor=fff" alt="mocha"> <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-red" alt="License"></a> <a target="_blank" rel="noopener" href="https://snyk.io/test/github/buglss/cronti/"><img src="https://snyk.io/test/github/buglss/cronti/badge.svg" alt="vulnerabilities"></a></p>
+<p><a target="_blank" rel="noopener" href="https://nodei.co/npm/cronti/"><img src="https://nodei.co/npm/cronti.png?downloads=true&downloadRank=true&stars=true" alt="NPM"></a></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>You need to know crontime expression to do scheduled jobs. However, this package saves you this trouble. You can create crontime expressions with timing expressions used in daily life. You can use this generated crontime expression to create a scheduled job. A valid crontime expression is returned.</p>
+<p>You can use it with any cronjob package or directly with the crontab command sets provided by the operating systems. It can work with even the most primitive instruction sets. Because this package directly returns the crontime expression.</p>
+<p>You can easily present an interface when creating scheduled and calendar works in your projects. It offers functions where people can make plans in the language they use in daily life.</p>
+<p><img src="https://github.com/buglss/cronti/raw/master/assets/crontime_trouble.png" alt="Crontime_Trouble"></p>
+<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>Using npm:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i cronti <span class="comment"># Locale Install. For use in spesific project.</span></span><br><span class="line">npm i -g cronti <span class="comment"># Global Install. For use in general projects.</span></span><br></pre></td></tr></table></figure>
+
+<p>Note: add <code>--save</code> if you are using npm &lt; 5.0.0</p>
+<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><p>In Demo:</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:4000/npm/cronti/demo/publish/demo.zip?raw=true">Demo project download (rar)</a>. Extract the project files from rar. Go to project directory. Execute <code>index.js</code> file by <strong>nodejs</strong>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unrar e demo.rar</span><br><span class="line"><span class="built_in">cd</span> demo</span><br><span class="line">npm i</span><br><span class="line">npm run demo</span><br></pre></td></tr></table></figure>
+
+<p>In NodeJs:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Include Package</span></span><br><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Creates a crontime expression that will run at regular intervals between two dates. */</span></span><br><span class="line">cronti.<span class="title function_">intervalTime</span>(<span class="string">&quot;2022-04-25T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-05-15T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - OR - */</span></span><br><span class="line">cronti.<span class="title function_">intervalTime</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-04-25 12:30&quot;</span>), <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-15 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* returns &quot;30 12 25-15 4-5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Enter valid crontime expression get crontime expression. */</span></span><br><span class="line">cronti.<span class="title function_">onCrontime</span>(<span class="string">&quot;0 2 * * *&quot;</span>)</span><br><span class="line"><span class="comment">/* returns &quot;0 2 * * *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Generate crontime expression of the spesific date. */</span></span><br><span class="line">cronti.<span class="title function_">onDate</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - OR - */</span></span><br><span class="line">cronti.<span class="title function_">onDate</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* returns &quot;30 12 26 * *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Generate crontime expression of the spesific day of date. */</span></span><br><span class="line">cronti.<span class="title function_">onDay</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - OR - */</span></span><br><span class="line">cronti.<span class="title function_">onDay</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* returns &quot;30 12 26 5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Create crontime with various combinations of month, week, weekdays, time and tick parameters.  </span></span><br><span class="line"><span class="comment"> * Attention! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">4</span>, <span class="attr">week</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="comment">/* returns &quot;30 12 15-21 5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ---------------------------------------------------- */</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">4</span>, <span class="attr">week</span>: <span class="number">2</span>, <span class="attr">weekDays</span>: <span class="number">3</span>&#125;)</span><br><span class="line"><span class="comment">/* returns &quot;30 12 18 5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ---------------------------------------------------- */</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">3</span>, <span class="attr">weekDays</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">/* returns &quot;30 12 * 4 1&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Generates the cron time for the week the date is in.</span></span><br><span class="line"><span class="comment"> * Attention! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">cronti.<span class="title function_">onWeek</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">/* - OR - */</span></span><br><span class="line">cronti.<span class="title function_">onWeek</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;2022-05-26 12:30&quot;</span>))</span><br><span class="line"><span class="comment">/* returns &quot;30 12 22-28 5-5 *&quot; */</span></span><br><span class="line"><span class="comment">/* ************************************************************************ */</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h1><ul>
+<li><a href="#Documentation">Documentation</a><ul>
+<li><a href="#onIntervalTime">onIntervalTime</a><ul>
+<li><a href="#Input">Input</a></li>
+<li><a href="#Output">Output</a></li>
+<li><a href="#Example">Example</a></li>
+</ul>
+</li>
+<li><a href="#oncrontime">onCrontime</a><ul>
+<li><a href="#Input-1">Input</a></li>
+<li><a href="#Output-1">Output</a></li>
+<li><a href="#Example-1">Example</a></li>
+</ul>
+</li>
+<li><a href="#ondate">onDate</a><ul>
+<li><a href="#Input-2">Input</a></li>
+<li><a href="#Output-2">Output</a></li>
+<li><a href="#Example-2">Example</a></li>
+</ul>
+</li>
+<li><a href="#onday">onDay</a><ul>
+<li><a href="#Input-3">Input</a></li>
+<li><a href="#Output-3">Output</a></li>
+<li><a href="#Example-3">Example</a></li>
+</ul>
+</li>
+<li><a href="#ontime">onTime</a><ul>
+<li><a href="#Input-4">Input</a></li>
+<li><a href="#Output-4">Output</a></li>
+<li><a href="#Example-4">Example</a></li>
+</ul>
+</li>
+<li><a href="#onweek">onWeek</a><ul>
+<li><a href="#Input-5">Input</a></li>
+<li><a href="#Output-5">Output</a></li>
+<li><a href="#Example-5">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="intervalTime"><a href="#intervalTime" class="headerlink" title="intervalTime"></a>intervalTime</h2><p>Creates crontime expression based on start and end date. According to step parameter, it is specified in which intervals it will work between two dates. The step parameter is used in days, hours or minutes.</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Type</th>
+<th align="center">Required</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">startDate</td>
+<td align="center">Date</td>
+<td align="center">true</td>
+<td align="center">Cron start date</td>
+</tr>
+<tr>
+<td align="center">endDate</td>
+<td align="center">Date</td>
+<td align="center">true</td>
+<td align="center">Cron end date</td>
+</tr>
+<tr>
+<td align="center">step</td>
+<td align="center">String &lt;.d | .h | .m&gt;</td>
+<td align="center">false</td>
+<td align="center">Specifies at what steps to run.</td>
+</tr>
+</tbody></table>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">intervalTime</span>(<span class="string">&quot;2022-04-25T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-05-15T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 25-15 4-5 *&quot;</span></span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">intervalTime</span>(<span class="string">&quot;2022-06-10T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-07-20T09:30:00.000Z&quot;</span>, <span class="string">&quot;4d&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 10-20/4 6-7 *&quot;</span></span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">intervalTime</span>(<span class="string">&quot;2022-04-01T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-07-05T09:30:00.000Z&quot;</span>, <span class="string">&quot;2h&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 */2 1-5 4-7 *&quot;</span></span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">intervalTime</span>(<span class="string">&quot;2022-04-01T09:30:00.000Z&quot;</span>, <span class="string">&quot;2022-04-02T09:30:00.000Z&quot;</span>, <span class="string">&quot;30m&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;*/30 12 1-2 4-4 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onCrontime"><a href="#onCrontime" class="headerlink" title="onCrontime"></a>onCrontime</h2><p>Returns the crontime expression of the valid crontime expression. Returns undefined if invalid crontime expression.</p>
+<h4 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Type</th>
+<th align="center">Required</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">crontime</td>
+<td align="center">String</td>
+<td align="center">true</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h4><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">onCrontime</span>(<span class="string">&quot;0 2 * * *&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;0 2 * * *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onDate"><a href="#onDate" class="headerlink" title="onDate"></a>onDate</h2><p>Returns the crontime expression of the entered date value, repeated every month and every year by this expression.</p>
+<h4 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Type</th>
+<th align="center">Required</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">date</td>
+<td align="center">Date</td>
+<td align="center">true</td>
+<td align="center">Used date for crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h4><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">onDate</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 26 * *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onDay"><a href="#onDay" class="headerlink" title="onDay"></a>onDay</h2><p>Returns the crontime expression of the entered date value, repeated every year by this expression.<br>The crontime expression that will be triggered before the entered date according to the tick value is returned.</p>
+<h4 id="Input-3"><a href="#Input-3" class="headerlink" title="Input"></a>Input</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Type</th>
+<th align="center">Required</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">date</td>
+<td align="center">Date</td>
+<td align="center">true</td>
+<td align="center">Used date for crontime expression</td>
+</tr>
+<tr>
+<td align="center">tick</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">The number of days to subtract from the date</td>
+</tr>
+</tbody></table>
+<h4 id="Output-3"><a href="#Output-3" class="headerlink" title="Output"></a>Output</h4><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example"></a>Example</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">onDay</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 26 5 *&quot;</span></span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">onDay</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 24 5 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onTime"><a href="#onTime" class="headerlink" title="onTime"></a>onTime</h2><p>Create crontime with various combinations of month, week, weekdays, time and tick parameters. Only time is a mandatory value. All crontime expressions are set according to this time parameter.<br>The crontime expression that will be triggered before the entered date according to the tick value is returned.</p>
+<ul>
+<li>If only the month(0..11) and week(0,1,2,-1) parameter is filled, the crontime expression that will be triggered every day from the first day of the week to the last day of that week is returned.</li>
+<li>If only the month(0..11), week(0,1,2,-1) and weekdays(0..6) parameters are populated, the crontime expression for that weekday is returned.</li>
+<li>If only the week(0,1,2,-1) parameter is populated, the crontime expression that will be triggered every day during that week is returned. Except for the last week of the month(-1).</li>
+<li>If only the month(0..11) parameter is populated, the crontime expression is returned for each day in that month.</li>
+<li>If only the weekdays(0..6) parameter is populated, the crontime expression is returned for this weekday every month.</li>
+<li>If only the month(0..11) and weekdays(0..6) parameters are populated, the crontime expression is returned for these weekdays of this month.</li>
+<li>If no parameters are filled in, the crontime expression is returned for each day of each month.</li>
+</ul>
+<h4 id="Input-4"><a href="#Input-4" class="headerlink" title="Input"></a>Input</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Type</th>
+<th align="center">Required</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">options (destructuring param)</td>
+<td align="center">Object</td>
+<td align="center">true</td>
+<td align="center">Options</td>
+</tr>
+<tr>
+<td align="center">options.month</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">Month(0..11) for crontime expression</td>
+</tr>
+<tr>
+<td align="center">options.week</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">Week(0,1,2,-1) for crontime expression</td>
+</tr>
+<tr>
+<td align="center">options.weekDays</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">Weekdays(0..6) for crontime expression</td>
+</tr>
+<tr>
+<td align="center">options.time</td>
+<td align="center">String &lt;dd:mm&gt;</td>
+<td align="center">false</td>
+<td align="center">Time(dd:mm) for crontime expression</td>
+</tr>
+<tr>
+<td align="center">options.tick</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">The number of days to subtract from the date. Month and week required parameters for tick</td>
+</tr>
+</tbody></table>
+<h4 id="Output-4"><a href="#Output-4" class="headerlink" title="Output"></a>Output</h4><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example"></a>Example</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">4</span>, <span class="attr">week</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 15-21 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">4</span>, <span class="attr">week</span>: <span class="number">2</span>, <span class="attr">weekDays</span>: <span class="number">3</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 18 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">week</span>: <span class="number">0</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 1-7 * *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * 3 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">weekDays</span>: <span class="number">6</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * * 6&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">3</span>, <span class="attr">weekDays</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * 4 1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 * * *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">4</span>, <span class="attr">week</span>: <span class="number">2</span>, <span class="attr">tick</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 14-21 5 *&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! The crontime expression change according to the time they were created. The time to be tested is 27.05.2022.</span></span><br><span class="line">cronti.<span class="title function_">onTime</span>(&#123;<span class="attr">month</span>: <span class="number">2</span>, <span class="attr">time</span>: <span class="string">&quot;09:45&quot;</span>&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;45 09 * 3 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="onWeek"><a href="#onWeek" class="headerlink" title="onWeek"></a>onWeek</h2><p>The crontime expression that will be triggered every day of the week that the entered date is in returns.<br>The crontime expression that will be triggered before the entered date based on the tick value is returned.</p>
+<h4 id="Input-5"><a href="#Input-5" class="headerlink" title="Input"></a>Input</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Type</th>
+<th align="center">Required</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">date</td>
+<td align="center">Date</td>
+<td align="center">true</td>
+<td align="center">Date of the week for crontime expression</td>
+</tr>
+<tr>
+<td align="center">tick</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">The number of days to subtract from the date</td>
+</tr>
+</tbody></table>
+<h4 id="Output-5"><a href="#Output-5" class="headerlink" title="Output"></a>Output</h4><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">Crontime expression</td>
+</tr>
+</tbody></table>
+<h4 id="Example-5"><a href="#Example-5" class="headerlink" title="Example"></a>Example</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cronti = <span class="built_in">require</span>(<span class="string">&quot;cronti&quot;</span>)</span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">onWeek</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 22-28 5-5 *&quot;</span></span><br><span class="line"></span><br><span class="line">cronti.<span class="title function_">onWeek</span>(<span class="string">&quot;2022-05-26T09:30:00.000Z&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// =&gt; &quot;30 12 20-28 5-5 *&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Authors"><a href="#Authors" class="headerlink" title="Authors"></a>Authors</h1><p>It is maintained by:</p>
+<ul>
+<li>Levent Sencer Şahin : <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/buglss/">LinkedIn:@buglss</a> | <a href="https://buglss.github.io/">Blog:@buglss</a> | <a target="_blank" rel="noopener" href="https://www.facebook.com/buglss">Facebook:@buglss</a> | <a target="_blank" rel="noopener" href="https://twitter.com/buglss">Twitter:@buglss</a> | <a target="_blank" rel="noopener" href="https://www.instagram.com/buglss">Instagram:@buglss</a></li>
+</ul>
+<h1 id="Copyright-And-License"><a href="#Copyright-And-License" class="headerlink" title="Copyright And License"></a>Copyright And License</h1><p>Copyright Levent Sencer Şahin and other contributors, under <a target="_blank" rel="noopener" href="https://github.com/buglss/cronti/blob/master/LICENSE">the GPL-3.0</a>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+      <aside id="sidebar" class="alignright">
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  <div class="social widget">
+    <h3 class="title">
+        <span class="icon icon-social"></span>
+        Sosyal Medya
+    </h3>
+    <ul class="inline-list">
+        <li><a class="tooltip" data-tip="https://www.linkedin.com/in/buglss" target="_blank" href="https://www.linkedin.com/in/buglss"><i class="icon icon-linkedin"></i></a></li>
+        <li><a class="tooltip" data-tip="https://github.com/buglss" target="_blank" href="https://github.com/buglss"><i class="icon icon-github"></i></a></li>
+        <li><a class="tooltip" data-tip="l.sencer.sahin@gmail.com" target="_blank" href="mailto:l.sencer.sahin@gmail.com"><i class="icon icon-envelope"></i></a></li>
+        <li><a class="tooltip" data-tip="https://www.facebook.com/buglss" target="_blank" href="https://www.facebook.com/buglss"><i class="icon icon-facebook"></i></a></li>
+        <li><a class="tooltip" data-tip="https://twitter.com/buglss" target="_blank" href="https://twitter.com/buglss"><i class="icon icon-twitter"></i></a></li>
+        <li><a class="tooltip" data-tip="https://www.instagram.com/buglss" target="_blank" href="https://www.instagram.com/buglss"><i class="icon icon-instagram"></i></a></li>
+    </ul>
+</div>
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">
+    <span class="icon icon-cloud"></span>
+    Etiket Bulutu</h3>
+  <div class="entry">
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">
+    <i class="icon icon-arrow-up"></i>
+    Son Gönderiler
+  </h3>
+  <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/25/nginx-reverse-proxy/">Nginx Reverse Proxy</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/lvm-disk-genislet/">LVM Disk Genişlet</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 21 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Kurulum/">Kurulum</a><small>9</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Wiki/">Wiki</a><small>2</small>
+    </li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 37 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/apache/">apache</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/docker/">docker</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/gitlab/">gitlab</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/lvm/">lvm</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mongodb/">mongodb</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mysql/">mysql</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/nginx/">nginx</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/node-red/">node-red</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/nodejs/">nodejs</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/oAuth/">oAuth</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/oyun/">oyun</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/php/">php</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/pm2/">pm2</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ssl/">ssl</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ubuntu/">ubuntu</a><small>11</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/vscode/">vscode</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/windows/">windows</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/wordpress/">wordpress</a><small>2</small>
+    </li>
+  
+  </ul>
+</div>
+
+</aside>
+      <div class="clearfix"></div>
+    </div>
+    <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin | buglss
+  
+</div>
+<div class="clearfix"></div></footer>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+   
+</body>
+</html>

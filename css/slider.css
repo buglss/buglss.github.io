@@ -53,6 +53,12 @@
 .icon.icon-social:before {
   content: '\f045';
 }
+.icon.icon-cupe:before {
+  content: '\f1b2';
+}
+.icon.icon-code-fork:before {
+  content: '\f126';
+}
 .text-font {
   color: #444;
 }
@@ -77,10 +83,10 @@ ul.inline-list {
 ul.inline-list li {
   display: inline-block;
 }
-.tool {
+.tooltip {
   position: relative;
 }
-.tool::after {
+.tooltip::after {
   background: #3e474f;
   border-radius: 15px 90px 30px 15px;
   bottom: 180%;
@@ -92,30 +98,30 @@ ul.inline-list li {
   transform: scale(0.6) translateY(50%);
   width: 17.5em;
 }
-.tool:not(:first-child)::after {
+.tooltip:not(:first-child)::after {
   left: 0;
   opacity: 0;
   position: absolute;
   z-index: -100;
 }
-.tool:first-child::after {
+.tooltip:first-child::after {
   right: 0;
   opacity: 0;
   position: absolute;
   z-index: -100;
 }
-.tool:hover::after,
-.tool:focus::after {
+.tooltip:hover::after,
+.tooltip:focus::after {
   opacity: 1;
   transform: scale(1) translateY(0);
   z-index: 100;
 }
-.tool:hover::after,
-.tool:focus::after {
+.tooltip:hover::after,
+.tooltip:focus::after {
   transition: all 0.3s cubic-bezier(0.84, -0.18, 0.31, 1.26);
 }
 @media (max-width: 760px) {
-  .tool::after {
+  .tooltip::after {
     font-size: 0.75em;
     margin-left: -5em;
     width: 10em;
