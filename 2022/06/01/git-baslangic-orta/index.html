@@ -1,0 +1,653 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"> 
+  
+  <title>Git Başlangıç ve Orta Seviye | Yayınlarım</title>
+  <meta name="author" content="Levent Sencer Şahin | buglss">
+  
+  <meta name="description" content="Kişisel Blog Sitesi">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Git Başlangıç ve Orta Seviye"/>
+  <meta property="og:site_name" content="Yayınlarım"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+   
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1DJ08V2W41"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-1DJ08V2W41');
+	</script>
+
+
+  
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9137949280383612" crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+   
+    <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Yayınlarım</a></h1>
+  <h2><a href="/">Levent Sencer Şahin | buglss</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Ana Sayfa</a></li>
+    
+      <li><a href="/archives">Arşiv</a></li>
+    
+      <li><a href="/folios">Folyolar</a></li>
+    
+      <li><a href="/npm">npm</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-git-baslangic-orta" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-06-01T04:14:30.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/06/01/git-baslangic-orta/">01.06.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>15 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Git Başlangıç ve Orta Seviye</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <ul>
+<li><a href="#1-Baslangic-Seviye">1. Başlangıç Seviye</a><ul>
+<li><a href="#1-1-Versiyon-Yonetimi">1.1 Versiyon Yönetimi</a><ul>
+<li><a href="#1-1-1-Yerel-Versiyon-Yonetim-Sistemleri-YVYS">1.1.1 Yerel Versiyon Yönetim Sistemleri (YVYS)</a></li>
+<li><a href="#1-1-2-Merkezi-Versiyon-Yonetim-Sistemleri-MVYS">1.1.2 Merkezi Versiyon Yönetim Sistemleri (MVYS)</a></li>
+<li><a href="#1-1-3-Dagitik-Versiyon-Yonetim-Sistemleri-DVYS">1.1.3 Dağıtık Versiyon Yönetim Sistemleri (DVYS)</a></li>
+</ul>
+</li>
+<li><a href="#1-2-Gite-Giris">1.2 Git’e Giriş</a></li>
+<li><a href="#1-3-Kurulum">1.3 Kurulum</a></li>
+<li><a href="#1-4-Konfigurasyon">1.4 Konfigürasyon</a></li>
+<li><a href="#1-5-Komutlar">1.5 Komutlar</a><ul>
+<li><a href="#1-5-1-init">1.5.1 init</a></li>
+<li><a href="#1-5-2-add">1.5.2 add</a></li>
+<li><a href="#1-5-3-commit">1.5.3 commit</a></li>
+<li><a href="#1-5-4-clone">1.5.4 clone</a></li>
+<li><a href="#1-5-5-status">1.5.5 status</a></li>
+<li><a href="#1-5-6-log">1.5.6 log</a></li>
+<li><a href="#1-5-7-remote">1.5.7 remote</a></li>
+<li><a href="#1-5-8-pull">1.5.8 pull</a></li>
+<li><a href="#1-5-9-push">1.5.9 push</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-Orta-Seviye">2. Orta Seviye</a><ul>
+<li><a href="#2-1-gitignore">2.1 .gitignore</a></li>
+<li><a href="#2-2-Dallar-Branch">2.2 Dallar(Branch)</a></li>
+<li><a href="#2-3-Komutlar">2.3 Komutlar</a><ul>
+<li><a href="#2-3-1-diff">2.3.1 diff</a></li>
+<li><a href="#2-3-2-rm">2.3.2 rm</a></li>
+<li><a href="#2-3-3-mv">2.3.3 mv</a></li>
+<li><a href="#2-3-4-checkout">2.3.4 checkout</a></li>
+<li><a href="#2-3-5-reset">2.3.5 reset</a></li>
+<li><a href="#2-3-6-checkout-vs-reset">2.3.6 checkout vs reset</a></li>
+<li><a href="#2-3-7-merge">2.3.7 merge</a></li>
+</ul>
+</li>
+<li><a href="#2-4-SSH-Secure-Shell-Protokol%C3%BC">2.4 SSH(Secure Shell) Protokolü</a></li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="1-Baslangic-Seviye"><a href="#1-Baslangic-Seviye" class="headerlink" title="1. Başlangıç Seviye"></a>1. Başlangıç Seviye</h1><p>Bu kısımda versiyon yönetiminin tarihçesine giriş yapılacak. Devamında Git versiyon yönetim aracı özelinde temel kullanım bilgileri verilecektir.</p>
+<h2 id="1-1-Versiyon-Yonetimi"><a href="#1-1-Versiyon-Yonetimi" class="headerlink" title="1.1 Versiyon Yönetimi"></a>1.1 Versiyon Yönetimi</h2><p>Geliştirmenin olduğu yerde versiyonlamaya ihtiyaç vardır. Her yeni gelişmede eski hallerinin tutulduğu bir yapı olmalıdır. Çünkü gelişim beraberinde sorunları da getirebilir. Her gelişim tek yönlü olmayabilir. Geçmişteki sorunsuz kısımların şimdiki haliyle kıyaslamak gerekebilir.</p>
+<p>Versiyonlama ihtiyacının temelinde geçmişi kaybetmemek vardır. Versiyonlama ihtiyacı sadece yazılım için değil dijital olan herşey için geçerlidir. Örneğin bir mimar çizimlerini versiyonlamak ister.</p>
+<p>Versiyonlamaya tekil çalışmanın yanında çok kişili çalışılan projelerde daha da fazla ihtiyaç duyulmaktadır. Ama sadece çok kişili çalışma için değil tek başına çalışılan projelerde de kullanılması gerekir. Projenin tarihçesini; kimin hangi işlemi yaptığını, hangi noktalara dokunduğunu, ne zaman yaptığını görmek istenir. Eğer bir problem varsa kimin ne zaman yaptığı veya sorunsuz halinin ne olduğu ile ilgili bilgiler kolaylıkla görülebilir.</p>
+<p>Versiyonlama ihtiyacı geliştiriciler tarafından kabul görmüş ve çözüm arayışına çıkılmıştır. Versiyonlama önemlidir fakat nasıl yönetilmelidir? Örneğin farklı isimlerde dosyalamak da versiyonlama örneğidir. Ama bu yöntem versiyon yönetimini oldukça zorlaştırır. Versiyonlama için öncelikle uygun bir versiyon yönetim mimarisi geliştirilmelidir. Bu kapsamda geliştiriciler 3 farklı versiyon yönetim sistemi üzerinde çalışmışlardır.</p>
+<h3 id="1-1-1-Yerel-Versiyon-Yonetim-Sistemleri-YVYS"><a href="#1-1-1-Yerel-Versiyon-Yonetim-Sistemleri-YVYS" class="headerlink" title="1.1.1 Yerel Versiyon Yönetim Sistemleri (YVYS)"></a>1.1.1 Yerel Versiyon Yönetim Sistemleri (YVYS)</h3><p>Bu yöntemde hedeflenen değişiklikleri küçük parçalar halinde takip edebilmektir. Küçük parçalara ayrılmış değişiklik geçmişini kolaylıkla takip edilebilir diye düşünülmüştür. Bu kapsamda değişiklik parçaları veritabanında tutulmuştur. Veritabanından okunarak takibi sağlanmıştır.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/local.png" alt="Yerel Versiyon Yönetim Sistemi"></p>
+<p>Bu yöntemin kullanıldığı versiyon yönetim aracına örnek olarak <a target="_blank" rel="noopener" href="https://www.gnu.org/software/rcs/">RCS</a> verilebilir. Bu araç dosyadaki değişiklik yapılan parçaları kendine has formatta kaydeder. Daha sonra istenen zamandaki versiyon için o zamana kadarki tüm parçaları birleştirerek gösterir. Bu araçta çalışma performansnı yükseltmek için son versiyona ait parçaların birleştirilmiş hali hazır olarak tutulur.</p>
+<h3 id="1-1-2-Merkezi-Versiyon-Yonetim-Sistemleri-MVYS"><a href="#1-1-2-Merkezi-Versiyon-Yonetim-Sistemleri-MVYS" class="headerlink" title="1.1.2 Merkezi Versiyon Yönetim Sistemleri (MVYS)"></a>1.1.2 Merkezi Versiyon Yönetim Sistemleri (MVYS)</h3><p>Bu yöntemle hedeflenen YVYS’nin eksik yönlerini tamamlamaktır. YVYS’de çok kişili çalışılan projelerde versiyon takibi mümkün değildir. Çünkü versiyonlar kişilerin yerel bilgisayarlarında tutulmaktadır.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/centralized.png" alt="Merkezi Versiyon Yönetim Sistemi"></p>
+<p>Bu yöntemin versiyonlama mantığı YVYS ile aynıdır. Tek farkı versiyonlar yerel bilgisayarda değil internet üzerinden erişilebilir bir sunucu bilgisayarda tutulmaktadır. Sunucu veritabanında versiyonlar tutulur. Projede çalışan kişiler de sunucudan İlgili versiyonu çeker. Çalışması bittiğinde de sunucuya yeni versiyonu gönderir. Bu yöntemin kullanıldığı CVS, Subversion ve Perforce gibi araçlar vardır.</p>
+<p>Bu yöntem YVYS’ye göre pek çok avantaja sahiptir. Tek bir noktadan tüm tarihçeye ulaşılabilir. Proje üzerindeki çalışmaların kontrolü uzaktan yapılabilir. Kim hangi değişikliği ne zaman yaptı görüntülenebilir. Kimin hangi çalışmayı yapacağına karar verilip kontrolü sağlanabilir.</p>
+<p>YVYS ve MVYS ciddi dezanvajlara da sahiptir. Versiyonlar her iki yöntemde de sadece 1 noktada tutulmaktadır. MVYS için sunucuda olabilecek kesintilerde versiyonlama çalışması da durur. Sunucuda olası bir disk arızasında veri kaybıyla beraber tüm versiyonlar yok olur. Sadece yerelde kişilerin çalıştığı versiyona ait proje dosyaları kalır. Aynı şekilde YVYS için de bu durumlar geçerlidir.</p>
+<h3 id="1-1-3-Dagitik-Versiyon-Yonetim-Sistemleri-DVYS"><a href="#1-1-3-Dagitik-Versiyon-Yonetim-Sistemleri-DVYS" class="headerlink" title="1.1.3 Dağıtık Versiyon Yönetim Sistemleri (DVYS)"></a>1.1.3 Dağıtık Versiyon Yönetim Sistemleri (DVYS)</h3><p>Bu yöntemle hedeflenen YVYS ve MVYS’nin eksik yönlerini tamamlamaktır. YVYS’de çok kişili çalışılan projelerde versiyon takibi mümkün değildir. MVYS ise sunucuda yaşanacak problem veya erişim sorunlarında versiyonlama durur. Ayrıca her iki yöntemde de projede versiyon kaybı hatta proje kaybı söz konusudur.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/distributed.png" alt="Dağıtık Versiyon Yönetim Sistemi"></p>
+<p>Bu yöntemin versiyonlama mantığı YVYS ile aynıdır. YVYS ve MVYS’den farkı versiyonlar hem yerelde hem sunucuda tutulmaktadır. Yerelde başlatılan bir proje YVYS gibi yerel veritabanında tutulur. Yereldeki bu projenin sunucu ile bağlantısı kurulur ve MVYS gibi yereldeki versiyonlama sunucuya aktarılır. Bu noktada proje kritik ayrım versiyonların tüm tarihçesi olduğu gibi yerelde ve sunucuda bulunur. Bu yöntemin kullanıldığı Git, Mercurial, Bazaar ya da Darcs gibi araçlar vardır.</p>
+<p>Sunucu ile yerel senkron çalışmak zorunda değildir. Örneğin çevrimiçin olunamadığı durumlarda yerelde sunucudan bağımsız yani çevrimdışı olarak çalışılabilir. Çok kişili projelerde sunucudaki versiyon başka kullanılar tarafından ilerletilebilir. Çevrimiçi olunduğu anda sunucuya yereldeki proje versiyonu gönderilmeden önce sunucudaki güncel versiyon çekilir. Tarih bazlı sıralamayla değişiklikler versiyonlanır. Bu şekilde yerel versiyon veritabanı sunucudaki versiyon veritabanı ile eşitlenir. Bu noktada yereldeki versiyon veritabanı ile sunucudaki versiyon veri tabanı birleştirilir. Son adım olarak da yereldeki versiyon sunucuya gönderilir. Başka biri de benzer işlemi yaparak çalışmaya devam eder.</p>
+<p>Bu yöntem YVYS ve MVYS’e göre pek çok avantaja sahiptir. Proje versiyonlarının kaybolma riski düzenli senktonize edildiği taktirde yoktur. YVYS gibi sadece yerelinde çalışabilir, MVYS gibi yerelindeki çalışmayı sunucuya gönderebilirsin. Projenin bir örneği bulunduğu sürece yerelindeki veritabanı arızası veya sunucudaki veritabanı arızası projedeki versiyonların kaybolmasına sebep olmaz. Sunucuda problem olursa herhangi birindeki örnek proje sunucuya gönderilerek çalışmaya devam edilebilir. Herhangi birinin yerelinde bir problem yaşanırsa da sunucudan projenin bütün halini çekip kaldığı yerden devam edebilir.</p>
+<p>Bu yöntemin diğer yöntemlerde olduğu gibi çalışmayı etkileyen bir dezavantajı yoktur. Bu yöntem günümüzde kabul görmüş ve yaygın olarak kullanılan yöntemdir. Projeye ait tüm kaynaklar yok olmadığı sürece proje kaybolmaz.</p>
+<p>Bu yazıda Git versiyon yönetim aracı ile ilgili bilgiler verilecektir.</p>
+<h2 id="1-2-Git’e-Giris"><a href="#1-2-Git’e-Giris" class="headerlink" title="1.2 Git’e Giriş"></a>1.2 Git’e Giriş</h2><p>2005 yılında Linus Torvalds başta olmak üzere Linux çekirdeğini geliştiren topluluk tarafından geliştirilmiştir.</p>
+<p>Git’in bazı hedefleri şunlardır:</p>
+<ul>
+<li>Hız</li>
+<li>Minimal tasarım</li>
+<li>Lineer olmayan geliştirme için güçlü destek (binlerce paralel dal desteği)</li>
+<li>Tamamen dağıtık olması</li>
+<li>Devasa projeleri Linux kerneli verimliliğinde destekleyebilmesi (hız ve veri büyüklüğü açısından)</li>
+</ul>
+<p>Git diğer dağıtık versiyon yönetim araçlarına göre farklı mimaride geliştirilmiştir. Diğer mimarilerde dosyanın değişiklik parçası saklanır. Başka bir deyişle delta temelli versiyonlar tanımlanır (delta-based).</p>
+<p><img src="https://git-scm.com/book/en/v2/images/deltas.png" alt="Delta-Based"></p>
+<p>Git’te ise dosyanın anlık görüntüsü alınır (snapshot). Yani diğerlerinin yaptığı gibi sadece değişiklik parçasını versiyonlamaz. Dosyanın o anki halinin görüntüsünü çeker ve o şekilde saklar. Eğer anlık görünümü alınan dosya değişmediyse yeni bir görüntü oluşturmaz bir önceki görüntünün referansını saklar. Başka bir deyişle anlık görünümler ile versiyon tanımlanır (stream of snapshots).</p>
+<p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="Stream of Snapshots"></p>
+<p>Dosyanın versiyon döngüsü 3 durumdan oluşmaktadır. Modified(Değişiklik), Staged(İşaretli), and Committed(Kaydedilmiş).</p>
+<ul>
+<li>Modified: dosyayı değiştirdiğinizi ama henüz veritabanına kaydetmediğinizi gösterir.</li>
+<li>Staged: değiştirilmiş bir dosyayı bir sonraki anlık görünümünde kaydedilecek şekilde işaretlediğinizi gösterir. Bu dosyalara Index ismi verilir.</li>
+<li>Committed: dosyanın güvenli bir şekilde yerel veritabanınızda saklandığını gösterir.</li>
+</ul>
+<p>Bu kapsamda proje 3 ana bölüme ayrılabilir.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/areas.png" alt="Proje Bölümleri"></p>
+<hr>
+<p><img src="https://miro.medium.com/max/1000/1*zw0bLFWkaAP2QPfhxkoDEA.png" alt="Proje Bölümleri Alt"></p>
+<p>Commit’lenmiş yani kaydedilmiş dosyalar ile versiyon ağacı ortaya çıkar. Versiyon ağacında hangi versiyonun aktif olduğunu yani kullanıldığını işaret eden HEAD isminde bir işaretçi(pointer) vardır.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/branch-and-history.png" alt="HEAD"></p>
+<h2 id="1-3-Kurulum"><a href="#1-3-Kurulum" class="headerlink" title="1.3 Kurulum"></a>1.3 Kurulum</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> resmi adresinden kurulum yapabilirsiniz.</p>
+<h2 id="1-4-Konfigurasyon"><a href="#1-4-Konfigurasyon" class="headerlink" title="1.4 Konfigürasyon"></a>1.4 Konfigürasyon</h2><p>Kurulum sonrası yapılması gereken ilk şey temel konfigürasyonların ayarlanmasıdır. Burada kullanıcı bilgilerimizi tanımlamamız gerekir. Bu bilgiler commit işleminde kimlik bilgisi olarak kullanılır. Tüm yaratılan commit’lerde değişmez bir şekilde kaydedilir.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Levent Sencer Şahin&quot;</span></span><br><span class="line">git config --global user.email levent.sahin@yedas.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-Komutlar"><a href="#1-5-Komutlar" class="headerlink" title="1.5 Komutlar"></a>1.5 Komutlar</h2><h3 id="1-5-1-init"><a href="#1-5-1-init" class="headerlink" title="1.5.1 init"></a>1.5.1 init</h3><p>Bu komut projenizde git’i oluşturur. Git ile versiyonlamaya başlamaya karar verdiğinizde bu komutu proje dizininde çalıştırmalısınız. Bu komut proje dizininde <code>.git</code> adında bir dizin oluşturur. Bu dizin git’in iskeletidir. Git herşeyi bu dizin altında tutar.</p>
+<p><code>Proje Dizini</code> içine git:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-2-add"><a href="#1-5-2-add" class="headerlink" title="1.5.2 add"></a>1.5.2 add</h3><p>Bu komut dosyaları takibe almak için kullanılır. İlk defa git entegre edildiyse hiçbir versiyonlama yoktur ve projedeki tüm dosyalar takip edilmeyi bekler. Sonraki aşamalarda değişiklik olan dosyaların takibe alınması için kullanılır. Tek tek takip edilmesi istenen dosyalar tam dosya yolu belirtilecek şekilde yazılabilir veya tüm dosyaların takip edilmesi isteniyorsa .(nokta) işareti kullanılabilir.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;dosyanın_tam_yolu|.&gt; <span class="comment"># Tüm dosyaları takibe almak için .(nokta) işareti kullanılır</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br><span class="line">git add LICENSE</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-3-commit"><a href="#1-5-3-commit" class="headerlink" title="1.5.3 commit"></a>1.5.3 commit</h3><p>Bu komut takibe alınan dosyaların yerel veritabanına kaydedilmesi için kullanılır. Komit işleminde mesaj yazılması beklenir. Bunun için 2 farklı yöntem izlenebilir.</p>
+<ol>
+<li>Daha detaylı mesaj yazmak için editörden açmak.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit <span class="comment"># Editör açılır. Editörde yazılan mesaj kaydedilip editör kapatıldığında commit tamamlanmış olur.</span></span><br></pre></td></tr></table></figure></li>
+<li>Pratik mesaj yazmak.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Initial Project&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>Buraya kadar 3 komuttan bahsettim. Bu 3 komut git ile yerelde çalışmak için başlangıç seviyesinde yeterlidir. Sunucuya gönderme işleminden önce internetten erişilebilir bir git projesini nasıl yerele çekip üzerinde çalışılabileceğinden bahsedeceğim.</p>
+<h3 id="1-5-4-clone"><a href="#1-5-4-clone" class="headerlink" title="1.5.4 clone"></a>1.5.4 clone</h3><p>Bu komut bir git projesini tüm versiyonlarıyla beraber neredeyse tüm verileri olduğu gibi yerelinize kopyalar.</p>
+<p>Örneğin libgit2 projesini yerele kopyalamak için:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/libgit2/libgit2</span><br></pre></td></tr></table></figure>
+
+<p>Kopyalama işleminden sonra <strong>add</strong> ve <strong>commit</strong> komutları ile kopyalanan proje içinde versiyon yönetimi yapılabilir.</p>
+<h3 id="1-5-5-status"><a href="#1-5-5-status" class="headerlink" title="1.5.5 status"></a>1.5.5 status</h3><p>Bu komut dosyaların dumunu listeler. Bir dosyanın 4 farklı durumu olabilir. Untracked(Takipsiz), Unmodified(Değişmemiş), Modified(Değişmiş) ve Staged(İşaretli).</p>
+<ul>
+<li>Untracked: Takip edilmeyen dosya durumudur. Örneğin bu durumdaki dosyalar yeni eklenmiş dosyalar olabilir.</li>
+<li>Unmodified: Takip edilen ve commit edilmiş dosyalarda değişiklik olmama durumudur. Örneği add ile işaretlenmiş ve commit ile kaydedilmiş ve sonrasında hiçbir değişikliğe uğramamış dosyalar.</li>
+<li>Modified: Takip edilen ve commit edilmiş dosyalarda değişiklik olma durumudur. Örneği add ile işaretlenmiş ve commit ile kaydedilmiş ve sonrasında değişikliğe uğramış dosyalar.</li>
+<li>Staged: Takip edilen veya edilmeyen dosyaların işaretlenme durumudur. Örneğin add komutu ile bu dosyalar işaretlenir. Commit işleminden sonra da takip edilir duruma geçerler.</li>
+</ul>
+<p><img src="https://git-scm.com/book/en/v2/images/lifecycle.png" alt="Dosya Durum Döngüsü"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-6-log"><a href="#1-5-6-log" class="headerlink" title="1.5.6 log"></a>1.5.6 log</h3><p>Bu komut commit tarihçesini gösterir.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>Bu noktaya kadar sadece yerelde çalıştık. Bu noktadan sonra sunucu ile çalışma kısmından bahsedeceğim.</p>
+<h3 id="1-5-7-remote"><a href="#1-5-7-remote" class="headerlink" title="1.5.7 remote"></a>1.5.7 remote</h3><p>Bu komut yerelde çalışılan projenin sunucu bağlantısı kurmak için kullanılır. Sunucunun kısa adını ve url bilgisini girerek bağlantı kurulur. Kısa ad olarak gelenek haline gelmiş “origin” ismi kullanılabilir. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;kısa_ad&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://git.yesilirmakedas.com/levent.sahin/hello-world</span><br></pre></td></tr></table></figure>
+
+<p>Sunucu bağlantısını görüntülemek için:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-8-pull"><a href="#1-5-8-pull" class="headerlink" title="1.5.8 pull"></a>1.5.8 pull</h3><p>Bu komut yerelde olmayan sunucudaki tüm versiyonları çeker ve yereldeki versiyonlarla birleştirir. Varsayılan olarak gelenek haline gelmiş “master” dalı kullanılır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;kısa_ad&gt; &lt;dal&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-9-push"><a href="#1-5-9-push" class="headerlink" title="1.5.9 push"></a>1.5.9 push</h3><p>Bu komut sunucuda olmayan yereldeki tüm versiyonları sunucuya göndermek için kullanılır. Eğer sunucuda yereldeki değişiklik sonucu oluşan versiyondan başka bir versiyon varsa öncelikle <strong>pull</strong> yapılması gerekir.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;kısa_ad&gt; &lt;dal&gt;</span><br><span class="line">git push -u &lt;kısa_ad&gt; &lt;dal&gt; <span class="comment"># -u parametresi varsayılan kısa ad ve dalı ayarlamak için eklenebilir.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br><span class="line"><span class="comment"># veya</span></span><br><span class="line">git push -u origin master <span class="comment"># eğer bu şekilde çalıştırılırsa bir sonraki push ve pull işleminde &lt;kısa_ad&gt; ve &lt;dal&gt; eklenmesine gerek kalmaz. --&gt; git push (yeterli)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-Orta-Seviye"><a href="#2-Orta-Seviye" class="headerlink" title="2. Orta Seviye"></a>2. Orta Seviye</h1><p>Bu kısımda Git versiyon yönetim aracı ile ilgili temel bilgilerin üzerine sık kullanılan veya kullanılma ihtiyacı duyulabilecek konulardan bahsedilecek.</p>
+<h2 id="2-1-gitignore"><a href="#2-1-gitignore" class="headerlink" title="2.1 .gitignore"></a>2.1 .gitignore</h2><p>Versiyonlamaya dahil olmasını istemediğini dosya ve dizinleri <code>.gitignore</code> dosyasına yazabilirsiniz. Bu dosyada tam yol(full path) veya göreceli yol(relative path) veya joker karakter(wildcard) ile tanımlama yapabilirsiniz. Her satırda 1 tanımlama olacak şekilde yazılır. Hariç tutmak istediğin tanımın başına !(ünlem) işareti koyabilirsin.</p>
+<p>Tanım Kuralları:</p>
+<ul>
+<li>#(hashtag) karakteri ile başlayan satırlar yok sayılır. Yorum satırı olarak değerlendirilir.</li>
+<li>Standart glob deseninde(pattern) çalışır. Yinelemeli(Recursive) olarak tanımlama uygulanır. Yinelemeyi önlemek için başına /(eğik çizgi) karakteri ile başlatın. Dizini belirtmek için sonuna /(eğik çizgi) karakteri ekleyin.</li>
+<li>Hariç tutmak için başına !(ünlem) işareti atabilirsiniz. !(ünlem) işareti değili/olumsuzu anlamına gelir.</li>
+</ul>
+<p>Örnek:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ignore all .a files</span></span><br><span class="line">*.a</span><br><span class="line"></span><br><span class="line"><span class="comment"># but do track lib.a, even though you&#x27;re ignoring .a files above</span></span><br><span class="line">!lib.a</span><br><span class="line"></span><br><span class="line"><span class="comment"># only ignore the TODO file in the current directory, not subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore all files in any directory named build</span></span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore doc/notes.txt, but not doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore all .pdf files in the doc/ directory and any of its subdirectories</span></span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-Dallar-Branch"><a href="#2-2-Dallar-Branch" class="headerlink" title="2.2 Dallar(Branch)"></a>2.2 Dallar(Branch)</h2><p>Git, paralel çalışmaya izin verir. Bu kapsamda farklı çalışmalar farklı birçok dal(brach) ile yapılabilir. Git’in çalışma yapısı depolama mimarisi ise bu dallanmaya oldukça elverişlidir. Herhangi bir performans sorunu yaratmaz.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/advance-master.png" alt="dal bilgi"></p>
+<p>Yeni dal oluştururken mevcut daldaki HEAD referans alınır.</p>
+<p>Dal Oluştur:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;dal_adı&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Öncesi:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" alt="dal ekle öncesi"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b iss53</span><br></pre></td></tr></table></figure>
+
+<p>Sonra</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-2.png" alt="dal ekle sonrası"></p>
+<p>Dal oluşturduktan sonra <code>checkout</code> komutuyla ilgili dalı seçip çalışmaya başlayabiliriz. Çalışmaya başlayıp commit attığımızda aktif dalda commit tarihçesi ilerler.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout iss53</span><br><span class="line">git add file.txt</span><br><span class="line">git commit -m <span class="string">&quot;file.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-3.png" alt="dal seç"></p>
+<p>Tekrar master dalına <code>checkout</code> komutuyla dönüp yeni bir dal yaratıp o dalda da farklı bir çalışma yürütebiliriz.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git checkout -b hotfix</span><br><span class="line">git add index.txt</span><br><span class="line">git commit -m <span class="string">&quot;index.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-4.png" alt="dal oluştur seç"></p>
+<h2 id="2-3-Komutlar"><a href="#2-3-Komutlar" class="headerlink" title="2.3 Komutlar"></a>2.3 Komutlar</h2><h3 id="2-3-1-diff"><a href="#2-3-1-diff" class="headerlink" title="2.3.1 diff"></a>2.3.1 diff</h3><p>Bu komut kaydedilmiş son versiyon ile mevcuttaki değişiklikler arasındaki farkları listeler. Tüm değişiklikler de görüntülenebilir sadece 1 dosya özelinde de bu işlem yapılabilir.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [dosya]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-2-rm"><a href="#2-3-2-rm" class="headerlink" title="2.3.2 rm"></a>2.3.2 rm</h3><p>Bu komut silme işlemi yapar. Fakat standart silmeden farklıdır. Git tarafından takip edilen bir dosyayı sildiğinizde bunu değişiklik olarak kabul eder ve işaretleyip bu değişikliği kaybetmenizi ister. Git’in rm komutu ile sildiğinizde ise Git bunu otomatik yapar. Yani dosyayı hem fiziksel olarak siler hem de işaretler. Aynı zamanda bu dosyanın takibini de kaldırır.</p>
+<p>Örnek:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> &lt;dosya&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-3-mv"><a href="#2-3-3-mv" class="headerlink" title="2.3.3 mv"></a>2.3.3 mv</h3><p>Git dosyaların isimleri ile ilgili meta bilgileri tutmaz, isim değişikliğini takip etmez. Bu komut bir dosyayı yeniden adlandırmak için kullanılır. Bunu taşıma işlemi yaparak sağlar. Fakat standart taşımadan farklıdır. Git tarafından takip edilen bir dosyayı taşıdığınızda yani ismini değiştirdiğinizde eski isimdeki dosyanın silindiğini ve yeni isimdeki dosyanın takip edilmeyen yeni bir dosya olduğunu söyler. Bu işlemi devam ettirdiğinizde eski isimdeki silme operasyonunun ve yeni isimdeki dosyayı işaretlemeniz gerekir. İşaretleme sonrası eski isim tarihçeye silindi olarak geçer ve yepyeni bir dosya takip edilmeye başlandı olarak geçer. Bu doğru bir yaklaşım değildir. Bu yanlış kullanımın önüne geçmek için Git’in mv komutu ile isim değişikliği yapılmalıdır. Git mv komutu ile dosya ismini değiştirdiğinizde Git bunun bir isim değişikliği olduğunu anlar ve eski isimden yeni isme geçiş olduğunu belirtecek şekilde “renamed” durumunda işaretler.</p>
+<p>Örnek:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">mv</span> &lt;eski_dosya&gt; &lt;yeni_dosya&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-4-checkout"><a href="#2-3-4-checkout" class="headerlink" title="2.3.4 checkout"></a>2.3.4 checkout</h3><p>Dal(branch), versiyon(commit), etiket(tag) gibi kayıtlı bölümler arasında seçim yapmak için kullanılır. Commit seviyesinde HEAD’i değiştirir. Aynı zamanda işaretlenmemiş değişikliklerin son versiyonlanmış haline geri dönmesi için de kullanılır. Yani değişikliği işaretlememek istediğinizde checkout ile kaldırabilirsiniz.</p>
+<p>Dal Geçişi:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;dal&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>master dalında</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://git-scm.com/book/en/v2/images/checkout-master.png" alt="master Dal"></p>
+<p><strong>testing dalında</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout testing</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://git-scm.com/book/en/v2/images/advance-testing.png" alt="testing Dal"></p>
+<p><strong>Versiyon Geçişi:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wac-cdn.atlassian.com/dam/jcr:d93bca4e-11ed-4cd6-a690-e97444755429/01-02%20Detached%20HEADS.svg?cdnVersion=291" alt="Versiyon"></p>
+<p><strong>Değişikliği Geri Al:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;dosya|.&gt; <span class="comment"># .(nokta) işareti tüm değişiklikleri geri alır.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-5-reset"><a href="#2-3-5-reset" class="headerlink" title="2.3.5 reset"></a>2.3.5 reset</h3><p>Versiyonları veya dosyalardaki değişiklikleri geri almak için kullanılır. Geri alma işlemi Git’in 3 ana çalışma bölgesi için ayrı ayrı uygulabilir. Bu ayrım –soft, –mixed ve –hard parametreleriyle yapılır. Varsayılan olarak parametre belirtilmezse –mixed uygulanır.</p>
+<p><img src="https://wac-cdn.atlassian.com/dam/jcr:7fb4b5f7-a2cd-4cb7-9a32-456202499922/03%20(8).svg?cdnVersion=291" alt="reset 3 bölge"></p>
+<p><strong>reset –soft</strong></p>
+<p>Commit seviyesinde HEAD’i değiştirir. Bu anlamda checkout ile benzer işlemi yapar. (HEAD, aktif commit işaretçisi)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft &lt;commit|dosya&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Öncesi Commit:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-start.png" alt="reset soft öncesi commit"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft 9e5e6a4</span><br></pre></td></tr></table></figure>
+
+<p>Sonrası Commit:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-soft.png" alt="reset soft sonrası commit"></p>
+<p>Öncesi Dosya:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-squash-r1.png" alt="reset soft öncesi dosya"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft file-a.txt</span><br></pre></td></tr></table></figure>
+
+<p>Sonrası Dosya:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-squash-r2.png" alt="reset soft sonrası dosya"></p>
+<p>Bu işlemden sonra işlemi geri almak için <code>git commit</code> komutu çalıştırılabilir.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-squash-r3.png" alt="reset soft sonrası dosya commit"></p>
+<p><strong>reset –mixed</strong> veya <strong>reset</strong></p>
+<p>Index seviyesinde değişiklik yapar. Hem HEAD’i hem Index’i değiştirir. (Index, stage bölümünde işaretlenmiş hali)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed &lt;commit|dosya&gt;</span><br><span class="line"><span class="comment"># veya</span></span><br><span class="line">git reset &lt;commit|dosya&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Öncesi Commit:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-start.png" alt="reset mixed öncesi commit"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed 9e5e6a4</span><br><span class="line"><span class="comment"># veya</span></span><br><span class="line">git reset 9e5e6a4</span><br></pre></td></tr></table></figure>
+
+<p>Sonrası Commit:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-mixed.png" alt="reset mixed sonrası commit"></p>
+<p>Öncesi Dosya:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-start.png" alt="reset mixed öncesi dosya"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed file.txt</span><br><span class="line"><span class="comment"># veya</span></span><br><span class="line">git reset file.txt</span><br></pre></td></tr></table></figure>
+
+<p>Sonrası Dosya:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-path1.png" alt="reset mixed sonrası dosya"></p>
+<p>Bu işlemden sonra işlemi geri almak için <code>git add</code> komutu çalıştırılabilir.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-path2.png" alt="reset soft sonrası dosya add"></p>
+<p><strong>reset –hard</strong></p>
+<p>Proje genelinde değişiklik yapar. Hem çalışma dizinini (working directory) hem HEAD’i hem de Index’i değiştirir. Bu işlemi diğerlerine göre tehlikelidir. Çünkü yapılan değişiklik geri alınamaz. Kalıcı olarak siler.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;commit|dosya&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Öncesi:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-start.png" alt="reset hard öncesi"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 9e5e6a4</span><br></pre></td></tr></table></figure>
+
+<p>Sonrası:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-hard.png" alt="reset hard sonrası"></p>
+<h3 id="2-3-6-checkout-vs-reset"><a href="#2-3-6-checkout-vs-reset" class="headerlink" title="2.3.6 checkout vs reset"></a>2.3.6 checkout vs reset</h3><p>git checkout b:</p>
+<p><img src="https://wac-cdn.atlassian.com/dam/jcr:f45c4a34-8968-4c81-83cf-d55ebf01a447/02%20git-checkout-transparent%20kopiera.png?cdnVersion=291" alt="checkout vs"></p>
+<p>git reset b:</p>
+<p><img src="https://wac-cdn.atlassian.com/dam/jcr:bdf5fda3-4aac-4170-ba35-58f7a66ea3c4/03%20git-reset-transparent%20kopiera.png?cdnVersion=291" alt="reset vs"></p>
+<hr>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-checkout.png" alt="checkout vs reset"></p>
+<h3 id="2-3-7-merge"><a href="#2-3-7-merge" class="headerlink" title="2.3.7 merge"></a>2.3.7 merge</h3><p>2 veya daha fazla versiyonu birleştirmek için kullanılır. Örneğin farklı dallar ile çalıştıktan sonra birleştirme işlemi için bu komut kullanılır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;dal|commit&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Örneğin master ile iss53 dalını master dalında birleştirelim.</p>
+<p>Öncesi:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-merging-1.png" alt="merge öncesi"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge iss53</span><br></pre></td></tr></table></figure>
+
+<p>Sonrası:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-merging-2.png" alt="merge sonrası"></p>
+<h2 id="2-4-SSH-Secure-Shell-Protokolu"><a href="#2-4-SSH-Secure-Shell-Protokolu" class="headerlink" title="2.4 SSH(Secure Shell) Protokolü"></a>2.4 SSH(Secure Shell) Protokolü</h2><p>Bir bilgisayardan diğeri güvenli yoldan oturum açma yöntemidir. Bilgisayarlar arası bağlantı güvenli bağlantı kurulur.</p>
+<p>Projede yaptığınız çalışmaları sunucuya gönderirken bu protokolün kullanılması hız katar. Varsayılan olarak HTTPS protokolü üzerinden aktarım yapılır. Bu protokolde ise her transferde kimlik doğrulaması yapmanız gerekir. SSH protokolü ile çalıştığınızda ise git web client uygulamasındaki tarife göre ayarlama yaptıktan sonra transfer işlemini transfer anında kimlik doğrulamasına ihtiyaç olmadan yapabilirsiniz.</p>
+<p><img src="https://www.ssh.com/hs-fs/hubfs/SSH_Client_Server.png?width=834&name=SSH_Client_Server.png" alt="ssh şema1"></p>
+<hr>
+<p><img src="https://miro.medium.com/max/1200/1*ZItMQX9ycwTOsqNZ9yvSog.jpeg" alt="ssh şema2"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Wiki/">Wiki</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/git/">git</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article></div></div>
+      <aside id="sidebar" class="alignright">
+  <div class="adsense widget">
+    <!-- Blog Görüntülü Reklam 1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9137949280383612" data-ad-slot="5433878596" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  <div class="search widget">
+  <input id="local-search-input" type="search" name="q" results="0" placeholder="Ara">
+  <div id="local-search-result"></div>
+</div>
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+  var search_path = "search.xml";
+  if(search_path.length == 0) {
+    search_path = "search.xml";
+  }
+  var path = "/" + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  <div class="social widget">
+    <h3 class="title">
+        <span class="icon icon-social"></span>
+        Sosyal Medya
+    </h3>
+    <ul class="inline-list">
+        <li><a class="tooltip" data-tip="https://www.linkedin.com/in/buglss" target="_blank" href="https://www.linkedin.com/in/buglss"><i class="icon icon-linkedin"></i></a></li>
+        <li><a class="tooltip" data-tip="https://github.com/buglss" target="_blank" href="https://github.com/buglss"><i class="icon icon-github"></i></a></li>
+        <li><a class="tooltip" data-tip="l.sencer.sahin@gmail.com" target="_blank" href="mailto:l.sencer.sahin@gmail.com"><i class="icon icon-envelope"></i></a></li>
+        <li><a class="tooltip" data-tip="https://www.facebook.com/buglss" target="_blank" href="https://www.facebook.com/buglss"><i class="icon icon-facebook"></i></a></li>
+        <li><a class="tooltip" data-tip="https://twitter.com/buglss" target="_blank" href="https://twitter.com/buglss"><i class="icon icon-twitter"></i></a></li>
+        <li><a class="tooltip" data-tip="https://www.instagram.com/buglss" target="_blank" href="https://www.instagram.com/buglss"><i class="icon icon-instagram"></i></a></li>
+    </ul>
+</div>
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">
+    <span class="icon icon-cloud"></span>
+    Etiket Bulutu</h3>
+  <div class="entry">
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">
+    <i class="icon icon-arrow-up"></i>
+    Son Gönderiler
+  </h3>
+  <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/06/01/git-baslangic-orta/">Git Başlangıç ve Orta Seviye</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/25/nginx-reverse-proxy/">Nginx Reverse Proxy</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title categories">
+    <span class="icon"></span>
+    Kategoriler
+    <small> 22 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Kurulum/">Kurulum</a><small>9</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Wiki/">Wiki</a><small>3</small>
+    </li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title tags">
+    <span class="icon"></span>
+    Etiketler
+    <small> 38 </small>
+  </h3>
+  <ul class="entry">
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/apache/">apache</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/docker/">docker</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/git/">git</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/gitlab/">gitlab</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/lvm/">lvm</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mongodb/">mongodb</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mysql/">mysql</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/nginx/">nginx</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/node-red/">node-red</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/nodejs/">nodejs</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/oAuth/">oAuth</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/oyun/">oyun</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/php/">php</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/pm2/">pm2</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ssl/">ssl</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ubuntu/">ubuntu</a><small>11</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/vscode/">vscode</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/windows/">windows</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/wordpress/">wordpress</a><small>2</small>
+    </li>
+  
+  </ul>
+</div>
+
+</aside>
+      <div class="clearfix"></div>
+    </div>
+    <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Levent Sencer Şahin | buglss
+  
+</div>
+<div class="clearfix"></div>
+
+<div class="progress-wrap">
+  <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+  </svg>
+</div>
+
+
+<script src="/js/back-to-top.js"></script>
+</footer>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+   
+</body>
+</html>
