@@ -98,7 +98,7 @@
 
 <p>Note: add <code>--save</code> if you are using npm &lt; 5.0.0</p>
 <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><p>In Demo:</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/buglss/cronti/blob/master/demo/publish/demo.zip?raw=true">Demo project download (rar)</a>. Extract the project files from rar. Go to project directory. Execute <code>index.js</code> file by <strong>nodejs</strong>.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/buglss/cronti/blob/v1.0.9/demo/publish/demo.rar?raw=true">Demo project download (rar)</a>. Extract the project files from rar. Go to project directory. Execute <code>index.js</code> file by <strong>nodejs</strong>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unrar e demo.rar</span><br><span class="line"><span class="built_in">cd</span> demo</span><br><span class="line">npm i</span><br><span class="line">npm run demo</span><br></pre></td></tr></table></figure>
 
 <p>In NodeJs:</p>
@@ -342,6 +342,12 @@
 <td align="center">false</td>
 <td align="center">The number of days to subtract from the date. Month and week required parameters for tick</td>
 </tr>
+<tr>
+<td align="center">options.firstDayOfWeek</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">First day of week. It takes values between 0 and 6. Default value is monday</td>
+</tr>
 </tbody></table>
 <h4 id="Output-4"><a href="#Output-4" class="headerlink" title="Output"></a>Output</h4><table>
 <thead>
@@ -378,6 +384,12 @@
 <td align="center">Number</td>
 <td align="center">false</td>
 <td align="center">The number of days to subtract from the date</td>
+</tr>
+<tr>
+<td align="center">firstDayOfWeek</td>
+<td align="center">Number</td>
+<td align="center">false</td>
+<td align="center">First day of week. It takes values between 0 and 6. Default value is monday</td>
 </tr>
 </tbody></table>
 <h4 id="Output-5"><a href="#Output-5" class="headerlink" title="Output"></a>Output</h4><table>
