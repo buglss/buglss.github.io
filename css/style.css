@@ -59,6 +59,9 @@
 .icon.icon-code-fork:before {
   content: '\f126';
 }
+.icon.icon-calendar:before {
+  content: '\f133';
+}
 .text-font {
   color: #444;
 }
