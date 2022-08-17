@@ -589,22 +589,22 @@
     
     
     <entry>
-      <title>Folyolar</title>
-      <link href="/folios/index.html"/>
-      <url>/folios/index.html</url>
+      <title>npm</title>
+      <link href="/npm/index.html"/>
+      <url>/npm/index.html</url>
       
-        <content type="html"><![CDATA[<h3 id="Bilgisayar-Muhendisligi-Alanlari-ve-Web-Developer"><a href="#Bilgisayar-Muhendisligi-Alanlari-ve-Web-Developer" class="headerlink" title=" Bilgisayar Mühendisliği Alanları ve Web Developer"></a><span class="icon icon-slideshare"></span> <a href="bilgisayar_muhendisligi_alanlari_ve_web_developer/">Bilgisayar Mühendisliği Alanları ve Web Developer</a></h3>]]></content>
+        <content type="html"><![CDATA[<h3 id="cronti"><a href="#cronti" class="headerlink" title=" cronti"></a><span class="icon icon-cupe"></span> <a href="cronti/">cronti</a></h3>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>npm</title>
-      <link href="/npm/index.html"/>
-      <url>/npm/index.html</url>
+      <title>Folyolar</title>
+      <link href="/folios/index.html"/>
+      <url>/folios/index.html</url>
       
-        <content type="html"><![CDATA[<h3 id="cronti"><a href="#cronti" class="headerlink" title=" cronti"></a><span class="icon icon-cupe"></span> <a href="cronti/">cronti</a></h3>]]></content>
+        <content type="html"><![CDATA[<h3 id="Bilgisayar-Muhendisligi-Alanlari-ve-Web-Developer"><a href="#Bilgisayar-Muhendisligi-Alanlari-ve-Web-Developer" class="headerlink" title=" Bilgisayar Mühendisliği Alanları ve Web Developer"></a><span class="icon icon-slideshare"></span> <a href="bilgisayar_muhendisligi_alanlari_ve_web_developer/">Bilgisayar Mühendisliği Alanları ve Web Developer</a></h3>]]></content>
       
     </entry>
     
@@ -622,22 +622,22 @@
     
     
     <entry>
-      <title>Bilgisayar Mühendisliği Alanları ve Web Developer</title>
-      <link href="/folios/bilgisayar_muhendisligi_alanlari_ve_web_developer/index.html"/>
-      <url>/folios/bilgisayar_muhendisligi_alanlari_ve_web_developer/index.html</url>
+      <title>cronti</title>
+      <link href="/npm/cronti/index.html"/>
+      <url>/npm/cronti/index.html</url>
       
-        <content type="html"><![CDATA[<!-- Section Begin --><!-- Page Begin --><div class="slider-content shadow"><h1 id="TEMEL-ALANLAR"><a href="#TEMEL-ALANLAR" class="headerlink" title="TEMEL ALANLAR"></a>TEMEL ALANLAR</h1><hr /><div class="container-fluid"><div class="row row-no-gutters">    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/software-developer.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Yazılım Geliştirme</h3>        </div>    </div>    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/hardware-developer.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Donanım Geliştirme</h3>        </div>    </div>    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/system-administrator.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Sistem Yönetimi</h3>        </div>    </div>    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/network-administrator.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Network/Ağ Yönetimi</h3>        </div>    </div></div></div></div><!-- Page End --><!-- Section End -->]]></content>
+        <content type="html"><![CDATA[<h3 id="v3"><a href="#v3" class="headerlink" title=" v3"></a><span class="icon icon-code-fork"></span> <a href="v3">v3</a></h3><h3 id="v2"><a href="#v2" class="headerlink" title=" v2"></a><span class="icon icon-code-fork"></span> <a href="v2">v2</a></h3><h3 id="v1"><a href="#v1" class="headerlink" title=" v1"></a><span class="icon icon-code-fork"></span> <a href="v1">v1</a></h3>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>cronti</title>
-      <link href="/npm/cronti/index.html"/>
-      <url>/npm/cronti/index.html</url>
+      <title>Bilgisayar Mühendisliği Alanları ve Web Developer</title>
+      <link href="/folios/bilgisayar_muhendisligi_alanlari_ve_web_developer/index.html"/>
+      <url>/folios/bilgisayar_muhendisligi_alanlari_ve_web_developer/index.html</url>
       
-        <content type="html"><![CDATA[<h3 id="v3"><a href="#v3" class="headerlink" title=" v3"></a><span class="icon icon-code-fork"></span> <a href="v3">v3</a></h3><h3 id="v2"><a href="#v2" class="headerlink" title=" v2"></a><span class="icon icon-code-fork"></span> <a href="v2">v2</a></h3><h3 id="v1"><a href="#v1" class="headerlink" title=" v1"></a><span class="icon icon-code-fork"></span> <a href="v1">v1</a></h3>]]></content>
+        <content type="html"><![CDATA[<!-- Section Begin --><!-- Page Begin --><div class="slider-content shadow"><h1 id="TEMEL-ALANLAR"><a href="#TEMEL-ALANLAR" class="headerlink" title="TEMEL ALANLAR"></a>TEMEL ALANLAR</h1><hr /><div class="container-fluid"><div class="row row-no-gutters">    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/software-developer.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Yazılım Geliştirme</h3>        </div>    </div>    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/hardware-developer.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Donanım Geliştirme</h3>        </div>    </div>    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/system-administrator.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Sistem Yönetimi</h3>        </div>    </div>    <div class="col-md-3">        <div class="p-2 m-t-2">            <div class="img-responsive text-center">                <img src="/img/folio/network-administrator.jpg" class="h-md-4" />            </div>            <h3><i class="icon icon-right"></i> Network/Ağ Yönetimi</h3>        </div>    </div></div></div></div><!-- Page End --><!-- Section End -->]]></content>
       
     </entry>
     
