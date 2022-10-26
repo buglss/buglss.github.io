@@ -91,7 +91,7 @@
         <h1 id="Private-Key-ve-CSR"><a href="#Private-Key-ve-CSR" class="headerlink" title="Private Key ve CSR"></a>Private Key ve CSR</h1><p>Sertifika satın alma işlemi öncesi key ve csr dosyaları üretilir. Üretilen csr kullanılarak satın alma işlemi yapılır. </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ openssl genrsa -out /path/to/www_server_com.key 2048</span><br><span class="line">$ openssl req -new -key /path/to/www_server_com.key -out /path/to/www_server_com.csr</span><br></pre></td></tr></table></figure>
 
-<h1 id="Satin-Alma"><a href="#Satin-Alma" class="headerlink" title="Satın Alma"></a>Satın Alma</h1><p>Farklı web/http sunucusularına göre satın alınan sertifika dosyaları kullanılır. Temelde mantık sertifika dosyalarının paketlenmesidir(bundle). Satın alınan türe(DV, OV, EV) göre bundle(paket) dosya oluşturulur. Bu yazıda sık kullanılan crt ve pfx formatına değinilecektir. </p>
+<h1 id="Satin-Alma"><a href="#Satin-Alma" class="headerlink" title="Satın Alma"></a>Satın Alma</h1><p>Farklı web&#x2F;http sunucusularına göre satın alınan sertifika dosyaları kullanılır. Temelde mantık sertifika dosyalarının paketlenmesidir(bundle). Satın alınan türe(DV, OV, EV) göre bundle(paket) dosya oluşturulur. Bu yazıda sık kullanılan crt ve pfx formatına değinilecektir. </p>
 <span id="more"></span>
 
 <h1 id="CRT"><a href="#CRT" class="headerlink" title="CRT"></a>CRT</h1><p>CRT dosyaları genelde Linux tabanlı sistemlerde kullanılır. Paket(bundle) dosyasına ilgili sertifika dosyaları (crt) sertifika sağlayıcı tarafından belirtildiği sırayla eklenir. (sirket.crt &gt; X.crt &gt; Y.crt &gt; Z.crt –&gt; bundle.crt)</p>

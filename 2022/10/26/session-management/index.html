@@ -93,8 +93,8 @@
 <p><img src="/img/post/http-session-management_01.png" alt="session_management"></p>
 <br />
 
-<p>İstemci/client ile sunucu/server arasında birbirini tanıma yöntemidir. Sunucu konuştuğu istemcinin kim olduğunu bilmek ister.</p>
-<p>Session, oturum anlamına gelir. Gerçek hayatta insanlar birbiriyle konuşmak için haberleşmek için oturum düzenlerler. İşte sanal dünyada da benzer bir ilişki vardır. Cihazlar/makineler/bilgisayarlar arasındaki iletişimin anlamlı olması için oturum/session kurulur.</p>
+<p>İstemci&#x2F;client ile sunucu&#x2F;server arasında birbirini tanıma yöntemidir. Sunucu konuştuğu istemcinin kim olduğunu bilmek ister.</p>
+<p>Session, oturum anlamına gelir. Gerçek hayatta insanlar birbiriyle konuşmak için haberleşmek için oturum düzenlerler. İşte sanal dünyada da benzer bir ilişki vardır. Cihazlar&#x2F;makineler&#x2F;bilgisayarlar arasındaki iletişimin anlamlı olması için oturum&#x2F;session kurulur.</p>
 <span id="more"></span>
 
 <p>Session kullanıcı bilgisi gibi düşünülmemelidir. İstemcinin yaptığı herşey session kavramına girer. Kullanıcı girişi olmaksızın da oturum bilgileri tutulup kullanılabilir. Oturum bilgisi yani session konuşan iki kişinin birbirini tanıması gibidir.</p>
@@ -102,7 +102,7 @@
 <p>Session istemci tarafında veya sunucu tarafında saklanabilir. Saklama koşulları tamamen geliştiricinin mimari kurgusuna bağlıdır. Sunucu tarafında bir veritabanına session bilgilerini kaydedebilir. In-memory ortamda saklayabilir. Programlama dili içindeki değişken türlerini kullanarak program içerisinde saklayabilir. İstemci tarafında url adresinde, hidden inputlarda veya cookie header objesinde saklanabilir.</p>
 <p><img src="/img/post/cookie-and-session-management-process-in-codeigniter.jpg" alt="server-side-session"></p>
 <p>Session karakteri gereği gizliliği sever. Oturum sahibine ait bilgileri tuttuğu için gizlice transferi sağlanmalıdır. Yöntemlerden biri sunucu tarafında session bilgilerini kaydedip bu bilgilere erişimi sağlayabilecek bir id üretmektir. Bu id’yi ise istemci tarafında kaydedip her istekte session bilgilerine ulaşılabilir. Bir diğer yöntem ise istemci tarafında session datanın hashlenmiş halini saklamaktır. Bunun için session bilgisi cookie objesine yazdırılır. Her istekte de cookie objesinden okunarak session bilgisi kullanılabilir.</p>
-<p>Session bilgisinin hassaslığından bahsetmiştim. Bu hassasiyetinden ötürü sadece id veya hashleme ile korumak yetersiz olur. Bu session’ın bizim istemcimize ait olduğundan emin olmamız lazım. Session’ın çalınması halinde koruma sağlamalıyız. Bunu istemcinin/cihazın/makinenin/bilgisayarın benzersiz, ona özel bir değerini kullanarak yapabiliriz.</p>
+<p>Session bilgisinin hassaslığından bahsetmiştim. Bu hassasiyetinden ötürü sadece id veya hashleme ile korumak yetersiz olur. Bu session’ın bizim istemcimize ait olduğundan emin olmamız lazım. Session’ın çalınması halinde koruma sağlamalıyız. Bunu istemcinin&#x2F;cihazın&#x2F;makinenin&#x2F;bilgisayarın benzersiz, ona özel bir değerini kullanarak yapabiliriz.</p>
 <p>Örneğin session datamızın içine ip adresini kaydedersek sahibini kontrol etme şansımız olur. Session’ı en başta alan istemcinin ip adresi ile sonrasında istekte bulunan istemcinin ip adresi aynı olmalıdır. Özellikle statik ip alınmadıysa, ip adresleri dinamik bir şekilde değişir. Fakat bu ip değişikliği kısa sürede olmaz. Alınan ip adresi kullanıldığı sürece istemciye kiralanır.</p>
 <p><img src="/img/post/jwt.jpg" alt="client-side-session"></p>
 <p>Session bilgisini sunucu tarafında kaydettiğinde ulaşılabilir bir id değeri istemciye gönderilir. Session bilgilerini devamlı kaydedilen yerden okumak istenmeyebilir. Bunun yerine session bilgilerinin referansı olan id değil de olduğu gibi tüm session bilgilerinin hashlenmiş hali istemci tarafına gönderilebilir. Her istekte de istemci bu hashlenmiş session bilgisini gönderir.</p>
