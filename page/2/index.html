@@ -69,6 +69,80 @@
 </header>
     <div id="content" class="inner">
       <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-oAuth-temel-calisma-mantigi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-21T19:46:08.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/21/oAuth-temel-calisma-mantigi/">21.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/oAuth-temel-calisma-mantigi/">oAuth Temel Çalışma Mantığı</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><img src="/img/oauth.gif" alt="oAuth Flow Gif"></p>
+<h4 id="C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici"><a href="#C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici" class="headerlink" title="{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı"></a>{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı</h4>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/01/21/oAuth-temel-calisma-mantigi/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-ubuntu-icin-ngixn-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-21T19:36:38.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/">21.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/">Ubuntu için Ngixn Kurulumu</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<h1 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h1><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p>
+<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="section">upstream</span> prod &#123;</span><br><span class="line">	least_conn;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3001</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3002</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3003</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3004</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">3000</span> default_server;</span><br><span class="line">	<span class="attribute">listen</span> [::]:<span class="number">3000</span> default_server;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">server_name</span> &lt;fqdn&gt;;</span><br><span class="line"></span><br><span class="line">	<span class="section">location</span> / &#123;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://prod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
   <article id="post-docker-ile-gitlab-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -398,81 +472,6 @@
   </div>
 </article>
 
-  <article id="post-node-red-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2021-12-19T14:11:23.000Z">
-          <span class="icon"></span> 
-          <a href="/2021/12/19/node-red-kurulum/">19.12.2021</a>
-          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
-        </time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/node-red-kurulum/">Nodejs ile node-red Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="node-red-Kurulumu"><a href="#node-red-Kurulumu" class="headerlink" title="node-red Kurulumu"></a>node-red Kurulumu</h1><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p>
-<p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g node-red</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-ubuntu-icin-nodejs-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2021-12-19T14:02:05.000Z">
-          <span class="icon"></span> 
-          <a href="/2021/12/19/ubuntu-icin-nodejs-kurulum/">19.12.2021</a>
-          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
-        </time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/ubuntu-icin-nodejs-kurulum/">Ubuntu için Nodejs Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Nodejs-Kurulumu"><a href="#Nodejs-Kurulumu" class="headerlink" title="Nodejs Kurulumu"></a>Nodejs Kurulumu</h1><p>Nodejs’i <code>nvm</code> kütüphanesini kullanarak kurucaz.</p>
-<h1 id="nvm-Kurulumu"><a href="#nvm-Kurulumu" class="headerlink" title="nvm Kurulumu"></a>nvm Kurulumu</h1><p>Aşağıdaki komut nvm reposundaki master projeyi indirir. Ardından install.sh dosyasını çalıştırır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash</span><br></pre></td></tr></table></figure>
-
-<p>nvm kütüphanesi ile ilgili daha fazla bilgi için: <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">Detay</a></p>
-<h1 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h1><p>Nodejs ve beraberinde npm kurulumu yapılır. Aşağıdaki komut lts versiyonunu kurar.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install --lts</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
 
  
 
@@ -553,7 +552,7 @@
     <span class="icon icon-cloud"></span>
     Etiket Bulutu</h3>
   <div class="entry">
-    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
   </div>
 </div>
 
@@ -565,6 +564,16 @@
     Son Gönderiler
   </h3>
   <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/10/26/ssh-copy-id/">SSH Public Key ile Güvenli Bağlantı</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/10/26/session-management/">Session Management / Oturum Yönetimi</a>
+      </li>
     
       <li>
         <i class="icon icon-right"></i>
@@ -581,16 +590,6 @@
         <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
       </li>
     
-      <li>
-        <i class="icon icon-right"></i>
-        <a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a>
-      </li>
-    
-      <li>
-        <i class="icon icon-right"></i>
-        <a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -600,18 +599,18 @@
   <h3 class="title categories">
     <span class="icon"></span>
     Kategoriler
-    <small> 22 </small>
+    <small> 24 </small>
   </h3>
   <ul class="entry">
   
     <li>
       <i class="icon icon-right"></i>
-      <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small>
+      <a href="/categories/CMS/">CMS</a><small>1</small>
     </li>
   
     <li>
       <i class="icon icon-right"></i>
-      <a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small>
+      <a href="/categories/Guvenlik/">Güvenlik</a><small>2</small>
     </li>
   
     <li>
@@ -621,7 +620,32 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/categories/Proses/">Proses</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Server/">Server</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Veritabani/">Veritabanı</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Web/">Web</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/categories/Wiki/">Wiki</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Isletim-Sistemi/">İşletim Sistemi</a><small>4</small>
     </li>
   
   </ul>
@@ -633,7 +657,7 @@
   <h3 class="title tags">
     <span class="icon"></span>
     Etiketler
-    <small> 38 </small>
+    <small> 40 </small>
   </h3>
   <ul class="entry">
   
@@ -705,6 +729,16 @@
     <li>
       <i class="icon icon-right"></i>
       <a href="/tags/pm2/">pm2</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/session/">session</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ssh/">ssh</a><small>1</small>
     </li>
   
     <li>

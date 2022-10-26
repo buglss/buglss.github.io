@@ -69,6 +69,88 @@
 </header>
     <div id="content" class="inner">
       <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-ssh-copy-id" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-10-26T19:49:28.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/10/26/ssh-copy-id/">26.10.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>2 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/10/26/ssh-copy-id/">SSH Public Key ile Güvenli Bağlantı</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><img src="/img/post/asimetrik-sifreleme.jpg" alt="ssh"></p>
+<p>İki bilgisayar arasında bağlantı kurmak için ssh protokolü güvenli bir yoldur. SSH protokolü ile varsayılan olarak 22 portundan iki bilgisayar arasında güvenli bir yol oluşturulur. Bu kanaldan veri alış verişi yapılabilir.</p>
+<p>SSH ile bağlantı kurmanın 2 farklı yolu vardır. Bunlardan biri bağlanılmak istenen bilgisayardaki kullanıcı adı ve parola ile bağlanmaktır. Diğer bir yöntem ise <code>.ssh</code> dizini altındaki <strong>.pub</strong> uzantılı dosyadaki key, hedef bilgisayarda <code>.ssh</code> dizinindeki <code>authorized_keys</code> dosyasına yazılır. Bu şekilde kaynak bilgisayardaki ssh key ile hedef bilgisayardaki ssh key birbiriyle eşleştirilmiş olur.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/10/26/ssh-copy-id/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article id="post-session-management" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-10-26T18:40:35.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/10/26/session-management/">26.10.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>3 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/10/26/session-management/">Session Management / Oturum Yönetimi</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <br />
+
+<p><img src="/img/post/http-session-management_01.png" alt="session_management"></p>
+<br />
+
+<p>İstemci/client ile sunucu/server arasında birbirini tanıma yöntemidir. Sunucu konuştuğu istemcinin kim olduğunu bilmek ister.</p>
+<p>Session, oturum anlamına gelir. Gerçek hayatta insanlar birbiriyle konuşmak için haberleşmek için oturum düzenlerler. İşte sanal dünyada da benzer bir ilişki vardır. Cihazlar/makineler/bilgisayarlar arasındaki iletişimin anlamlı olması için oturum/session kurulur.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2022/10/26/session-management/#more" class="more-link">Daha fazla oku</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
   <article id="post-git-baslangic-orta" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -417,89 +499,6 @@
   </div>
 </article>
 
-  <article id="post-oAuth-temel-calisma-mantigi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2022-01-21T19:46:08.000Z">
-          <span class="icon"></span> 
-          <a href="/2022/01/21/oAuth-temel-calisma-mantigi/">21.01.2022</a>
-          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
-        </time>
-      
-      
-  
-    <h1 class="title"><a href="/2022/01/21/oAuth-temel-calisma-mantigi/">oAuth Temel Çalışma Mantığı</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h4 id="C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici"><a href="#C-gt-Client-S-gt-Server-FQDN-gt-Hizmet-Saglayici" class="headerlink" title="{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı"></a>{C} =&gt; Client, {S} =&gt; Server, {FQDN} =&gt; Hizmet Sağlayıcı</h4><p>Sırasıyla aşağıdaki gibidir.</p>
-<ol>
-<li><code>Client</code>: Webview içinde <strong>{FQDN}</strong>/oauth/authorize?response_type=code&amp;client_id=<strong>&lt;CLIENT_ID&gt;</strong>&amp;redirect_uri=<strong>&lt;SİZİN_URL&gt;</strong> adresine <code>GET</code> et.</li>
-<li><code>Client</code>: <strong>{FQDN}</strong> login sayfası açıldı. <strong>{FQDN}</strong> sistemindeki kullanıcı bilgilerini girdi.</li>
-<li><code>Client</code>: <strong>&lt;SİZİN_URL&gt;</strong> adresinde <code>GET</code> metodunu dinleyen endpoint’inize <strong>{“code”: &lt;CODE&gt;}</strong> payload’una sahip bir request gelir.</li>
-<li><code>Server</code>: <strong>&lt;SİZİN_URL&gt;</strong> entpoint’inde gelen <code>code</code> bilgisini kullanarak {client_id: “<strong>&lt;CLIENT_ID&gt;</strong>“, client_secret: “<strong>&lt;CLIENT_SECRET&gt;</strong>“, grant_type: “authorization_code”, code: <strong>&lt;PAYLOAD.CODE&gt;</strong>, redirect_uri: <strong>&lt;SİZİN_URL&gt;</strong>} payload’u ile <strong>{FQDN}</strong>/oauth/token adresine <code>POST</code> yap.</li>
-<li><code>Server</code>: {“access_token”: <strong>&lt;ACCESS_TOKEN&gt;</strong>, “expires_in”: 3600, “token_type”: “Bearer”, “scope”: “basic”, “refresh_token”: <strong>&lt;REFRESH_TOKEN&gt;</strong>} response objesindeki “access_token” ve “token_type” bilgilerini kullanarak authorization header oluştur. Bu header ile payload’ın boş obje olacak şekilde <strong>{FQDN}</strong>/oauth/me/ adresine <code>POST</code> yap.</li>
-<li><code>Server</code>: {“ID”: <strong>&lt;USER_ID&gt;</strong>, “user_login”: <strong>&lt;USERNAME&gt;</strong>, “user_nicename”: <strong>&lt;USER_NICENAME&gt;</strong>, “user_email”: <strong>&lt;USER_EMAIL&gt;</strong>, “user_registered”: <strong>&lt;USER_REGISTERED&gt;</strong>, “user_status”: <strong>&lt;USER_STATUS&gt;</strong>, “display_name”: <strong>&lt;USER_DISPLAY_NAME&gt;</strong>} response objesi ile kullanıcı bilgilerine ulaştın.</li>
-<li><code>Server</code>: Kullanıcı login başarılı. Webview olduğu için response olarak html dön. Başarılı olduğuna dair bir yazı olabilir. Tablette gitmesi gereken sayfaya doğrudan yönlendirme olabilir. Gibi gibi…</li>
-<li><code>Client</code>: 7’nci adımdaki response’ta yaptığın işlem gerçekleşir.</li>
-</ol>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2022/01/21/oAuth-temel-calisma-mantigi/#more" class="more-link">Daha fazla oku</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-ubuntu-icin-ngixn-kurulumu" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2022-01-21T19:36:38.000Z">
-          <span class="icon"></span> 
-          <a href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/">21.01.2022</a>
-          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
-        </time>
-      
-      
-  
-    <h1 class="title"><a href="/2022/01/21/ubuntu-icin-ngixn-kurulumu/">Ubuntu için Ngixn Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
-
-<h1 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h1><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p>
-<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="section">upstream</span> prod &#123;</span><br><span class="line">	least_conn;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3001</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3002</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3003</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3004</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">3000</span> default_server;</span><br><span class="line">	<span class="attribute">listen</span> [::]:<span class="number">3000</span> default_server;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">server_name</span> &lt;fqdn&gt;;</span><br><span class="line"></span><br><span class="line">	<span class="section">location</span> / &#123;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://prod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
 
  
 
@@ -580,7 +579,7 @@
     <span class="icon icon-cloud"></span>
     Etiket Bulutu</h3>
   <div class="entry">
-    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
   </div>
 </div>
 
@@ -592,6 +591,16 @@
     Son Gönderiler
   </h3>
   <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/10/26/ssh-copy-id/">SSH Public Key ile Güvenli Bağlantı</a>
+      </li>
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2022/10/26/session-management/">Session Management / Oturum Yönetimi</a>
+      </li>
     
       <li>
         <i class="icon icon-right"></i>
@@ -608,16 +617,6 @@
         <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
       </li>
     
-      <li>
-        <i class="icon icon-right"></i>
-        <a href="/2022/01/22/ssl-sertifika-islemleri/">SSL Sertifika İşlemleri</a>
-      </li>
-    
-      <li>
-        <i class="icon icon-right"></i>
-        <a href="/2022/01/22/mongodb-faydali-bilgiler/">Mongodb Faydalı Bilgiler</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -627,18 +626,18 @@
   <h3 class="title categories">
     <span class="icon"></span>
     Kategoriler
-    <small> 22 </small>
+    <small> 24 </small>
   </h3>
   <ul class="entry">
   
     <li>
       <i class="icon icon-right"></i>
-      <a href="/categories/Faydali-Bilgiler/">Faydalı Bilgiler</a><small>9</small>
+      <a href="/categories/CMS/">CMS</a><small>1</small>
     </li>
   
     <li>
       <i class="icon icon-right"></i>
-      <a href="/categories/Haydali-Bilgiler/">Haydalı Bilgiler</a><small>1</small>
+      <a href="/categories/Guvenlik/">Güvenlik</a><small>2</small>
     </li>
   
     <li>
@@ -648,7 +647,32 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/categories/Proses/">Proses</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Server/">Server</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Veritabani/">Veritabanı</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Web/">Web</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/categories/Wiki/">Wiki</a><small>3</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/categories/Isletim-Sistemi/">İşletim Sistemi</a><small>4</small>
     </li>
   
   </ul>
@@ -660,7 +684,7 @@
   <h3 class="title tags">
     <span class="icon"></span>
     Etiketler
-    <small> 38 </small>
+    <small> 40 </small>
   </h3>
   <ul class="entry">
   
@@ -732,6 +756,16 @@
     <li>
       <i class="icon icon-right"></i>
       <a href="/tags/pm2/">pm2</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/session/">session</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/ssh/">ssh</a><small>1</small>
     </li>
   
     <li>
