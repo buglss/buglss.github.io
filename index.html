@@ -93,35 +93,14 @@
 <h1 id="Dogru-Kararlar"><a href="#Dogru-Kararlar" class="headerlink" title="Doğru Kararlar"></a>Doğru Kararlar</h1><p>Yapay zeka uygulamaları her geçen gün çok daha iyi bir noktaya geliyor. Geliştirdikleri LLM’ler artık çok daha doğru sonuçlar üretmektedir. Halüsinasyon devri kapandı, artık çok daha doğru sonuçlar üretiyor.</p>
 <p>Günümüzde artık yapay zeka değil onu kullanan kişiler halüsinasyon görmeye eğilimli. Artık o kadar doğru ve tutarlı sonuçlar veriyor ki kullanan kişiler düşünmeyi bırakmaya yöneldi. Düşünmeyen kişiler tarafından üretilen işler yapay zekanın taktirine bırakılmış.</p>
 <p>Korkum şu ki bu düzen gelecekte <strong>“yapay zeka zombileri”</strong> doğuracak. Umarım o gün hiç gelmez. Geldiğinde, yapay zekayı doğru ve bilinçli şekilde kullanan kişiler olarak bizi zor günler bekler.</p>
-<h1 id="Dosya-Yapisi"><a href="#Dosya-Yapisi" class="headerlink" title="Dosya Yapısı"></a>Dosya Yapısı</h1><p>Yapay zeka uygulamaları kendine bir kapsam (context) belirler. Bu kapsam içerisinde yaptığınız görüşmeler şekillenir. Çıktılar ve kararlar bu sınırlar içerisinde oluşur.</p>
-<p>Kapsam bilgileri dosyalarda saklanabilir. Bu dosyalar md (markdown) formatındadır. Frontmatter yazım stili ile yazılır.</p>
-<p>Herşey tek bir dosyaya sığmaz. Her şeyin bir kapasitesi var. Daha fazla bilgi daha iyi anlamına gelmez.</p>
-<p>Bilgi ilişkisi, kaynak referans yapısı kurmalısın. Hangi bilgi nerede ve o bilgiye ne zaman ihtiyaç duyulur? Bir projeye başlarken doğru yaklaşım böyle olmalıdır. Bu yaklaşım aynı şekilde korunarak yapay zeka projesinde de böyle kurulmalıdır.</p>
-<h1 id="Yapay-Zeka-Mimarisi"><a href="#Yapay-Zeka-Mimarisi" class="headerlink" title="Yapay Zeka Mimarisi"></a>Yapay Zeka Mimarisi</h1><p>Yapay zeka her şeyi artık yapabilir duruma geldi. Fakat sürdürülebilir ve senin kontrolünde mi yapıyor? Her şey senin istediğin şekilde mi? Aynı projede birden fazla kişi çalıştığında tutarlı sonuçlar üretebiliyor mu?</p>
-<p>Yapay zeka ile sadece yazılım projeleri yapmak zorunda değilsin. Dokümante edilebilir her türde proje yapay zeka ile yapılabilir. Projelerin bir dosyası vardır. Dosyalarda bilgiler saklanır. Yapay zeka uygulamaları da verdiğin görevleri yerine getirebilmek için bilgiye ihtiyaç duyar.</p>
-<h2 id="Baslangic-Kapsami-Context"><a href="#Baslangic-Kapsami-Context" class="headerlink" title="Başlangıç Kapsamı (Context)"></a>Başlangıç Kapsamı (Context)</h2><p>Yapay zeka uygulamaları kendi başlangıç kapsamı için özel bir isme sahip dosya tercih eder. Bu claude için CLAUDE.md, chatgpt&#x2F;codex için AGENTS.md dosyasıdır. Her yeni sohbet&#x2F;oturum&#x2F;session başlattığında önce bu kapsam dosyasındaki bilgiler okunur.</p>
-<p>Her bilgi başlangıç kapsamına yazılmamalıdır. Bir insan bir işi yapmak için bir anda, tek seferde tüm bilgileri kullanabilir mi? Hayır tabi ki de. Sırayla bilgileri okur, kişilere soru sorar, sırayla dinler, tane tane anlar, gerekirse not alır. Görev özelinde genelden özele doğru bilgi edinir. Yapması gereken iş birden fazla görev içerebilir. Her görev için tek tek bilgi toplar. Tüm görevlere ait bilgileri tamamen öğrenip iş yapmaz, yapamaz. Çünkü aklı karışır, unutur, kafası gereksiz yere dolar, yapacağı işin kalitesi düşer, dikkati dağılır. Bunu çok gelişmiş insan beyni dahi tercih etmiyor.</p>
-<h2 id="Insan-Gibi-Dusun"><a href="#Insan-Gibi-Dusun" class="headerlink" title="İnsan Gibi Düşün"></a>İnsan Gibi Düşün</h2><p>Bir insan verilen işi nasıl yapar? Problemi anlar, küçük parçalara böler, parçaları detaylandırır, bir parça seçer, seçtiği parça özelinde çözüm arar, seçtiği parçayı tamamlar, yeni parça için benzer döngüyü tekrarlar, çözdüğü parçaya ihtiyacı olursa bakar ihtiyacı olmazsa hafızasında saklamaz, çözdüğü parçaya ait notlarını bir kenara yazar, aldığı dersleri bir kenara yazar, ilgilendiği konu için sorular hazırlar, varsayımlar üretir ve bunları doğrulamak üzere not alır, kendine görev listesi hazırlar, elindeki bilgilere nasıl ulaşacağına dair anahtarlama yapısı kurar, belgeleri kendi anlayacağı şekilde isimlendirir, hangi dosyada neyin olduğunu hafızasında saklamaz bunun için bir yere not alır. Bu genel hatlarıyla böyledir.</p>
-<p>Şahsına munhasır bilgiler kendi özel klasörlerinde saklanır. Bölünebildiğince küçük parçalara bölünür. Her parçanın kendi README.md dosyası vardır. Bu dosya o klasördeki dosyaların ne anlama geldiği ve ne işe yaradığını anlatır.</p>
-<p>Ana kapsam dosyası (CLAUDE.md, AGENTS.md vb.) projedeki klasörleri tanımlar. Proje hakkında genel bilgi verir. Özel notları barındırır. Yasakları ve kuralları yazar. Her yeni klasörde bu dosya güncellenir.</p>
-<p>Projede sorular için ayrı bir klasör yapısı kurulur. Bu sorular senin sorduğun ya da yapay zeka uygulamasının sana sorduğu sorular olabilir. Zamanla şişmemesi için günlük, haftalık veya aylık periyotta dosya oluşturmalısın. En basit şekli isimlendirme standartıdır. Versiğin cevaplara göre projedeki gereken yerler güncellenmeli, kararlar gerekiyorsa revize edilmeli, referans dosyaları güncellenmelidir. Diğer klasörlerde de olduğu gibi tabi ki README.md dosyan olmalı.</p>
-<p>Yapay zeka varsayımda bulunarak yaptığı işleri sana raporlamalıdır. Bunu istemelisin. Teyit gerektiren bu konular için de klasör yapısı kurmalısın. Aynı soru klasör yapısı gibi süre periyodu, README.md ve referans güncelleme prosedürü olmalıdır.</p>
-<p>Projede senin yapman gereken görevler vardır. Bu görevler için de klasör yapısı kurmalısın. Projede heran istenen işlemleri yapamayabilirsin. Bir yere kadar işi getirmiş ve başka işe geçmiş olabilirsin. Proje bütünlüğü açısından yarım kalan konular ve gelecekteki işler için bir görev çizelgesi ve ilişki takibi olmalı. Tabi ki bu klasörde de README.md, referans güncelleme ve zaman periyot düzeni olmalıdır.</p>
-<h1 id="Ozet"><a href="#Ozet" class="headerlink" title="Özet"></a>Özet</h1><p>Başlangıç kapsamında hangi bilginin hangi klasör altında olduğunu ve ne konuda o bilgiye ulaşılması gerektiğini tarif edersin. Genel kural ve yasaklardan bahsedersin. Proje hakkında genel bilgi verirsin. Amaç, kapsam gibi temel bilgiler yazar. Referans edilen klasörlerde bir değişiklik olduğunda, proje detaylarında bir değişiklik olduğunda bu dosya güncellenir.</p>
-<p>Her konuya özel, kendi sınırları olan, tek başına anlamlı olan her kaynak bilgi için ayrı ayrı klasör oluşturursun. Bu klasörlerin ismini uygun şekilde verirsin. İçerisinde alt klasör ve dosyalar olabilir. Her klasörün mutlaka içindeki kendi klasör ve dosyalarında ne olduğunu anlatan ve ne için kullanacağını belirten README.md dosyası bulunur. Yapay zeka uygulaması README.md dosyalarını okur.</p>
-<p>Soru, görev ve teyit bekleyen konular için ayrı ayrı klasörlerin olur. Her klasör altında hangi zaman periyodu ile dosyaların oluşturulduğu, ne amaçla kullanıldığı ve içerisinde ne bilgilerinin olduğunu anlatan README.md dosyası olur.</p>
-<h1 id="Yapay-Zeka-Ne-Yapar"><a href="#Yapay-Zeka-Ne-Yapar" class="headerlink" title="Yapay Zeka Ne Yapar?"></a>Yapay Zeka Ne Yapar?</h1><ol>
-<li>Başlangıç kapsam dosyasını (AGENTS.md, CLAUDE.md vb.) okur.</li>
-<li>Verdiğin görev için hangi klasörü incelemesi gerektiğini öğrenir.</li>
-<li>İlgili klasörün içine girer ve içindeki README.md dosyasını okur.</li>
-<li>Klasör altındaki README.md dosyasındaki bilgilere göre ilgili dosyaya ya da klasöre ulaşır.</li>
-<li>Verdiğin görevi topladığı bilgiler ışığında ve senin başlangıç kapsamında tariflediğin kurallar çerçevesinde işletir.</li>
-</ol>
-
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2026/11/07/yapay-zeka-destekli-proje-mimarisi/#more" class="more-link">Daha fazla oku</a>
+          </div>
         
         
       
