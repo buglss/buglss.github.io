@@ -89,12 +89,12 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <h1 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h1><p>HTTP sunucusu olarak apache kullanılmıştır. Apache, PHP, MySQL, Wordpress ve kullanışlı bazı paketlerin kurulumu yapılmaktadır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install apache2 wordpress ghostscript libapache2-mod-php mysql-server php php-mysql php-ldap php-curl php-xml php-mbstring php-imagick php-zip php-bcmath php-intl php-json</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install apache2 wordpress ghostscript libapache2-mod-php mysql-server php php-mysql php-ldap php-curl php-xml php-mbstring php-imagick php-zip php-bcmath php-intl php-json</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
 <h1 id="Apache-Yapilandirmasi"><a href="#Apache-Yapilandirmasi" class="headerlink" title="Apache Yapılandırması"></a>Apache Yapılandırması</h1><p>Apache mod_rewrite modülünü aktif hale getir. Ardından apache servisini yeniden başlat.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo a2enmod rewrite</span><br><span class="line">$ sudo service apache2 reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> a2enmod rewrite</span><br><span class="line">$ <span class="built_in">sudo</span> service apache2 reload</span><br></pre></td></tr></table></figure>
 
 <p><code>/etc/apache2/conf-available/security.conf</code> dosyasına git. <code>ServerTokens</code> ve <code>ServerSignature</code> bölümlerini aşağıdaki gibi düzenle.</p>
 <figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ServerTokens</span> Prod</span><br><span class="line"><span class="attribute">ServerSignature</span> <span class="literal">Off</span></span><br></pre></td></tr></table></figure>
@@ -103,10 +103,10 @@
 <figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;VirtualHost *<span class="number">:80</span>&gt;</span></span><br><span class="line">	<span class="attribute">ServerAdmin</span> webmaster@localhost</span><br><span class="line">	<span class="attribute">DocumentRoot</span> /var/www/html</span><br><span class="line">    	<span class="section">&lt;Directory <span class="string">&quot;/var/www/html&quot;</span>&gt;</span></span><br><span class="line">        	<span class="attribute">Options</span> FollowSymLinks MultiViews</span><br><span class="line">        	<span class="attribute">AllowOverride</span> <span class="literal">All</span></span><br><span class="line">        	<span class="attribute">Order</span> <span class="literal">Allow</span>, <span class="literal">Deny</span></span><br><span class="line">        	<span class="attribute">Allow</span> from <span class="literal">All</span></span><br><span class="line">    	<span class="section">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="attribute">ErrorLog</span> <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/error.log</span><br><span class="line">	<span class="attribute">CustomLog</span> <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/access.log combined</span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">&lt;VirtualHost *<span class="number">:80</span>&gt;</span></span><br><span class="line">    <span class="attribute">ServerName</span> &lt;SERVER_NAME&gt;</span><br><span class="line">    <span class="attribute">ServerAlias</span> &lt;SERVER_ALIAS&gt;</span><br><span class="line">    <span class="attribute">DocumentRoot</span> <span class="string">&quot;/var/www/html/&lt;FOLDER_NAME&gt;&quot;</span></span><br><span class="line">    <span class="section">&lt;Directory <span class="string">&quot;/var/www/html/&lt;FOLDER_NAME&gt;&quot;</span>&gt;</span></span><br><span class="line">        <span class="attribute">Options</span> FollowSymLinks MultiViews</span><br><span class="line">        <span class="attribute">AllowOverride</span> <span class="literal">All</span></span><br><span class="line">        <span class="attribute">Order</span> <span class="literal">Allow</span>, <span class="literal">Deny</span></span><br><span class="line">        <span class="attribute">Allow</span> from <span class="literal">All</span></span><br><span class="line">    <span class="section">&lt;/Directory&gt;</span></span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>Apache’nin wordpress dosyalarını kullanabilmesi için <code>www-data</code> kullanıcısına ve grubuna sahiplik ver.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R www-data:www-data /var/www/html/&lt;FOLDER_NAME&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> <span class="built_in">chown</span> -R www-data:www-data /var/www/html/&lt;FOLDER_NAME&gt;</span><br></pre></td></tr></table></figure>
 
 <h1 id="MySQL-Yapilandirmasi"><a href="#MySQL-Yapilandirmasi" class="headerlink" title="MySQL Yapılandırması"></a>MySQL Yapılandırması</h1><p>root kullanıcısı ile veritabanına bağlan.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -u root</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> mysql -u root</span><br></pre></td></tr></table></figure>
 
 <p>Web sitesinin bağlanacağı veritabanının oluştur.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> DATABASE <span class="operator">&lt;</span>veritabani_ismi<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
@@ -186,7 +186,7 @@
     <span class="icon icon-cloud"></span>
     Etiket Bulutu</h3>
   <div class="entry">
-    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/llm/" style="font-size: 10px;">llm</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mimari/" style="font-size: 10px;">mimari</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/proje/" style="font-size: 10px;">proje</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a> <a href="/tags/yapay-zeka/" style="font-size: 10px;">yapay zeka</a>
   </div>
 </div>
 
@@ -198,6 +198,11 @@
     Son Gönderiler
   </h3>
   <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2026/11/07/yapay-zeka-destekli-proje-mimarisi/">Yapay Zeka Destekli Proje Mimarisi</a>
+      </li>
     
       <li>
         <i class="icon icon-right"></i>
@@ -219,11 +224,6 @@
         <a href="/2022/01/25/nginx-reverse-proxy/">Nginx Reverse Proxy</a>
       </li>
     
-      <li>
-        <i class="icon icon-right"></i>
-        <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -233,7 +233,7 @@
   <h3 class="title categories">
     <span class="icon"></span>
     Kategoriler
-    <small> 24 </small>
+    <small> 25 </small>
   </h3>
   <ul class="entry">
   
@@ -279,6 +279,11 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/categories/Yapay-Zeka/">Yapay Zeka</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/categories/Isletim-Sistemi/">İşletim Sistemi</a><small>4</small>
     </li>
   
@@ -291,7 +296,7 @@
   <h3 class="title tags">
     <span class="icon"></span>
     Etiketler
-    <small> 40 </small>
+    <small> 44 </small>
   </h3>
   <ul class="entry">
   
@@ -317,7 +322,17 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/tags/llm/">llm</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/tags/lvm/">lvm</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mimari/">mimari</a><small>1</small>
     </li>
   
     <li>
@@ -367,6 +382,11 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/tags/proje/">proje</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/tags/session/">session</a><small>1</small>
     </li>
   
@@ -400,6 +420,11 @@
       <a href="/tags/wordpress/">wordpress</a><small>2</small>
     </li>
   
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/yapay-zeka/">yapay zeka</a><small>1</small>
+    </li>
+  
   </ul>
 </div>
 
@@ -408,7 +433,7 @@
     </div>
     <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin | buglss
+  &copy; 2026 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div>

@@ -69,6 +69,42 @@
 </header>
     <div id="content" class="inner">
       <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-tmp-konfigurasyon-yenile" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <!-- <div class="icon"></div> -->
+        <time class="dt-published" datetime="2022-01-21T20:18:58.000Z">
+          <span class="icon"></span> 
+          <a href="/2022/01/21/tmp-konfigurasyon-yenile/">21.01.2022</a>
+          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
+        </time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/21/tmp-konfigurasyon-yenile/">tmp Konfigürasyon Yenile</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h1 id="Komut"><a href="#Komut" class="headerlink" title="Komut"></a>Komut</h1><p>Bu yöntem her zaman doğru sonuç vermeyebilir. Boot sırasında çalışan diğer servisler ile bağlantılı noktalar beklendiği gibi çalışmayabilir. O yüzden bu yöntemden ziyade tmp konfigürasyon dosyasında yapılan değişiklikten sonra en sağlıklısı restart atmaktır.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> /bin/systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev</span><br></pre></td></tr></table></figure>
+
+<h1 id="tmp-Dosya-Yollari"><a href="#tmp-Dosya-Yollari" class="headerlink" title="tmp Dosya Yolları"></a>tmp Dosya Yolları</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/tmpfiles.d/*.conf</span><br><span class="line">/run/tmpfiles.d/*.conf</span><br><span class="line">/usr/lib/tmpfiles.d/*.conf</span><br><span class="line"></span><br><span class="line">~/.config/user-tmpfiles.d/*.conf</span><br><span class="line"><span class="variable">$XDG_RUNTIME_DIR</span>/user-tmpfiles.d/*.conf</span><br><span class="line">~/.local/share/user-tmpfiles.d/*.conf</span><br><span class="line">...</span><br><span class="line">/usr/share/user-tmpfiles.d/*.conf</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
   <article id="post-oAuth-temel-calisma-mantigi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -90,7 +126,7 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <p><img src="/img/oauth.gif" alt="oAuth Flow Gif"></p>
-<h4 id="C-x3D-gt-Client-S-x3D-gt-Server-FQDN-x3D-gt-Hizmet-Saglayici"><a href="#C-x3D-gt-Client-S-x3D-gt-Server-FQDN-x3D-gt-Hizmet-Saglayici" class="headerlink" title="{C} &#x3D;&gt; Client, {S} &#x3D;&gt; Server, {FQDN} &#x3D;&gt; Hizmet Sağlayıcı"></a>{C} &#x3D;&gt; Client, {S} &#x3D;&gt; Server, {FQDN} &#x3D;&gt; Hizmet Sağlayıcı</h4>
+<h4 id="C-Client-S-Server-FQDN-Hizmet-Saglayici"><a href="#C-Client-S-Server-FQDN-Hizmet-Saglayici" class="headerlink" title="{C} &#x3D;&gt; Client, {S} &#x3D;&gt; Server, {FQDN} &#x3D;&gt; Hizmet Sağlayıcı"></a>{C} &#x3D;&gt; Client, {S} &#x3D;&gt; Server, {FQDN} &#x3D;&gt; Hizmet Sağlayıcı</h4>
       
     </div>
     <footer>
@@ -127,7 +163,7 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
+        <h1 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a>Kurulum</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nginx</span><br></pre></td></tr></table></figure>
 
 <h1 id="Loadbalancer"><a href="#Loadbalancer" class="headerlink" title="Loadbalancer"></a>Loadbalancer</h1><p>Konfigürasyon amaca göre değişir. Aşağıdaki örnek konfigürasyon 3000 portunu dinleyen ve 3001,3002,3003,3004 portlarına loadbalance yapan ayardır. <code>/etc/nginx/sites-available/default</code> dosyasına aşağıdakileri ekle.</p>
 <figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="section">upstream</span> prod &#123;</span><br><span class="line">	least_conn;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3001</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3002</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3003</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:3004</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">3000</span> default_server;</span><br><span class="line">	<span class="attribute">listen</span> [::]:<span class="number">3000</span> default_server;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">server_name</span> &lt;fqdn&gt;;</span><br><span class="line"></span><br><span class="line">	<span class="section">location</span> / &#123;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://prod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -166,7 +202,7 @@
         <h1 id="SSH-Port-Ayari"><a href="#SSH-Port-Ayari" class="headerlink" title="SSH Port Ayarı"></a>SSH Port Ayarı</h1><p>Gitlab 22 portunu kullandığı için işletim sisteminin ssh portunu 2222 olarak değiştir. <code>/etc/ssh/sshd_config</code> git.</p>
 <figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># What ports, IPs and protocols we listen for</span></span><br><span class="line"><span class="attribute">Port</span> <span class="number">2222</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<h1 id="Docker-ile-Calistir"><a href="#Docker-ile-Calistir" class="headerlink" title="Docker ile Çalıştır"></a>Docker ile Çalıştır</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run --detach --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume &lt;path&gt;/gitlab/config:/etc/gitlab --volume &lt;path&gt;/gitlab/logs:/var/log/gitlab --volume &lt;path&gt;/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+<h1 id="Docker-ile-Calistir"><a href="#Docker-ile-Calistir" class="headerlink" title="Docker ile Çalıştır"></a>Docker ile Çalıştır</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> docker run --detach --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume &lt;path&gt;/gitlab/config:/etc/gitlab --volume &lt;path&gt;/gitlab/logs:/var/log/gitlab --volume &lt;path&gt;/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -204,13 +240,13 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <h1 id="Temizlik"><a href="#Temizlik" class="headerlink" title="Temizlik"></a>Temizlik</h1><p>Arkamızı toplayarak ilerlemek her zaman daha iyidir. Bu yüzden öncelikle işe mevcuttaki docker ile ilgili paketleri silmeyle<br>başla.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
 
 <h1 id="On-Kurulum"><a href="#On-Kurulum" class="headerlink" title="Ön Kurulum"></a>Ön Kurulum</h1><p>İhtiyaç duyulan paketlerin kurulmasına geç.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
 
 <h1 id="Repository-Ekle"><a href="#Repository-Ekle" class="headerlink" title="Repository Ekle"></a>Repository Ekle</h1><p>Docker paket reposunu ekle. Repo erişimi için paket repo keyleri arasına docker reposunun keyin ekle. Sonrasında paket repoları arasına docker reposunu ekle.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">$ sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">$ sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | <span class="built_in">sudo</span> apt-key add -</span><br><span class="line">$ <span class="built_in">sudo</span> apt-key fingerprint 0EBFCD88</span><br><span class="line">$ <span class="built_in">sudo</span> add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line">$ <span class="built_in">sudo</span> apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -303,10 +339,10 @@
       
         <h1 id="On-Hazirlik"><a href="#On-Hazirlik" class="headerlink" title="Ön Hazırlık"></a>Ön Hazırlık</h1><p>Ubuntu işletim sistemine kurulum yapmadan önce isteğe bağlı genel bir hazırlık da yapabilirsiniz. Ben kurulumlardan önce bu hazırlık adımını yapmayı tercih ediyorum.</p>
 <p>İşletim sistemindeki paketler güncellenir ve gereksiz paketler otomatik temizlenir. İhtiyaç duyulan geliştirici paketleri kurulur.</p>
-<h2 id="Paketleri-Guncelle-ve-Gereksizleri-Temizle"><a href="#Paketleri-Guncelle-ve-Gereksizleri-Temizle" class="headerlink" title="Paketleri Güncelle ve Gereksizleri Temizle"></a>Paketleri Güncelle ve Gereksizleri Temizle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br><span class="line">$ sudo apt autoremove</span><br></pre></td></tr></table></figure>
+<h2 id="Paketleri-Guncelle-ve-Gereksizleri-Temizle"><a href="#Paketleri-Guncelle-ve-Gereksizleri-Temizle" class="headerlink" title="Paketleri Güncelle ve Gereksizleri Temizle"></a>Paketleri Güncelle ve Gereksizleri Temizle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt update</span><br><span class="line">$ <span class="built_in">sudo</span> apt upgrade</span><br><span class="line">$ <span class="built_in">sudo</span> apt autoremove</span><br></pre></td></tr></table></figure>
 
 <h2 id="Gelistirici-developer-Paketlerini-Kur"><a href="#Gelistirici-developer-Paketlerini-Kur" class="headerlink" title="Geliştirici(developer) Paketlerini Kur"></a>Geliştirici(developer) Paketlerini Kur</h2><p>Geliştirici paketlerini daha önce kurduysanız aşağıdaki komutu çalıştırmanıza gerek yoktur.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install build-essential</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install build-essential</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -379,10 +415,10 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="Mongodb-Servisini-Enable-x2F-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-x2F-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable&#x2F;Startup Yapma"></a>Mongodb Servisini Enable&#x2F;Startup Yapma</h1><p>Enable&#x2F;Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
-<h2 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
+        <h1 id="Mongodb-Servisini-Enable-Startup-Yapma"><a href="#Mongodb-Servisini-Enable-Startup-Yapma" class="headerlink" title="Mongodb Servisini Enable&#x2F;Startup Yapma"></a>Mongodb Servisini Enable&#x2F;Startup Yapma</h1><p>Enable&#x2F;Startup olup olmadığını görmek için aşağıdaki komutu çalıştır.</p>
+<h2 id="is-enabled"><a href="#is-enabled" class="headerlink" title="is-enabled"></a>is-enabled</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> systemctl is-enabled mongod</span><br></pre></td></tr></table></figure>
 <p>Enable&#x2F;Startup olarak ayarla.</p>
-<h2 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
+<h2 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -420,7 +456,7 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <h1 id="Mongodb-Kurulumu"><a href="#Mongodb-Kurulumu" class="headerlink" title="Mongodb Kurulumu"></a>Mongodb Kurulumu</h1><h2 id="Kurulum-Adimi"><a href="#Kurulum-Adimi" class="headerlink" title="Kurulum Adımı"></a>Kurulum Adımı</h2><p>Mongodb’nin 5.0 versiyonu için kurulum yapılmaktadır.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mongodb-org</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | <span class="built_in">sudo</span> apt-key add -</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse&quot;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/mongodb-org-5.0.list</span><br><span class="line">$ <span class="built_in">sudo</span> apt update</span><br><span class="line">$ <span class="built_in">sudo</span> apt install mongodb-org</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -429,41 +465,6 @@
           <div class="alignleft">
             <a href="/2021/12/19/ubuntu-icin-mongodb-kurulum/#more" class="more-link">Daha fazla oku</a>
           </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-  <article id="post-pm2-kurulum" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <!-- <div class="icon"></div> -->
-        <time class="dt-published" datetime="2021-12-19T14:17:10.000Z">
-          <span class="icon"></span> 
-          <a href="/2021/12/19/pm2-kurulum/">19.12.2021</a>
-          <span class="reading-time"> <span class="icon"></span> Okuma Süresi: <strong>1 dakika</strong>  </span>
-        </time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/12/19/pm2-kurulum/">Nodejs ile pm2 Kurulumu</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <h1 id="pm2-Kurulumu"><a href="#pm2-Kurulumu" class="headerlink" title="pm2 Kurulumu"></a>pm2 Kurulumu</h1><p>Öncelikle nodejs kurulumunun yapılmış olması gerekmektedir. Eğer nodejs kurulumu yapmadıysanız <a href="/2021/12/19/nodejs-kurulum/">buradan</a> kurulum yapabilirsiniz.</p>
-<p>Eğer global kurulum yapmak istiyorsanız <code>-g</code> ile birlikte kullanmalısınız. Proje özelinde kurulum için <code>-g</code> olmadan çalıştırın.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g pm2</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
         
         
       
@@ -552,7 +553,7 @@
     <span class="icon icon-cloud"></span>
     Etiket Bulutu</h3>
   <div class="entry">
-    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a>
+    <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/llm/" style="font-size: 10px;">llm</a> <a href="/tags/lvm/" style="font-size: 13.33px;">lvm</a> <a href="/tags/mimari/" style="font-size: 10px;">mimari</a> <a href="/tags/mongodb/" style="font-size: 16.67px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/nodejs/" style="font-size: 16.67px;">nodejs</a> <a href="/tags/oAuth/" style="font-size: 10px;">oAuth</a> <a href="/tags/oyun/" style="font-size: 10px;">oyun</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pm2/" style="font-size: 13.33px;">pm2</a> <a href="/tags/proje/" style="font-size: 10px;">proje</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 13.33px;">wordpress</a> <a href="/tags/yapay-zeka/" style="font-size: 10px;">yapay zeka</a>
   </div>
 </div>
 
@@ -564,6 +565,11 @@
     Son Gönderiler
   </h3>
   <ul class="entry">
+    
+      <li>
+        <i class="icon icon-right"></i>
+        <a href="/2026/11/07/yapay-zeka-destekli-proje-mimarisi/">Yapay Zeka Destekli Proje Mimarisi</a>
+      </li>
     
       <li>
         <i class="icon icon-right"></i>
@@ -585,11 +591,6 @@
         <a href="/2022/01/25/nginx-reverse-proxy/">Nginx Reverse Proxy</a>
       </li>
     
-      <li>
-        <i class="icon icon-right"></i>
-        <a href="/2022/01/25/windows-vscode-ssh-config-erisim-problemi/">Windows VSCode SSH config Erişim Problemi</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -599,7 +600,7 @@
   <h3 class="title categories">
     <span class="icon"></span>
     Kategoriler
-    <small> 24 </small>
+    <small> 25 </small>
   </h3>
   <ul class="entry">
   
@@ -645,6 +646,11 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/categories/Yapay-Zeka/">Yapay Zeka</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/categories/Isletim-Sistemi/">İşletim Sistemi</a><small>4</small>
     </li>
   
@@ -657,7 +663,7 @@
   <h3 class="title tags">
     <span class="icon"></span>
     Etiketler
-    <small> 40 </small>
+    <small> 44 </small>
   </h3>
   <ul class="entry">
   
@@ -683,7 +689,17 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/tags/llm/">llm</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/tags/lvm/">lvm</a><small>2</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/mimari/">mimari</a><small>1</small>
     </li>
   
     <li>
@@ -733,6 +749,11 @@
   
     <li>
       <i class="icon icon-right"></i>
+      <a href="/tags/proje/">proje</a><small>1</small>
+    </li>
+  
+    <li>
+      <i class="icon icon-right"></i>
       <a href="/tags/session/">session</a><small>1</small>
     </li>
   
@@ -766,6 +787,11 @@
       <a href="/tags/wordpress/">wordpress</a><small>2</small>
     </li>
   
+    <li>
+      <i class="icon icon-right"></i>
+      <a href="/tags/yapay-zeka/">yapay zeka</a><small>1</small>
+    </li>
+  
   </ul>
 </div>
 
@@ -774,7 +800,7 @@
     </div>
     <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Levent Sencer Şahin | buglss
+  &copy; 2026 Levent Sencer Şahin | buglss
   
 </div>
 <div class="clearfix"></div>
